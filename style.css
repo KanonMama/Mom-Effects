@@ -163,3 +163,35 @@
   #mp-effects [data-effect="police"] .mp-overlay-police{animation:none!important;opacity:.12!important;background:linear-gradient(90deg,#ed365955,transparent,#2b83ff55)!important}
   #mp-effects [data-effect="shootingstars"] .mp-particle{animation:none!important;opacity:0!important}
 }
+
+
+/* v0.5.4: Mobile viewport-height fix (verified on iOS)..
+   Some mobile SillyTavern layouts calculate the fixed effects layer at 0px high
+   despite inset:0. Force viewport geometry; dvh overrides vh where supported. */
+#mp-effects {
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  max-width: none !important;
+  max-height: none !important;
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
+  box-sizing: border-box !important;
+  pointer-events: none !important;
+  overflow: hidden !important;
+}
+#mp-effects > .mp-effect {
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none !important;
+}
