@@ -1,0 +1,12 @@
+{
+  "display_name": "Mom Effects",
+  "loading_order": 70,
+  "requires": [],
+  "optional": [],
+  "js": "index.js",
+  "css": "style.css",
+  "author": "KanonMama",
+  "version": "0.5.3",
+  "homePage": "https://github.com/KanonMama/Mom-Effects",
+  "auto_update": false
+}

@@ -1,0 +1,14 @@
+{
+  "presets": {
+    "Тихий зимний вечер": [
+      "snow",
+      "moonlight",
+      "stardust"
+    ],
+    "Ночной город": [
+      "rain",
+      "police",
+      "twilight"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "effects": [
+    {
+      "id": "custom_soft_snow",
+      "ru": "Мягкий снег",
+      "en": "Soft snow",
+      "category": "weather",
+      "type": "snow",
+      "symbol": "❄"
+    },
+    {
+      "id": "custom_purple_dust",
+      "ru": "Фиолетовая пыль",
+      "en": "Purple dust",
+      "category": "magic",
+      "type": "float",
+      "symbol": "✦"
+    }
+  ]
+}
