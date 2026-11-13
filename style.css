@@ -237,32 +237,31 @@
 
 /* NEW #9: Rime (Узоры инея) — sharp dendritic ice crystals along screen edges */
 #mp-effects [data-effect="rime"] .mp-overlay-frost {
-  box-shadow: inset 0 0 85px 26px rgba(195, 236, 255, 0.18), inset 0 0 24px 6px rgba(235, 250, 255, 0.34);
+  box-shadow: inset 0 0 80px 22px rgba(220,242,255,0.18);
   background:
-    linear-gradient(to right, rgba(220,245,255,0.24) 0%, transparent 16%, transparent 84%, rgba(220,245,255,0.24) 100%),
-    radial-gradient(circle at 0% 12%, rgba(233,248,255,0.34) 0 10%, transparent 30%),
-    radial-gradient(circle at 0% 52%, rgba(233,248,255,0.24) 0 9%, transparent 26%),
-    radial-gradient(circle at 100% 18%, rgba(233,248,255,0.34) 0 10%, transparent 30%),
-    radial-gradient(circle at 100% 68%, rgba(233,248,255,0.24) 0 9%, transparent 26%),
-    repeating-linear-gradient(28deg, transparent 0 14px, rgba(244,251,255,0.14) 14.5px 15.5px, transparent 16px 30px),
-    repeating-linear-gradient(-34deg, transparent 0 16px, rgba(214,242,255,0.12) 16.5px 17.5px, transparent 18px 34px);
-  background-size: 100% 100%, 18% 38%, 16% 34%, 18% 38%, 16% 34%, 20% 100%, 20% 100%;
-  background-position: 0 0, left top, left center, right top, right center, left top, right top;
+    linear-gradient(to right, rgba(236,248,255,0.20) 0%, transparent 18%, transparent 82%, rgba(236,248,255,0.20) 100%),
+    radial-gradient(circle at 0% 14%, rgba(244,251,255,0.42) 0 2px, transparent 3px),
+    radial-gradient(circle at 0% 46%, rgba(244,251,255,0.32) 0 2px, transparent 3px),
+    radial-gradient(circle at 100% 18%, rgba(244,251,255,0.42) 0 2px, transparent 3px),
+    radial-gradient(circle at 100% 62%, rgba(244,251,255,0.32) 0 2px, transparent 3px),
+    repeating-linear-gradient(26deg, transparent 0 16px, rgba(238,248,255,0.12) 16.4px 17px, transparent 17.4px 34px),
+    repeating-linear-gradient(-28deg, transparent 0 18px, rgba(220,240,255,0.10) 18.4px 19px, transparent 19.4px 38px);
+  background-size: 100% 100%, 14% 28%, 16% 32%, 14% 28%, 16% 32%, 18% 100%, 18% 100%;
+  background-position: 0 0, left 8% top 12%, left 6% center, right 8% top 16%, right 6% center, left top, right top;
   background-repeat: no-repeat;
-  mask-image: linear-gradient(to right, #000 0 20%, transparent 30% 70%, #000 80% 100%);
-  animation: mp-breathe 9s ease-in-out infinite alternate;
+  mask-image: linear-gradient(to right, #000 0 20%, transparent 34% 66%, #000 80% 100%);
+  animation: mp-breathe 11s ease-in-out infinite alternate;
 }
 #mp-effects [data-effect="rime"] .mp-particle {
   font-size: 0;
-  width: calc(clamp(42px, calc(var(--sz) * 2.8), 74px) * var(--scale, 1));
-  height: calc(clamp(18px, calc(var(--sz) * 1.3), 34px) * var(--scale, 1));
+  width: calc(clamp(36px, calc(var(--sz) * 2.2), 68px) * var(--scale, 1));
+  height: calc(clamp(16px, calc(var(--sz) * 1.05), 30px) * var(--scale, 1));
   background:
-    linear-gradient(90deg, transparent 6%, rgba(255,255,255,0.95) 7% 9%, transparent 10%) 0 50% / 100% 100% no-repeat,
-    linear-gradient(33deg, transparent 48%, rgba(226,246,255,0.94) 49% 51%, transparent 52%) 18% 32% / 42% 44% no-repeat,
-    linear-gradient(-28deg, transparent 48%, rgba(226,246,255,0.9) 49% 51%, transparent 52%) 42% 20% / 36% 38% no-repeat,
-    linear-gradient(18deg, transparent 48%, rgba(208,239,255,0.88) 49% 51%, transparent 52%) 58% 58% / 28% 30% no-repeat,
-    linear-gradient(-52deg, transparent 48%, rgba(208,239,255,0.86) 49% 51%, transparent 52%) 24% 58% / 24% 26% no-repeat;
-  filter: drop-shadow(0 0 6px rgba(195, 238, 255, 0.9));
+    linear-gradient(0deg, transparent 47%, rgba(240,250,255,0.92) 49% 51%, transparent 53%) 0 50% / 100% 100% no-repeat,
+    linear-gradient(36deg, transparent 47%, rgba(234,247,255,0.82) 49% 51%, transparent 53%) 26% 34% / 38% 42% no-repeat,
+    linear-gradient(-38deg, transparent 47%, rgba(234,247,255,0.76) 49% 51%, transparent 53%) 42% 22% / 34% 38% no-repeat,
+    linear-gradient(54deg, transparent 47%, rgba(224,242,255,0.72) 49% 51%, transparent 53%) 58% 62% / 26% 30% no-repeat;
+  filter: drop-shadow(0 0 5px rgba(210, 238, 255, 0.68));
   transform-origin: 0 50%;
   animation: mp-rime-grow var(--dur) ease-in-out var(--delay) infinite;
 }
@@ -652,128 +651,43 @@
   background: linear-gradient(135deg, #e2c4ff 0%, #a66bff 60%, #5828a8 100%);
 }
 
-#mp-effects [data-effect="bats"] .mp-particle {
-  left: -14vw;
-  top: var(--y);
-  font-size: 0;
-  width: calc(clamp(26px, calc(var(--sz) * 2.35), 48px) * var(--scale, 1));
-  height: calc(clamp(14px, calc(var(--sz) * 1.2), 28px) * var(--scale, 1));
-  background: radial-gradient(circle at 50% 45%, #7b7fa0 0%, #434761 55%, #1b1d2d 100%);
-  border-radius: 40% 40% 50% 50%;
-  transform-style: preserve-3d;
-  filter: drop-shadow(0 0 8px rgba(160, 170, 235, 0.52));
-  animation:
-    mp-bat-flight var(--dur) linear var(--delay) infinite;
-}
-#mp-effects [data-effect="bats"] .mp-particle::before,
-#mp-effects [data-effect="bats"] .mp-particle::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  width: 56%;
-  height: 100%;
-  background: linear-gradient(180deg, #8b8fb1 0%, #4c516e 45%, #181a28 100%);
-  box-shadow: inset 0 -2px 4px rgba(255,255,255,0.12);
-}
-#mp-effects [data-effect="bats"] .mp-particle::before {
-  right: 48%;
-  border-radius: 85% 20% 100% 0 / 75% 10% 90% 10%;
-  clip-path: polygon(100% 30%, 68% 10%, 25% 0%, 0% 42%, 16% 82%, 54% 100%, 100% 68%);
-  transform-origin: 100% 44%;
-  animation: mp-wing-left var(--flap, 0.22s) ease-in-out infinite alternate;
-}
-#mp-effects [data-effect="bats"] .mp-particle::after {
-  left: 48%;
-  border-radius: 20% 85% 0 100% / 10% 75% 10% 90%;
-  clip-path: polygon(0% 30%, 32% 10%, 75% 0%, 100% 42%, 84% 82%, 46% 100%, 0% 68%);
-  transform-origin: 0% 44%;
-  animation: mp-wing-right var(--flap, 0.22s) ease-in-out infinite alternate;
-}
-#mp-effects [data-effect="bats"] .mp-particle[data-tint="1"] {
-  background: radial-gradient(circle at 50% 45%, #9ca1c0 0%, #5a607c 55%, #212433 100%);
-}
+
 
 /* NEW #5: Kitsune Tails (Хвосты кицунэ) — materialize, sway, vanish in foxfire */
 #mp-effects [data-effect="kitsune"] .mp-particle {
   font-size: 0;
-  width: calc(clamp(18px, calc(var(--sz) * 1.25), 30px) * var(--scale, 1));
-  height: calc(clamp(56px, calc(var(--sz) * 3.2), 96px) * var(--scale, 1));
-  background: transparent;
-  border: 2.5px solid rgba(255, 239, 209, 0.92);
-  border-left-color: transparent;
-  border-bottom-color: rgba(255, 221, 163, 0.75);
-  border-radius: 72% 22% 82% 26% / 92% 18% 72% 16%;
-  box-shadow: 0 0 16px rgba(255, 198, 112, 0.30);
-  transform-origin: 48% 96%;
-  overflow: visible;
+  width: calc(clamp(10px, calc(var(--sz) * 0.8), 16px) * var(--scale, 1));
+  height: calc(clamp(18px, calc(var(--sz) * 1.6), 28px) * var(--scale, 1));
+  border-radius: 50% 50% 46% 46% / 64% 64% 36% 36%;
+  background: radial-gradient(circle at 48% 32%, rgba(255,255,255,0.98) 0 14%, rgba(233,244,255,0.94) 18% 42%, rgba(188,220,255,0.55) 55%, rgba(188,220,255,0) 76%);
+  box-shadow: 0 0 10px rgba(228, 240, 255, 0.72), 0 0 22px rgba(190, 220, 255, 0.32);
+  filter: blur(0.25px);
   animation: mp-kitsune-pop var(--dur) ease-in-out var(--delay) infinite;
 }
 #mp-effects [data-effect="kitsune"] .mp-particle::before {
   content: '';
   position: absolute;
-  inset: 12% 20% 14% 22%;
-  border: 1.5px solid rgba(255, 249, 235, 0.68);
-  border-left-color: transparent;
-  border-bottom-color: transparent;
-  border-radius: 70% 22% 82% 24% / 92% 18% 72% 14%;
-  transform: rotate(-8deg);
-  opacity: 0.88;
+  left: 40%;
+  bottom: 58%;
+  width: 22%;
+  height: 70%;
+  border-radius: 999px;
+  background: linear-gradient(to top, rgba(228,240,255,0.72), rgba(228,240,255,0));
+  transform-origin: 50% 100%;
+  transform: rotate(-18deg);
+  filter: blur(0.4px);
 }
 #mp-effects [data-effect="kitsune"] .mp-particle::after {
   content: '';
   position: absolute;
-  top: 6%;
-  right: -7px;
-  width: 11px;
-  height: 11px;
+  inset: -40%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,249,223,0.98) 0%, rgba(255,215,132,0.95) 42%, rgba(255,215,132,0.0) 74%);
-  box-shadow: 0 0 14px 4px rgba(255, 211, 120, 0.42);
+  background: radial-gradient(circle, rgba(255,255,255,0.16) 0%, rgba(210,230,255,0.10) 40%, transparent 70%);
 }
-#mp-effects [data-effect="kitsune"] .mp-particle[data-tint="1"] {
-  border-color: rgba(224, 250, 255, 0.92);
-  border-left-color: transparent;
-  border-bottom-color: rgba(139, 222, 255, 0.78);
-  box-shadow: 0 0 16px rgba(116, 219, 255, 0.30);
-}
-#mp-effects [data-effect="kitsune"] .mp-particle[data-tint="1"]::before {
-  border-color: rgba(245, 252, 255, 0.74);
-  border-left-color: transparent;
-  border-bottom-color: transparent;
-}
-#mp-effects [data-effect="kitsune"] .mp-particle[data-tint="1"]::after {
-  background: radial-gradient(circle, rgba(244,252,255,0.98) 0%, rgba(142,226,255,0.94) 42%, rgba(142,226,255,0) 74%);
-  box-shadow: 0 0 14px 4px rgba(120, 225, 255, 0.42);
-}
-#mp-effects [data-effect="kitsune"] .mp-particle[data-tint="2"] {
-  border-color: rgba(255, 228, 239, 0.92);
-  border-left-color: transparent;
-  border-bottom-color: rgba(255, 143, 188, 0.78);
-  box-shadow: 0 0 16px rgba(255, 138, 185, 0.32);
-}
-#mp-effects [data-effect="kitsune"] .mp-particle[data-tint="2"]::before {
-  border-color: rgba(255, 244, 250, 0.72);
-  border-left-color: transparent;
-  border-bottom-color: transparent;
-}
-#mp-effects [data-effect="kitsune"] .mp-particle[data-tint="2"]::after {
-  background: radial-gradient(circle, rgba(255,247,251,0.98) 0%, rgba(255,153,197,0.94) 42%, rgba(255,153,197,0) 74%);
-  box-shadow: 0 0 14px 4px rgba(255, 132, 182, 0.44);
-}
+#mp-effects [data-effect="kitsune"] .mp-particle[data-tint="1"],
+#mp-effects [data-effect="kitsune"] .mp-particle[data-tint="2"],
 #mp-effects [data-effect="kitsune"] .mp-particle[data-tint="3"] {
-  border-color: rgba(243, 233, 255, 0.92);
-  border-left-color: transparent;
-  border-bottom-color: rgba(184, 136, 255, 0.80);
-  box-shadow: 0 0 16px rgba(186, 128, 255, 0.32);
-}
-#mp-effects [data-effect="kitsune"] .mp-particle[data-tint="3"]::before {
-  border-color: rgba(250, 245, 255, 0.72);
-  border-left-color: transparent;
-  border-bottom-color: transparent;
-}
-#mp-effects [data-effect="kitsune"] .mp-particle[data-tint="3"]::after {
-  background: radial-gradient(circle, rgba(252,248,255,0.98) 0%, rgba(197,153,255,0.94) 42%, rgba(197,153,255,0) 74%);
-  box-shadow: 0 0 14px 4px rgba(186, 128, 255, 0.44);
+  background: radial-gradient(circle at 48% 32%, rgba(255,255,255,0.98) 0 14%, rgba(233,244,255,0.94) 18% 42%, rgba(188,220,255,0.55) 55%, rgba(188,220,255,0) 76%);
 }
 
 
@@ -1215,37 +1129,40 @@
 #mp-effects [data-effect="cobwebs"] .mp-overlay-fog {
   inset: 0;
   background:
-    radial-gradient(circle at 0% 0%, transparent 0 10%, rgba(236, 244, 255, 0.28) 10.2% 10.8%, transparent 11% 18%, rgba(236, 244, 255, 0.22) 18.2% 18.8%, transparent 19% 28%, rgba(236, 244, 255, 0.18) 28.2% 28.8%, transparent 29% 100%),
-    radial-gradient(circle at 100% 0%, transparent 0 10%, rgba(236, 244, 255, 0.28) 10.2% 10.8%, transparent 11% 18%, rgba(236, 244, 255, 0.22) 18.2% 18.8%, transparent 19% 28%, rgba(236, 244, 255, 0.18) 28.2% 28.8%, transparent 29% 100%),
-    linear-gradient(28deg, transparent 47.8%, rgba(236,244,255,0.34) 48% 48.4%, transparent 48.6%) left top / 34% 34% no-repeat,
-    linear-gradient(52deg, transparent 47.8%, rgba(236,244,255,0.24) 48% 48.35%, transparent 48.55%) left top / 34% 34% no-repeat,
-    linear-gradient(152deg, transparent 47.8%, rgba(236,244,255,0.34) 48% 48.4%, transparent 48.6%) right top / 34% 34% no-repeat,
-    linear-gradient(128deg, transparent 47.8%, rgba(236,244,255,0.24) 48% 48.35%, transparent 48.55%) right top / 34% 34% no-repeat;
+    radial-gradient(circle at 0% 0%, transparent 0 7%, rgba(232,240,250,0.22) 7.2% 7.5%, transparent 7.7% 13%, rgba(232,240,250,0.18) 13.2% 13.5%, transparent 13.7% 20%, rgba(232,240,250,0.14) 20.2% 20.5%, transparent 20.7% 100%),
+    radial-gradient(circle at 100% 0%, transparent 0 7%, rgba(232,240,250,0.22) 7.2% 7.5%, transparent 7.7% 13%, rgba(232,240,250,0.18) 13.2% 13.5%, transparent 13.7% 20%, rgba(232,240,250,0.14) 20.2% 20.5%, transparent 20.7% 100%),
+    linear-gradient(24deg, transparent 49.2%, rgba(232,240,250,0.25) 49.6% 50.1%, transparent 50.5%) left top / 22% 22% no-repeat,
+    linear-gradient(48deg, transparent 49.2%, rgba(232,240,250,0.18) 49.6% 50.1%, transparent 50.5%) left top / 22% 22% no-repeat,
+    linear-gradient(72deg, transparent 49.2%, rgba(232,240,250,0.16) 49.6% 50.1%, transparent 50.5%) left top / 22% 22% no-repeat,
+    linear-gradient(156deg, transparent 49.2%, rgba(232,240,250,0.25) 49.6% 50.1%, transparent 50.5%) right top / 22% 22% no-repeat,
+    linear-gradient(132deg, transparent 49.2%, rgba(232,240,250,0.18) 49.6% 50.1%, transparent 50.5%) right top / 22% 22% no-repeat,
+    linear-gradient(108deg, transparent 49.2%, rgba(232,240,250,0.16) 49.6% 50.1%, transparent 50.5%) right top / 22% 22% no-repeat;
   background-repeat: no-repeat;
-  filter: drop-shadow(0 0 3px rgba(228, 240, 255, 0.28));
-  opacity: 0.92;
-  animation: mp-breathe 10s ease-in-out infinite alternate;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 2px rgba(235,242,250,0.22));
 }
 #mp-effects [data-effect="cobwebs"] .mp-particle {
-  top: -2vh !important;
+  top: 0 !important;
   font-size: 0;
-  width: 1px;
-  height: calc(var(--len, 140px) * var(--scale, 1));
-  background: linear-gradient(to bottom, rgba(235, 242, 250, 0.75), rgba(220, 230, 242, 0.16));
-  box-shadow: 0 0 4px rgba(235, 245, 255, 0.35);
+  width: 2px;
+  height: calc(var(--len, 140px) * var(--scale,1));
+  background: linear-gradient(to bottom, rgba(236,242,248,0.55), rgba(236,242,248,0.08) 78%, transparent 100%);
+  border-radius: 999px;
+  opacity: .82;
   transform-origin: 50% 0%;
-  animation: mp-vine-sway var(--dur) ease-in-out var(--delay) infinite alternate;
+  animation: mp-cobweb-drip var(--dur) ease-in-out var(--delay) infinite;
 }
 #mp-effects [data-effect="cobwebs"] .mp-particle::after {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: -2px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: rgba(240, 248, 255, 0.85);
-  box-shadow: 0 0 5px rgba(215, 235, 255, 0.8);
+  content:'';
+  position:absolute;
+  bottom:-4px;
+  left:50%;
+  width:6px;
+  height:6px;
+  margin-left:-3px;
+  border-radius:50%;
+  background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.92), rgba(219,231,242,0.58) 55%, rgba(219,231,242,0) 76%);
+  box-shadow: 0 0 4px rgba(219,231,242,0.3);
 }
 
 /* =========================================================
@@ -1417,55 +1334,10 @@
 #mp-effects [data-effect="disco"] .mp-particle[data-tint="3"] { box-shadow: 0 0 12px 4px #b84dff; }
 
 /* NEW #12: Dripping Blood (Стекающая кровь сверху) */
-#mp-effects [data-effect="blooddrip"]::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 6vh;
-  background:
-    radial-gradient(circle at 9% 100%, rgba(150,8,20,0.96) 0 10px, transparent 11px),
-    radial-gradient(circle at 23% 100%, rgba(150,8,20,0.96) 0 8px, transparent 9px),
-    radial-gradient(circle at 47% 100%, rgba(150,8,20,0.96) 0 13px, transparent 14px),
-    radial-gradient(circle at 72% 100%, rgba(150,8,20,0.96) 0 10px, transparent 11px),
-    radial-gradient(circle at 90% 100%, rgba(150,8,20,0.96) 0 8px, transparent 9px),
-    linear-gradient(to bottom, rgba(82,0,10,0.94) 0%, rgba(146,8,20,0.74) 56%, transparent 100%);
-  filter: drop-shadow(0 1px 3px rgba(84, 0, 9, 0.58));
-}
-#mp-effects [data-effect="blooddrip"] .mp-particle {
-  top: -1vh !important;
-  font-size: 0;
-  width: calc(clamp(5px, calc(var(--sz) * 0.48), 10px) * var(--scale, 1));
-  height: calc(var(--len, 160px) * var(--scale, 1));
-  border-radius: 48% 48% 62% 62% / 0 0 100% 100%;
-  background: linear-gradient(to bottom, rgba(80,0,8,0.98) 0%, rgba(148,8,19,0.97) 36%, rgba(214,22,36,0.95) 84%, rgba(110,0,8,0.98) 100%);
-  box-shadow: inset -1px 0 2px rgba(255, 150, 160, 0.26), inset 1px 0 2px rgba(54, 0, 5, 0.42), 0 0 6px rgba(120, 0, 12, 0.48);
-  transform-origin: 50% 0%;
-  animation: mp-blood-ooze var(--dur) ease-in-out var(--delay) infinite;
-}
-#mp-effects [data-effect="blooddrip"] .mp-particle::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: -42%;
-  width: 184%;
-  height: calc(clamp(9px, calc(var(--sz) * 0.8), 16px) * var(--scale, 1));
-  border-radius: 42% 42% 58% 58% / 30% 30% 72% 72%;
-  background: radial-gradient(circle at 38% 30%, rgba(255,110,128,0.82) 0%, rgba(214,22,36,0.94) 36%, rgba(96,0,10,0.98) 100%);
-}
+
 
 /* NEW #10: Tire Tracks (Следы дорожных шин / Дрифт) */
-#mp-effects [data-effect="tiretracks"] .mp-particle {
-  font-size: 0;
-  width: clamp(220px, 32vw, 430px);
-  height: 46px;
-  background:
-    repeating-linear-gradient(90deg, rgba(18,18,22,0.86) 0 10px, rgba(18,18,22,0.14) 10px 15px) 0 6px / 100% 11px no-repeat,
-    repeating-linear-gradient(90deg, rgba(18,18,22,0.86) 0 10px, rgba(18,18,22,0.14) 10px 15px) 0 calc(100% - 6px) / 100% 11px no-repeat,
-    linear-gradient(90deg, rgba(255,255,255,0.08), transparent 18% 82%, rgba(255,255,255,0.06)) 0 0 / 100% 100% no-repeat;
-  opacity: 0.42;
-  filter: blur(0.25px) drop-shadow(0 0 6px rgba(185, 190, 200, 0.16));
-  animation: mp-tire-skid var(--dur) ease-out var(--delay) infinite;
-}
+
 
 /* =========================================================
    KEYFRAMES
@@ -1547,8 +1419,8 @@
 }
 
 @keyframes mp-rime-grow {
-  0%, 100% { transform: scale(0.15) rotate(var(--rotate, 0deg)); opacity: 0; }
-  35%, 72% { transform: scale(1.05) rotate(var(--rotate, 0deg)); opacity: 0.92; }
+  0%,100% { transform: scale(0.2) rotate(var(--rotate,0deg)); opacity: 0; }
+  38%,72% { transform: scale(1) rotate(var(--rotate,0deg)); opacity: 0.92; }
 }
 
 @keyframes mp-star-blink {
@@ -1575,11 +1447,11 @@
 }
 
 @keyframes mp-kitsune-pop {
-  0%, 18% { transform: translate3d(0, 22px, 0) scale(0.18) rotate(-18deg); opacity: 0; }
-  30% { transform: translate3d(0, 0, 0) scale(1.02) rotate(8deg); opacity: 0.96; }
-  48% { transform: translate3d(calc(var(--sway, 14px) * 0.35), -4px, 0) scale(1.05) rotate(-8deg); opacity: 0.98; }
-  66% { transform: translate3d(calc(var(--sway, 14px) * -0.22), -9px, 0) scale(1.0) rotate(6deg); opacity: 0.92; }
-  82%, 100% { transform: translate3d(calc(var(--sway, 14px) * 0.2), -30px, 0) scale(0.24) rotate(20deg); opacity: 0; }
+  0%, 18% { transform: translate3d(0, 12px, 0) scale(0.25); opacity: 0; }
+  30% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.95; }
+  50% { transform: translate3d(calc(var(--sway, 14px) * 0.35), -8px, 0) scale(1.06); opacity: 0.96; }
+  70% { transform: translate3d(calc(var(--sway, 14px) * -0.2), -16px, 0) scale(0.96); opacity: 0.78; }
+  100% { transform: translate3d(calc(var(--sway, 14px) * 0.15), -24px, 0) scale(0.25); opacity: 0; }
 }
 
 
@@ -1625,20 +1497,9 @@
   88% { transform: rotate(-45deg) scale(0.4); opacity: 0; }
 }
 
-@keyframes mp-blood-ooze {
-  0% { transform: scaleY(0.06) translateY(0); opacity: 0; }
-  14% { opacity: 0.96; }
-  64% { transform: scaleY(1) translateY(0); opacity: 0.95; }
-  84% { transform: scaleY(1.02) translateY(8vh); opacity: 0.82; }
-  100% { transform: scaleY(1.06) translateY(18vh); opacity: 0; }
-}
 
-@keyframes mp-tire-skid {
-  0%, 15% { clip-path: inset(0 100% 0 0); opacity: 0; transform: translate3d(-8vw, 3vh, 0) rotate(var(--rotate, -25deg)); }
-  24% { opacity: 0.72; }
-  48%, 72% { clip-path: inset(0 0 0 0); opacity: 0.44; transform: translate3d(0, 0, 0) rotate(var(--rotate, -25deg)); }
-  100% { clip-path: inset(0 0 0 0); opacity: 0; transform: translate3d(8vw, -3vh, 0) rotate(var(--rotate, -25deg)); }
-}
+
+
 
 @keyframes mp-disco-sweep {
   from { transform: rotate(-22deg) scale(1.1); filter: blur(10px) hue-rotate(0deg); }
@@ -2019,4 +1880,8 @@
   .mp-check{min-height:36px}
   .mp-effect-density{max-width:90px}
   .mp-drawer>.inline-drawer-content{padding:4px 2px}
+}
+@keyframes mp-cobweb-drip {
+  0%,100% { transform: translateY(0); opacity: .22; }
+  50% { transform: translateY(12px); opacity: .92; }
 }
