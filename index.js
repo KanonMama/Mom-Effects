@@ -112,9 +112,24 @@ function addParticles(wrap,effect,count){
    el.style.setProperty('--x',rand(8,88).toFixed(2)+'vw');
    el.style.setProperty('--y',rand(58,94).toFixed(2)+'vh');
   } else if(id==='tiretracks'){
-   el.style.setProperty('--x',rand(5,72).toFixed(2)+'vw');
-   el.style.setProperty('--y',rand(12,84).toFixed(2)+'vh');
-   el.style.setProperty('--rotate',rand(-38,-14).toFixed(0)+'deg');
+   const side=i%4;
+   if(side===0){
+    el.style.setProperty('--x',rand(-8,8).toFixed(2)+'vw');
+    el.style.setProperty('--y',rand(18,84).toFixed(2)+'vh');
+    el.style.setProperty('--rotate',rand(-12,12).toFixed(0)+'deg');
+   }else if(side===1){
+    el.style.setProperty('--x',rand(76,96).toFixed(2)+'vw');
+    el.style.setProperty('--y',rand(10,76).toFixed(2)+'vh');
+    el.style.setProperty('--rotate',rand(160,194).toFixed(0)+'deg');
+   }else if(side===2){
+    el.style.setProperty('--x',rand(10,72).toFixed(2)+'vw');
+    el.style.setProperty('--y',rand(-4,10).toFixed(2)+'vh');
+    el.style.setProperty('--rotate',rand(24,48).toFixed(0)+'deg');
+   }else{
+    el.style.setProperty('--x',rand(14,70).toFixed(2)+'vw');
+    el.style.setProperty('--y',rand(72,94).toFixed(2)+'vh');
+    el.style.setProperty('--rotate',rand(-50,-24).toFixed(0)+'deg');
+   }
   }
 
   const dir=i%2===0?1:-1;

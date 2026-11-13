@@ -41,7 +41,6 @@ export const catalog = [
   {"id": "bubbles", "ru": "Пузырьки", "en": "Bubbles", "category": "ambient", "type": "rise", "symbol": "○"},
   {"id": "plankton", "ru": "Планктон", "en": "Plankton", "category": "ambient", "type": "float", "symbol": "·"},
   {"id": "caustics", "ru": "Водная рябь", "en": "Water ripples", "category": "ambient", "type": "fog", "symbol": "≈"},
-  {"id": "shark", "ru": "Акулий хвост", "en": "Shark tail splash", "category": "ambient", "type": "float", "symbol": "🦈"},
   {"id": "dust", "ru": "Пыль в лучах", "en": "Dust motes", "category": "ambient", "type": "float", "symbol": "·"},
   {"id": "jellyfish", "ru": "Медузы", "en": "Jellyfish", "category": "ambient", "type": "rise", "symbol": "♧"},
   {"id": "glassrain", "ru": "Дождь по стеклу", "en": "Rain on glass", "category": "ambient", "type": "rain", "symbol": "╱"},
