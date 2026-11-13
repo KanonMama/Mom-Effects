@@ -5,10 +5,12 @@ const KEY='mom_particles';
 const defaults={language:'ru',floating:true,enabled:{},density:35,speed:50,opacity:55,reduceMotion:false,position:{right:18,bottom:100},panelPosition:null,presets:{},customEffects:[],effectDensity:{},chatBindings:{},chatMode:false,infoblockSync:false,infoblockTime:true,infoblockEnvironment:true};
 const categories={weather:['Погода','Weather'],season:['Времена года','Seasons & light'],magic:['Мистика','Magic'],ambient:['Атмосфера','Atmosphere'],cinema:['Кино','Cinematic'],romance:['Романтика','Romance']};
 const builtins={
- 'Вечер у костра':['embers','smoke','fireflies'], 'Ночная погоня':['rain','police','twilight'],
- 'Лесная ведьма':['mist','wisps','runes'], 'Зимняя ночь':['snow','moonlight','stardust'],
- 'Под водой':['bubbles','plankton','jellyfish'], 'Осенний вечер':['autumn','golden','dust'],
- 'Магическая ночь':['magiccircle','runes','portals'], 'Романтика':['hearts','rose','fireflies']};
+ 'Вечер у костра':['embers','smoke','fireflies'], 'Ночная погоня':['rain','police','tiretracks'],
+ 'Лесная ведьма':['mist','wisps','runes'], 'Зимняя ночь':['snow','moonlight','nightsky'],
+ 'Под водой':['bubbles','caustics','jellyfish'], 'Осенний вечер':['autumn','golden','dust'],
+ 'Магическая ночь':['magiccircle','runes','portals'], 'Романтика':['pulsehearts','bluebloom','fireflies'],
+ 'Пещера лиан':['glowvines','fireflies','mist'], 'Дискотека':['disco','neon','prismstars'],
+ 'Хоррор':['analoghorror','blooddrip','cobwebs']};
 let state,layer,style,settingsRoot,panel,panelBody,button,watcher,lastChatKey=null;const nodes=new Map();let autoIds=new Set();let lastScene=null;let sceneStatus='Нет данных / No data';
 const allEffects=()=>[...catalog,...state.customEffects];
 const chatKey=()=>{try{const c=getContext();return c?.chatId!=null&&c?.characterId!=null?String(c.characterId)+':'+String(c.chatId):null;}catch{return null;}};
@@ -16,38 +18,46 @@ const activeIds=()=>Object.keys(state.enabled).filter(k=>state.enabled[k]);
 const tr=(ru,en)=>state.language==='ru'?ru:en;
 const save=()=>{extension_settings[KEY]=state;saveSettingsDebounced();};
 const rand=(a,b)=>a+Math.random()*(b-a);
-const palette={snow:'#dbeaff',blizzard:'#f3faff',rain:'#a7c6ef',downpour:'#a7c6ef',mist:'#b8c0d2',sandstorm:'#bfa27b',autumn:'#bd7044',sakura:'#f2a9c7',runes:'#a58cff',wisps:'#8acfff',blackfeathers:'#34313c',whitefeathers:'#eae9ff',stardust:'#b8a6ff',fireflies:'#ffd99a',embers:'#ff9451',ash:'#9d9292',bubbles:'#94d5f1',plankton:'#63c9c6',rose:'#f3a2ba',lavender:'#b9a0ed',hearts:'#fa92ad',confetti:'#c9a9ff',police:'#f15b78',butterflies:'#a8d8ff'};
+const palette={snow:'#dbeaff',blizzard:'#f3faff',rain:'#a7c6ef',downpour:'#a7c6ef',mist:'#b8c0d2',rime:'#d8f3ff',sandstorm:'#bfa27b',nightsky:'#e8f2ff',grass:'#4eb86b',autumn:'#bd7044',sakura:'#f2a9c7',runes:'#a58cff',wisps:'#8acfff',blackfeathers:'#34313c',whitefeathers:'#eae9ff',stardust:'#b8a6ff',prismstars:'#ff9ee2',kitsune:'#ffbe76',inkscript:'#2b222c',fireflies:'#ffd99a',embers:'#ff9451',ash:'#9d9292',bubbles:'#94d5f1',plankton:'#63c9c6',caustics:'#7ce8ff',shark:'#6c9ab8',glowvines:'#ffb84d',cobwebs:'#d9e2ec',rose:'#f3a2ba',lavender:'#b9a0ed',bluebloom:'#63b8ff',hearts:'#fa92ad',pulsehearts:'#ff5e8e',confetti:'#c9a9ff',police:'#f15b78',blooddrip:'#a80b1e',tiretracks:'#26262b',butterflies:'#a8d8ff'};
 const color=id=>palette[id]||'#b7b0e6';
 function ensureLayer(){if(layer?.isConnected)return;layer=document.createElement('div');layer.id='mp-effects';document.body.append(layer);}
-const overlayIds=new Set(['mist','smoke','frost','sunbeams','golden','twilight','moonlight','aurora','police','alarm','flicker','vhs','neon','danger','thunder','glitch']);
-const volume={snow:80,blizzard:190,rain:100,downpour:230,wind:28,sandstorm:210,autumn:38,sakura:42,dandelion:38,whitefeathers:28,blackfeathers:28,bats:22,summerdust:95,ash:90,plankton:85,dust:100,hearts:52,shootingstars:9,stardust:70,portals:58,fireflies:38,embers:52,glassrain:68,matrix:55,confetti:60,rose:40,lavender:42,butterflies:24,runes:32,magiccircle:14,wisps:28,bubbles:38,jellyfish:12};
+
+const overlayIds=new Set(['mist','smoke','frost','rime','sunbeams','golden','twilight','moonlight','aurora','police','alarm','flicker','vhs','analoghorror','neon','disco','danger','thunder','glitch','caustics','cobwebs']);
+const volume={snow:80,blizzard:190,rain:100,downpour:230,wind:28,sandstorm:210,rime:36,nightsky:95,grass:85,autumn:38,sakura:42,dandelion:38,whitefeathers:28,blackfeathers:28,bats:22,summerdust:95,ash:90,plankton:85,caustics:26,shark:8,glowvines:24,cobwebs:20,dust:100,hearts:52,pulsehearts:34,bluebloom:28,shootingstars:9,stardust:70,prismstars:65,kitsune:14,inkscript:24,portals:58,fireflies:38,embers:52,glassrain:68,matrix:55,confetti:60,rose:40,lavender:42,butterflies:24,runes:32,magiccircle:14,wisps:28,bubbles:38,jellyfish:12,blooddrip:30,tiretracks:8,disco:44,analoghorror:18};
 const runeGlyphs=['ᚠ','ᚢ','ᚦ','ᚨ','ᚱ','ᚲ','ᚷ','ᚹ','ᚺ','ᚾ','ᛁ','ᛃ','ᛇ','ᛈ','ᛉ','ᛊ','ᛏ','ᛒ','ᛖ','ᛗ','ᛚ','ᛜ','ᛞ','ᛟ'];
 const matrixGlyphs=['0','1','2','4','7','9','ア','カ','サ','タ','ナ','ハ','マ','ヤ','ラ','ワ','ミ','ネ','シ','ツ','ソ','ホ','モ','エ'];
+const inkPhrases=['«Не оглядывайся...»','«Memento mori»','«Полночь близко»','«Кто здесь?»','«Тень за спиной»','«Слова на ветру»','«Вечность»','«Не стирать»','«Забытый обет»','«Следы чернил»','«Silentium»','«Тайна»'];
 
 function makeEffect(effect){
  ensureLayer();const wrap=document.createElement('div');wrap.className='mp-effect mp-'+effect.type;wrap.dataset.effect=effect.id;layer.append(wrap);nodes.set(effect.id,wrap);
+ const base=volume[effect.id]??(effect.type==='fall'?42:effect.type==='rise'?36:28);
+ const scaled=Math.max(3,Math.min(360,Math.round(base*state.density/55*(state.effectDensity[effect.id]??100)/100)));
  if(overlayIds.has(effect.id)){
   const overlay=document.createElement('div');overlay.className='mp-overlay mp-overlay-'+effect.type;wrap.append(overlay);
   if(effect.id==='thunder'){const rain=allEffects().find(e=>e.id==='rain');addParticles(wrap,rain,85);}
-  if(effect.id==='smoke'){addParticles(wrap,effect,26);}
-  if(effect.id==='frost'){addParticles(wrap,effect,22);}
-  if(effect.id==='golden'){addParticles(wrap,effect,18);}
+  if(effect.id==='smoke')addParticles(wrap,effect,26);
+  if(effect.id==='frost')addParticles(wrap,effect,22);
+  if(effect.id==='golden')addParticles(wrap,effect,18);
+  if(['rime','caustics','cobwebs','disco','analoghorror'].includes(effect.id))addParticles(wrap,effect,scaled);
   return;
  }
- const base=volume[effect.id]??(effect.type==='fall'?42:effect.type==='rise'?36:28);
- addParticles(wrap,effect,Math.max(3,Math.min(360,Math.round(base*state.density/55*(state.effectDensity[effect.id]??100)/100))));
+ addParticles(wrap,effect,scaled);
 }
 
 function addParticles(wrap,effect,count){
  if(!effect)return;
- const geometric=new Set(['snow','blizzard','rain','downpour','wind','sandstorm','dandelion','stardust','portals','wisps','bats','whitefeathers','blackfeathers','fireflies','embers','bubbles','jellyfish','rose','lavender','butterflies','confetti','glassrain','matrix','magiccircle','autumn','sakura','plankton','dust','summerdust','ash','hearts','smoke','frost','golden','shootingstars']);
- const durations={rain:[.75,1.35],downpour:[.45,.82],blizzard:[2.0,4.2],snow:[7,15],wind:[2.2,4.6],sandstorm:[1.6,3.8],embers:[3.2,7.2],fireflies:[5,11],matrix:[2.6,5.8],glassrain:[4.5,11],jellyfish:[9,17],bats:[4.5,8.5],shootingstars:[3.2,6.5],summerdust:[8,16],ash:[7,15],plankton:[7,14],dust:[10,20],hearts:[6.5,12],autumn:[7,14],sakura:[7,14],rose:[7,14],lavender:[7,14],whitefeathers:[8,16],blackfeathers:[8,16],butterflies:[7,13],runes:[6,12],magiccircle:[8,15],wisps:[6,12],portals:[3.5,7.5],stardust:[4,9],bubbles:[6,13],confetti:[5,10],dandelion:[9,17],frost:[6,12],golden:[8,16]};
+ const geometric=new Set(['snow','blizzard','rain','downpour','wind','sandstorm','rime','nightsky','grass','dandelion','stardust','prismstars','kitsune','portals','wisps','bats','whitefeathers','blackfeathers','fireflies','embers','bubbles','jellyfish','caustics','shark','glowvines','cobwebs','rose','lavender','bluebloom','butterflies','confetti','glassrain','matrix','magiccircle','autumn','sakura','plankton','dust','summerdust','ash','hearts','pulsehearts','smoke','frost','golden','shootingstars','blooddrip','tiretracks','disco','analoghorror']);
+ const durations={rain:[.75,1.35],downpour:[.45,.82],blizzard:[2.0,4.2],snow:[7,15],wind:[2.2,4.6],sandstorm:[1.6,3.8],rime:[6,12],nightsky:[3.5,8],grass:[3.2,6.2],embers:[3.2,7.2],fireflies:[5,11],matrix:[2.6,5.8],glassrain:[4.5,11],jellyfish:[9,17],bats:[4.5,8.5],shootingstars:[3.2,6.5],summerdust:[8,16],ash:[7,15],plankton:[7,14],caustics:[4,8],shark:[5,9.5],glowvines:[4.5,8.5],cobwebs:[6,12],dust:[10,20],hearts:[6.5,12],pulsehearts:[2.8,5.2],bluebloom:[5.5,10.5],autumn:[7,14],sakura:[7,14],rose:[7,14],lavender:[7,14],whitefeathers:[8,16],blackfeathers:[8,16],butterflies:[7,13],runes:[6,12],magiccircle:[8,15],wisps:[6,12],portals:[3.5,7.5],stardust:[4,9],prismstars:[3.5,7.5],kitsune:[4.5,8.5],inkscript:[5.5,10],bubbles:[6,13],confetti:[5,10],dandelion:[9,17],frost:[6,12],golden:[8,16],blooddrip:[5,11],tiretracks:[4.5,8],disco:[2.8,5.8],analoghorror:[1.8,4.2]};
  for(let i=0;i<count;i++){
   const el=document.createElement('span');el.className='mp-particle';
   const id=effect.id;const kind=effect.type;
   let sym=effect.symbol;
   if(geometric.has(id))sym='';
   if(id==='runes')sym=runeGlyphs[i%runeGlyphs.length];
+  if(id==='inkscript'){
+   if(i%2===0){sym=inkPhrases[(i/2)%inkPhrases.length];el.dataset.ink='text';}
+   else{sym='';el.dataset.ink='blot';}
+  }
   if(id==='matrix'){
    const len=5+Math.floor(Math.random()*5);
    let col='';
@@ -56,7 +66,7 @@ function addParticles(wrap,effect,count){
   }
   const depth=i%3;
   el.dataset.depth=String(depth);
-  el.dataset.tint=String(i%(id==='confetti'||id==='autumn'?5:4));
+  el.dataset.tint=String(i%(id==='confetti'||id==='autumn'||id==='prismstars'?5:4));
   el.textContent=sym;
 
   const [lo,hi]=durations[id]||[7,18];
@@ -66,11 +76,36 @@ function addParticles(wrap,effect,count){
 
   el.style.setProperty('--x',rand(0,100).toFixed(2)+'vw');
   el.style.setProperty('--y',rand(0,100).toFixed(2)+'vh');
+
   if(id==='shootingstars'){
    el.style.setProperty('--x',rand(35,112).toFixed(2)+'vw');
    el.style.setProperty('--y',rand(-12,45).toFixed(2)+'vh');
    el.style.setProperty('--travel',rand(42,88).toFixed(2)+'vw');
+  } else if(id==='nightsky'){
+   el.style.setProperty('--y',rand(2,78).toFixed(2)+'vh');
+  } else if(id==='grass'){
+   el.style.setProperty('--x',rand(-2,102).toFixed(2)+'vw');
+   el.style.setProperty('--y','0vh');
+   el.style.setProperty('--len',rand(45,115).toFixed(0)+'px');
+  } else if(id==='glowvines'||id==='blooddrip'||id==='cobwebs'){
+   el.style.setProperty('--x',rand(1,99).toFixed(2)+'vw');
+   el.style.setProperty('--y','0vh');
+   el.style.setProperty('--len',rand(id==='blooddrip'?75:95,id==='blooddrip'?260:280).toFixed(0)+'px');
+  } else if(id==='rime'){
+   const edge=i%4;
+   const ex=edge===0?rand(0,10):edge===1?rand(90,100):rand(0,100);
+   const ey=edge===2?rand(0,12):edge===3?rand(88,100):rand(0,100);
+   el.style.setProperty('--x',ex.toFixed(2)+'vw');
+   el.style.setProperty('--y',ey.toFixed(2)+'vh');
+  } else if(id==='shark'){
+   el.style.setProperty('--x',rand(10,88).toFixed(2)+'vw');
+   el.style.setProperty('--y',rand(18,86).toFixed(2)+'vh');
+  } else if(id==='tiretracks'){
+   el.style.setProperty('--x',rand(5,72).toFixed(2)+'vw');
+   el.style.setProperty('--y',rand(12,84).toFixed(2)+'vh');
+   el.style.setProperty('--rotate',rand(-38,-14).toFixed(0)+'deg');
   }
+
   const dir=i%2===0?1:-1;
   el.style.setProperty('--dx',rand(-95,95).toFixed(1)+'px');
   el.style.setProperty('--dy',rand(-85,85).toFixed(1)+'px');
@@ -81,7 +116,7 @@ function addParticles(wrap,effect,count){
   el.style.setProperty('--delay',(-rand(0,dur)).toFixed(2)+'s');
   el.style.setProperty('--flap',rand(.18,.32).toFixed(2)+'s');
   el.style.setProperty('--hue',color(id));
-  el.style.setProperty('--rotate',rand(-180,180).toFixed(0)+'deg');
+  if(id!=='tiretracks')el.style.setProperty('--rotate',rand(-180,180).toFixed(0)+'deg');
   el.style.setProperty('--scale',scaleBase.toFixed(2));
   wrap.append(el);
  }

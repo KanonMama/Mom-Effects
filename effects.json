@@ -1,394 +1,67 @@
-[
-  {
-    "id": "snow",
-    "ru": "Снег",
-    "en": "Snow",
-    "category": "weather",
-    "type": "snow",
-    "symbol": "❄"
-  },
-  {
-    "id": "blizzard",
-    "ru": "Метель",
-    "en": "Blizzard",
-    "category": "weather",
-    "type": "snow",
-    "symbol": "❄"
-  },
-  {
-    "id": "rain",
-    "ru": "Дождь",
-    "en": "Rain",
-    "category": "weather",
-    "type": "rain",
-    "symbol": "╱"
-  },
-  {
-    "id": "downpour",
-    "ru": "Ливень",
-    "en": "Downpour",
-    "category": "weather",
-    "type": "rain",
-    "symbol": "╱"
-  },
-  {
-    "id": "mist",
-    "ru": "Туман",
-    "en": "Mist",
-    "category": "weather",
-    "type": "fog",
-    "symbol": "☁"
-  },
-  {
-    "id": "thunder",
-    "ru": "Гроза",
-    "en": "Thunderstorm",
-    "category": "weather",
-    "type": "storm",
-    "symbol": "ϟ"
-  },
-  {
-    "id": "frost",
-    "ru": "Морозная дымка",
-    "en": "Frost",
-    "category": "weather",
-    "type": "frost",
-    "symbol": "❄"
-  },
-  {
-    "id": "wind",
-    "ru": "Ветер",
-    "en": "Wind",
-    "category": "weather",
-    "type": "wind",
-    "symbol": "〰"
-  },
-  {
-    "id": "sandstorm",
-    "ru": "Песчаная буря",
-    "en": "Sandstorm",
-    "category": "weather",
-    "type": "dust",
-    "symbol": "·"
-  },
-  {
-    "id": "sunbeams",
-    "ru": "Солнечные лучи",
-    "en": "Sunbeams",
-    "category": "season",
-    "type": "sun",
-    "symbol": "☀"
-  },
-  {
-    "id": "golden",
-    "ru": "Золотой час",
-    "en": "Golden hour",
-    "category": "season",
-    "type": "gold",
-    "symbol": "✦"
-  },
-  {
-    "id": "twilight",
-    "ru": "Сумерки",
-    "en": "Twilight",
-    "category": "season",
-    "type": "twilight",
-    "symbol": "☾"
-  },
-  {
-    "id": "moonlight",
-    "ru": "Лунный свет",
-    "en": "Moonlight",
-    "category": "season",
-    "type": "moon",
-    "symbol": "☾"
-  },
-  {
-    "id": "autumn",
-    "ru": "Осенние листья",
-    "en": "Autumn leaves",
-    "category": "season",
-    "type": "fall",
-    "symbol": "🍂"
-  },
-  {
-    "id": "sakura",
-    "ru": "Сакура",
-    "en": "Sakura",
-    "category": "season",
-    "type": "fall",
-    "symbol": "🌸"
-  },
-  {
-    "id": "dandelion",
-    "ru": "Пух одуванчиков",
-    "en": "Dandelion fluff",
-    "category": "season",
-    "type": "float",
-    "symbol": "✧"
-  },
-  {
-    "id": "summerdust",
-    "ru": "Летняя пыльца",
-    "en": "Summer pollen",
-    "category": "season",
-    "type": "float",
-    "symbol": "·"
-  },
-  {
-    "id": "aurora",
-    "ru": "Северное сияние",
-    "en": "Aurora",
-    "category": "season",
-    "type": "aurora",
-    "symbol": "✧"
-  },
-  {
-    "id": "runes",
-    "ru": "Руны",
-    "en": "Runes",
-    "category": "magic",
-    "type": "float",
-    "symbol": "ᚱ"
-  },
-  {
-    "id": "magiccircle",
-    "ru": "Магические круги",
-    "en": "Magic circles",
-    "category": "magic",
-    "type": "circle",
-    "symbol": "◈"
-  },
-  {
-    "id": "wisps",
-    "ru": "Блуждающие огни",
-    "en": "Will-o-wisps",
-    "category": "magic",
-    "type": "float",
-    "symbol": "✦"
-  },
-  {
-    "id": "blackfeathers",
-    "ru": "Чёрные перья",
-    "en": "Black feathers",
-    "category": "magic",
-    "type": "fall",
-    "symbol": "❧"
-  },
-  {
-    "id": "whitefeathers",
-    "ru": "Белые перья",
-    "en": "White feathers",
-    "category": "magic",
-    "type": "fall",
-    "symbol": "❧"
-  },
-  {
-    "id": "bats",
-    "ru": "Летучие мыши",
-    "en": "Bats",
-    "category": "magic",
-    "type": "float",
-    "symbol": "🦇"
-  },
-  {
-    "id": "stardust",
-    "ru": "Звёздная пыль",
-    "en": "Stardust",
-    "category": "magic",
-    "type": "float",
-    "symbol": "✧"
-  },
-  {
-    "id": "portals",
-    "ru": "Портальные искры",
-    "en": "Portal sparks",
-    "category": "magic",
-    "type": "float",
-    "symbol": "✦"
-  },
-  {
-    "id": "glitch",
-    "ru": "Глитч",
-    "en": "Glitch",
-    "category": "magic",
-    "type": "glitch",
-    "symbol": "▮"
-  },
-  {
-    "id": "matrix",
-    "ru": "Цифровой дождь",
-    "en": "Digital rain",
-    "category": "magic",
-    "type": "rain",
-    "symbol": "01"
-  },
-  {
-    "id": "fireflies",
-    "ru": "Светлячки",
-    "en": "Fireflies",
-    "category": "ambient",
-    "type": "float",
-    "symbol": "●"
-  },
-  {
-    "id": "embers",
-    "ru": "Искры костра",
-    "en": "Campfire embers",
-    "category": "ambient",
-    "type": "rise",
-    "symbol": "✦"
-  },
-  {
-    "id": "smoke",
-    "ru": "Дым",
-    "en": "Smoke",
-    "category": "ambient",
-    "type": "fog",
-    "symbol": "☁"
-  },
-  {
-    "id": "ash",
-    "ru": "Пепел",
-    "en": "Ash",
-    "category": "ambient",
-    "type": "fall",
-    "symbol": "·"
-  },
-  {
-    "id": "bubbles",
-    "ru": "Пузырьки",
-    "en": "Bubbles",
-    "category": "ambient",
-    "type": "rise",
-    "symbol": "○"
-  },
-  {
-    "id": "plankton",
-    "ru": "Планктон",
-    "en": "Plankton",
-    "category": "ambient",
-    "type": "float",
-    "symbol": "·"
-  },
-  {
-    "id": "dust",
-    "ru": "Пыль в лучах",
-    "en": "Dust motes",
-    "category": "ambient",
-    "type": "float",
-    "symbol": "·"
-  },
-  {
-    "id": "jellyfish",
-    "ru": "Медузы",
-    "en": "Jellyfish",
-    "category": "ambient",
-    "type": "rise",
-    "symbol": "♧"
-  },
-  {
-    "id": "glassrain",
-    "ru": "Дождь по стеклу",
-    "en": "Rain on glass",
-    "category": "ambient",
-    "type": "rain",
-    "symbol": "╱"
-  },
-  {
-    "id": "police",
-    "ru": "Полицейские мигалки",
-    "en": "Police lights",
-    "category": "cinema",
-    "type": "police",
-    "symbol": "●"
-  },
-  {
-    "id": "alarm",
-    "ru": "Аварийный свет",
-    "en": "Alarm light",
-    "category": "cinema",
-    "type": "alarm",
-    "symbol": "●"
-  },
-  {
-    "id": "flicker",
-    "ru": "Мерцающая лампа",
-    "en": "Flickering lamp",
-    "category": "cinema",
-    "type": "flicker",
-    "symbol": "●"
-  },
-  {
-    "id": "vhs",
-    "ru": "VHS-помехи",
-    "en": "VHS noise",
-    "category": "cinema",
-    "type": "vhs",
-    "symbol": "≋"
-  },
-  {
-    "id": "neon",
-    "ru": "Неон",
-    "en": "Neon glow",
-    "category": "cinema",
-    "type": "neon",
-    "symbol": "✦"
-  },
-  {
-    "id": "danger",
-    "ru": "Красная виньетка",
-    "en": "Danger vignette",
-    "category": "cinema",
-    "type": "danger",
-    "symbol": "●"
-  },
-  {
-    "id": "hearts",
-    "ru": "Сердечки",
-    "en": "Hearts",
-    "category": "romance",
-    "type": "rise",
-    "symbol": "♥"
-  },
-  {
-    "id": "rose",
-    "ru": "Лепестки роз",
-    "en": "Rose petals",
-    "category": "romance",
-    "type": "fall",
-    "symbol": "❀"
-  },
-  {
-    "id": "lavender",
-    "ru": "Лаванда",
-    "en": "Lavender petals",
-    "category": "romance",
-    "type": "fall",
-    "symbol": "❀"
-  },
-  {
-    "id": "butterflies",
-    "ru": "Бабочки",
-    "en": "Butterflies",
-    "category": "romance",
-    "type": "float",
-    "symbol": "🦋"
-  },
-  {
-    "id": "confetti",
-    "ru": "Конфетти",
-    "en": "Confetti",
-    "category": "romance",
-    "type": "fall",
-    "symbol": "◆"
-  },
-  {
-    "id": "shootingstars",
-    "ru": "Падающие звёзды",
-    "en": "Shooting stars",
-    "category": "magic",
-    "type": "shoot",
-    "symbol": "✧"
-  }
-]
+export const catalog = [
+  {"id": "snow", "ru": "Снег", "en": "Snow", "category": "weather", "type": "snow", "symbol": "❄"},
+  {"id": "blizzard", "ru": "Метель", "en": "Blizzard", "category": "weather", "type": "snow", "symbol": "❄"},
+  {"id": "rain", "ru": "Дождь", "en": "Rain", "category": "weather", "type": "rain", "symbol": "╱"},
+  {"id": "downpour", "ru": "Ливень", "en": "Downpour", "category": "weather", "type": "rain", "symbol": "╱"},
+  {"id": "mist", "ru": "Туман", "en": "Mist", "category": "weather", "type": "fog", "symbol": "☁"},
+  {"id": "thunder", "ru": "Гроза", "en": "Thunderstorm", "category": "weather", "type": "storm", "symbol": "ϟ"},
+  {"id": "frost", "ru": "Морозная дымка", "en": "Frost", "category": "weather", "type": "frost", "symbol": "❄"},
+  {"id": "rime", "ru": "Узоры инея", "en": "Hoarfrost", "category": "weather", "type": "frost", "symbol": "✳"},
+  {"id": "wind", "ru": "Ветер", "en": "Wind", "category": "weather", "type": "wind", "symbol": "〰"},
+  {"id": "sandstorm", "ru": "Песчаная буря", "en": "Sandstorm", "category": "weather", "type": "dust", "symbol": "·"},
+  {"id": "sunbeams", "ru": "Солнечные лучи", "en": "Sunbeams", "category": "season", "type": "sun", "symbol": "☀"},
+  {"id": "golden", "ru": "Золотой час", "en": "Golden hour", "category": "season", "type": "gold", "symbol": "✦"},
+  {"id": "twilight", "ru": "Сумерки", "en": "Twilight", "category": "season", "type": "twilight", "symbol": "☾"},
+  {"id": "moonlight", "ru": "Лунный свет", "en": "Moonlight", "category": "season", "type": "moon", "symbol": "☾"},
+  {"id": "nightsky", "ru": "Звёздное небо", "en": "Starry sky", "category": "season", "type": "float", "symbol": "★"},
+  {"id": "autumn", "ru": "Осенние листья", "en": "Autumn leaves", "category": "season", "type": "fall", "symbol": "🍂"},
+  {"id": "sakura", "ru": "Сакура", "en": "Sakura", "category": "season", "type": "fall", "symbol": "🌸"},
+  {"id": "dandelion", "ru": "Пух одуванчиков", "en": "Dandelion fluff", "category": "season", "type": "float", "symbol": "✧"},
+  {"id": "summerdust", "ru": "Летняя пыльца", "en": "Summer pollen", "category": "season", "type": "float", "symbol": "·"},
+  {"id": "grass", "ru": "Колышущаяся трава", "en": "Swaying grass", "category": "season", "type": "float", "symbol": "🌿"},
+  {"id": "aurora", "ru": "Северное сияние", "en": "Aurora", "category": "season", "type": "aurora", "symbol": "✧"},
+  {"id": "runes", "ru": "Руны", "en": "Runes", "category": "magic", "type": "float", "symbol": "ᚱ"},
+  {"id": "magiccircle", "ru": "Магические круги", "en": "Magic circles", "category": "magic", "type": "circle", "symbol": "◈"},
+  {"id": "wisps", "ru": "Блуждающие огни", "en": "Will-o-wisps", "category": "magic", "type": "float", "symbol": "✦"},
+  {"id": "blackfeathers", "ru": "Чёрные перья", "en": "Black feathers", "category": "magic", "type": "fall", "symbol": "❧"},
+  {"id": "whitefeathers", "ru": "Белые перья", "en": "White feathers", "category": "magic", "type": "fall", "symbol": "❧"},
+  {"id": "bats", "ru": "Летучие мыши", "en": "Bats", "category": "magic", "type": "float", "symbol": "🦇"},
+  {"id": "stardust", "ru": "Звёздная пыль", "en": "Stardust", "category": "magic", "type": "float", "symbol": "✧"},
+  {"id": "prismstars", "ru": "Радужные звёздочки", "en": "Rainbow stars", "category": "magic", "type": "float", "symbol": "✦"},
+  {"id": "portals", "ru": "Портальные искры", "en": "Portal sparks", "category": "magic", "type": "float", "symbol": "✦"},
+  {"id": "kitsune", "ru": "Хвосты кицунэ", "en": "Kitsune tails", "category": "magic", "type": "float", "symbol": "🦊"},
+  {"id": "inkscript", "ru": "Чернила и кляксы", "en": "Ink & blots", "category": "magic", "type": "float", "symbol": "✒"},
+  {"id": "glitch", "ru": "Глитч", "en": "Glitch", "category": "magic", "type": "glitch", "symbol": "▮"},
+  {"id": "matrix", "ru": "Цифровой дождь", "en": "Digital rain", "category": "magic", "type": "rain", "symbol": "01"},
+  {"id": "shootingstars", "ru": "Падающие звёзды", "en": "Shooting stars", "category": "magic", "type": "shoot", "symbol": "✧"},
+  {"id": "fireflies", "ru": "Светлячки", "en": "Fireflies", "category": "ambient", "type": "float", "symbol": "●"},
+  {"id": "embers", "ru": "Искры костра", "en": "Campfire embers", "category": "ambient", "type": "rise", "symbol": "✦"},
+  {"id": "smoke", "ru": "Дым", "en": "Smoke", "category": "ambient", "type": "fog", "symbol": "☁"},
+  {"id": "ash", "ru": "Пепел", "en": "Ash", "category": "ambient", "type": "fall", "symbol": "·"},
+  {"id": "bubbles", "ru": "Пузырьки", "en": "Bubbles", "category": "ambient", "type": "rise", "symbol": "○"},
+  {"id": "plankton", "ru": "Планктон", "en": "Plankton", "category": "ambient", "type": "float", "symbol": "·"},
+  {"id": "caustics", "ru": "Водная рябь", "en": "Water ripples", "category": "ambient", "type": "fog", "symbol": "≈"},
+  {"id": "shark", "ru": "Акулий хвост", "en": "Shark tail splash", "category": "ambient", "type": "float", "symbol": "🦈"},
+  {"id": "dust", "ru": "Пыль в лучах", "en": "Dust motes", "category": "ambient", "type": "float", "symbol": "·"},
+  {"id": "jellyfish", "ru": "Медузы", "en": "Jellyfish", "category": "ambient", "type": "rise", "symbol": "♧"},
+  {"id": "glassrain", "ru": "Дождь по стеклу", "en": "Rain on glass", "category": "ambient", "type": "rain", "symbol": "╱"},
+  {"id": "glowvines", "ru": "Светящиеся лианы", "en": "Glow berry vines", "category": "ambient", "type": "float", "symbol": "🌿"},
+  {"id": "cobwebs", "ru": "Паутина", "en": "Cobwebs", "category": "ambient", "type": "fog", "symbol": "🕸"},
+  {"id": "police", "ru": "Полицейские мигалки", "en": "Police lights", "category": "cinema", "type": "police", "symbol": "●"},
+  {"id": "alarm", "ru": "Аварийный свет", "en": "Alarm light", "category": "cinema", "type": "alarm", "symbol": "●"},
+  {"id": "flicker", "ru": "Мерцающая лампа", "en": "Flickering lamp", "category": "cinema", "type": "flicker", "symbol": "●"},
+  {"id": "vhs", "ru": "VHS-помехи", "en": "VHS noise", "category": "cinema", "type": "vhs", "symbol": "≋"},
+  {"id": "analoghorror", "ru": "Аналоговый хоррор", "en": "Analog horror", "category": "cinema", "type": "vhs", "symbol": "👁"},
+  {"id": "neon", "ru": "Неон", "en": "Neon glow", "category": "cinema", "type": "neon", "symbol": "✦"},
+  {"id": "disco", "ru": "Диско-лучи", "en": "Disco party", "category": "cinema", "type": "neon", "symbol": "🪩"},
+  {"id": "danger", "ru": "Красная виньетка", "en": "Danger vignette", "category": "cinema", "type": "danger", "symbol": "●"},
+  {"id": "blooddrip", "ru": "Стекающая кровь", "en": "Dripping blood", "category": "cinema", "type": "rain", "symbol": "🩸"},
+  {"id": "tiretracks", "ru": "Следы шин", "en": "Tire tracks", "category": "cinema", "type": "float", "symbol": "🛞"},
+  {"id": "hearts", "ru": "Сердечки", "en": "Hearts", "category": "romance", "type": "rise", "symbol": "♥"},
+  {"id": "pulsehearts", "ru": "Пульсирующие сердечки", "en": "Pulsating hearts", "category": "romance", "type": "float", "symbol": "💓"},
+  {"id": "rose", "ru": "Лепестки роз", "en": "Rose petals", "category": "romance", "type": "fall", "symbol": "❀"},
+  {"id": "lavender", "ru": "Лаванда", "en": "Lavender petals", "category": "romance", "type": "fall", "symbol": "❀"},
+  {"id": "bluebloom", "ru": "Голубые цветы", "en": "Blooming blue flowers", "category": "romance", "type": "float", "symbol": "✿"},
+  {"id": "butterflies", "ru": "Бабочки", "en": "Butterflies", "category": "romance", "type": "float", "symbol": "🦋"},
+  {"id": "confetti", "ru": "Конфетти", "en": "Confetti", "category": "romance", "type": "fall", "symbol": "◆"}
+];

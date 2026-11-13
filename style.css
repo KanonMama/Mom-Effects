@@ -80,10 +80,10 @@
 }
 
 /* =========================================================
-   WEATHER: Snow, Blizzard, Rain, Downpour, Wind, Sandstorm
+   WEATHER: Snow, Blizzard, Rain, Downpour, Wind, Sandstorm,
+   Glassrain, Rime (Hoarfrost)
    ========================================================= */
 
-/* Snow: soft radial flakes with sinusoidal sway and 3D depth */
 #mp-effects [data-effect="snow"] .mp-particle {
   top: -6vh;
   font-size: 0;
@@ -103,7 +103,6 @@
   box-shadow: 0 0 12px rgba(235, 248, 255, 0.95);
 }
 
-/* Blizzard: fierce diagonal snow + icy ground gale haze */
 #mp-effects [data-effect="blizzard"]::before {
   content: '';
   position: absolute;
@@ -126,7 +125,6 @@
   animation: mp-blizzard var(--dur) linear var(--delay) infinite;
 }
 
-/* Rain & Thunder rain: sleek streaking drops with bright tips */
 #mp-effects [data-effect="rain"] .mp-particle,
 #mp-effects [data-effect="downpour"] .mp-particle,
 #mp-effects [data-effect="thunder"] .mp-particle {
@@ -145,7 +143,6 @@
   filter: blur(0.4px);
 }
 
-/* Downpour: longer, faster sheets of rain + bottom mist splash */
 #mp-effects [data-effect="downpour"]::after {
   content: '';
   position: absolute;
@@ -163,7 +160,6 @@
   animation: mp-rainfall-heavy var(--dur) linear var(--delay) infinite;
 }
 
-/* Wind: graceful curved air ribbons */
 #mp-effects [data-effect="wind"] .mp-particle {
   left: -18vw;
   top: var(--y);
@@ -176,7 +172,6 @@
   animation: mp-windblow var(--dur) ease-in-out var(--delay) infinite;
 }
 
-/* Sandstorm: ochre haze + swirling desert grit */
 #mp-effects [data-effect="sandstorm"]::before {
   content: '';
   position: absolute;
@@ -207,7 +202,6 @@
   filter: blur(4px);
 }
 
-/* Glassrain: realistic water droplets with refraction highlight & trail */
 #mp-effects [data-effect="glassrain"] .mp-particle {
   top: -10vh;
   font-size: 0;
@@ -229,12 +223,31 @@
   background: linear-gradient(to top, rgba(205, 235, 255, 0.65), rgba(190, 225, 250, 0.18) 60%, transparent);
 }
 
+/* NEW #9: Rime (Узоры инея) — sharp dendritic ice crystals along screen edges */
+#mp-effects [data-effect="rime"] .mp-overlay-frost {
+  box-shadow: inset 0 0 65px 18px rgba(195, 236, 255, 0.45), inset 0 0 18px 4px rgba(235, 250, 255, 0.65);
+  background:
+    conic-gradient(from 45deg at 0% 0%, rgba(225, 246, 255, 0.45) 0deg, transparent 25deg, rgba(200, 236, 255, 0.35) 45deg, transparent 90deg),
+    conic-gradient(from 135deg at 100% 0%, rgba(225, 246, 255, 0.45) 0deg, transparent 25deg, rgba(200, 236, 255, 0.35) 45deg, transparent 90deg),
+    conic-gradient(from 225deg at 100% 100%, rgba(225, 246, 255, 0.45) 0deg, transparent 25deg, rgba(200, 236, 255, 0.35) 45deg, transparent 90deg),
+    conic-gradient(from 315deg at 0% 100%, rgba(225, 246, 255, 0.45) 0deg, transparent 25deg, rgba(200, 236, 255, 0.35) 45deg, transparent 90deg);
+  animation: mp-breathe 9s ease-in-out infinite alternate;
+}
+#mp-effects [data-effect="rime"] .mp-particle {
+  font-size: 0;
+  width: calc(clamp(18px, calc(var(--sz) * 2.1), 42px) * var(--scale, 1));
+  height: calc(clamp(18px, calc(var(--sz) * 2.1), 42px) * var(--scale, 1));
+  background: linear-gradient(135deg, #ffffff 0%, #c4ecff 60%, #7ec8f8 100%);
+  clip-path: polygon(50% 0%, 55% 36%, 86% 14%, 64% 45%, 100% 50%, 64% 55%, 86% 86%, 55% 64%, 50% 100%, 45% 64%, 14% 86%, 36% 55%, 0% 50%, 36% 45%, 14% 14%, 45% 36%);
+  filter: drop-shadow(0 0 6px rgba(195, 238, 255, 0.9));
+  animation: mp-rime-grow var(--dur) ease-in-out var(--delay) infinite;
+}
+
 /* =========================================================
-   ATMOSPHERIC OVERLAYS: Mist, Frost, Sun, Gold, Twilight,
-   Moonlight, Aurora, Thunderstorm
+   ATMOSPHERIC OVERLAYS & SKY: Mist, Frost, Sun, Gold,
+   Twilight, Moonlight, Nightsky, Aurora, Thunderstorm
    ========================================================= */
 
-/* Multi-layered drifting fog */
 #mp-effects [data-effect="mist"] .mp-overlay-fog {
   inset: -10%;
   background:
@@ -252,7 +265,6 @@
   animation: mp-edge-fog-rev 28s ease-in-out infinite alternate;
 }
 
-/* Frost: crystalline icy vignette + diamond dust motes */
 #mp-effects [data-effect="frost"] .mp-overlay-frost {
   background:
     radial-gradient(ellipse 42% 88% at 0% 50%, rgba(195, 232, 252, 0.48), transparent 85%),
@@ -275,7 +287,6 @@
   animation: mp-twinkle-drift var(--dur) ease-in-out var(--delay) infinite;
 }
 
-/* Sunbeams: volumetric God rays with dual shifting shafts */
 #mp-effects [data-effect="sunbeams"] .mp-overlay-sun {
   inset: -15%;
   background:
@@ -292,7 +303,6 @@
   animation: mp-light-drift 19s ease-in-out infinite alternate-reverse;
 }
 
-/* Golden Hour: warm amber sunset wash + soft floating bokeh orbs */
 #mp-effects [data-effect="golden"] .mp-overlay-gold {
   background:
     radial-gradient(ellipse 85% 65% at 15% 10%, rgba(255, 202, 118, 0.38) 0%, transparent 72%),
@@ -309,7 +319,6 @@
   animation: mp-dust-drift var(--dur) ease-in-out var(--delay) infinite;
 }
 
-/* Twilight: deep dusk indigo & violet-rose horizon */
 #mp-effects [data-effect="twilight"] .mp-overlay-twilight {
   background:
     linear-gradient(180deg, rgba(28, 36, 88, 0.46) 0%, rgba(68, 52, 114, 0.28) 55%, rgba(168, 88, 126, 0.24) 100%),
@@ -317,7 +326,6 @@
   animation: mp-breathe 16s ease-in-out infinite alternate;
 }
 
-/* Moonlight: silvery-blue lunar glow & soft beams */
 #mp-effects [data-effect="moonlight"] .mp-overlay-moon {
   background:
     radial-gradient(ellipse 55% 48% at 86% 4%, rgba(196, 224, 255, 0.46) 0%, rgba(132, 178, 245, 0.18) 48%, transparent 78%),
@@ -326,7 +334,38 @@
   animation: mp-light-drift 18s ease-in-out infinite alternate;
 }
 
-/* Aurora: 3-ribbon dancing northern lights (emerald, cyan, violet) */
+/* NEW #2: Night Sky (Просто звёзды) — stationary twinkling stars across sky zenith */
+#mp-effects [data-effect="nightsky"]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(14, 20, 48, 0.36) 0%, rgba(20, 28, 62, 0.14) 52%, transparent 85%);
+}
+#mp-effects [data-effect="nightsky"] .mp-particle {
+  font-size: 0;
+  width: calc(2.5px * var(--scale, 1));
+  height: calc(2.5px * var(--scale, 1));
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 6px 1px rgba(210, 232, 255, 0.9);
+  animation: mp-star-blink var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="nightsky"] .mp-particle[data-tint="1"] {
+  background: #fff2cc;
+  box-shadow: 0 0 7px 1px rgba(255, 222, 164, 0.85);
+}
+#mp-effects [data-effect="nightsky"] .mp-particle[data-tint="2"] {
+  background: #cde8ff;
+  box-shadow: 0 0 8px 1.5px rgba(156, 212, 255, 0.9);
+}
+#mp-effects [data-effect="nightsky"] .mp-particle[data-depth="2"] {
+  width: calc(6px * var(--scale, 1));
+  height: calc(6px * var(--scale, 1));
+  border-radius: 0;
+  clip-path: polygon(50% 0%, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0% 50%, 40% 40%);
+  filter: drop-shadow(0 0 5px #ffffff) drop-shadow(0 0 10px #9ecaff);
+}
+
 #mp-effects [data-effect="aurora"] .mp-overlay-aurora {
   inset: -20% -25%;
   background: repeating-linear-gradient(102deg, transparent 0%, rgba(46, 232, 178, 0.32) 9%, rgba(56, 178, 242, 0.34) 16%, rgba(158, 104, 242, 0.28) 23%, transparent 35%);
@@ -341,7 +380,6 @@
   animation: mp-aurora-wave 18s ease-in-out infinite alternate-reverse;
 }
 
-/* Thunderstorm: multi-stage cloud sheet lightning */
 #mp-effects [data-effect="thunder"] .mp-overlay-storm {
   background:
     radial-gradient(ellipse 90% 55% at 65% 0%, rgba(220, 238, 255, 0.95) 0%, rgba(168, 205, 250, 0.45) 55%, rgba(135, 175, 230, 0.15) 100%);
@@ -350,11 +388,10 @@
 }
 
 /* =========================================================
-   SEASONAL & ROMANCE FLORA: Autumn, Sakura, Rose, Lavender,
+   FLORA: Autumn, Sakura, Rose, Lavender, Bluebloom, Grass,
    Dandelion, Summerdust, Feathers
    ========================================================= */
 
-/* Autumn leaves: pointed leaf silhouette with central vein & 3D flutter */
 #mp-effects [data-effect="autumn"] .mp-particle {
   top: -8vh;
   font-size: 0;
@@ -380,7 +417,6 @@
 #mp-effects [data-effect="autumn"] .mp-particle[data-tint="3"] { background: linear-gradient(135deg, #e5c148, #a67c22); }
 #mp-effects [data-effect="autumn"] .mp-particle[data-tint="4"] { background: linear-gradient(135deg, #c95932, #7a2c18); }
 
-/* Sakura: notched cherry blossom petals */
 #mp-effects [data-effect="sakura"] .mp-particle {
   top: -8vh;
   font-size: 0;
@@ -393,7 +429,6 @@
 #mp-effects [data-effect="sakura"] .mp-particle[data-tint="1"] { background: linear-gradient(135deg, #fff0f5, #f7bdd4); }
 #mp-effects [data-effect="sakura"] .mp-particle[data-tint="2"] { background: linear-gradient(135deg, #fbc2d9, #de77a1); }
 
-/* Rose petals: velvety crimson & blush petals */
 #mp-effects [data-effect="rose"] .mp-particle {
   top: -8vh;
   font-size: 0;
@@ -408,7 +443,6 @@
 #mp-effects [data-effect="rose"] .mp-particle[data-tint="2"] { background: radial-gradient(circle at 35% 35%, #c9244b, #7d0c29 80%, #4a0416); }
 #mp-effects [data-effect="rose"] .mp-particle[data-tint="3"] { background: radial-gradient(circle at 35% 35%, #ffb8cc, #e86b92 80%, #b0395e); }
 
-/* Lavender petals: previously missing CSS! Violet-lilac spindle blossoms */
 #mp-effects [data-effect="lavender"] .mp-particle {
   top: -8vh;
   font-size: 0;
@@ -423,7 +457,88 @@
 #mp-effects [data-effect="lavender"] .mp-particle[data-tint="2"] { background: linear-gradient(135deg, #c6affc, #8c65e6 60%, #5c38b8); }
 #mp-effects [data-effect="lavender"] .mp-particle[data-tint="3"] { background: linear-gradient(135deg, #e5c6ff, #b57ae8 60%, #7d42b8); }
 
-/* White & Black Feathers: tapered plumes with central shaft */
+/* NEW #7: Blooming Blue Flowers (Распускающиеся голубые цветы) */
+#mp-effects [data-effect="bluebloom"] .mp-particle {
+  font-size: 0;
+  width: calc(clamp(18px, calc(var(--sz) * 1.6), 34px) * var(--scale, 1));
+  height: calc(clamp(18px, calc(var(--sz) * 1.6), 34px) * var(--scale, 1));
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff8b8 0% 16%, #bfe8ff 24%, #4ea8ff 62%, transparent 70%);
+  filter: drop-shadow(0 0 8px rgba(88, 178, 255, 0.75));
+  animation: mp-flower-bloom var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="bluebloom"] .mp-particle::before,
+#mp-effects [data-effect="bluebloom"] .mp-particle::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 80% 20% 80% 20%;
+  background: radial-gradient(circle, #fff8b8 0% 14%, #9ad9ff 28%, #3488f5 75%, #1c54b8 100%);
+  opacity: 0.9;
+}
+#mp-effects [data-effect="bluebloom"] .mp-particle::before { transform: rotate(45deg); }
+#mp-effects [data-effect="bluebloom"] .mp-particle::after { transform: rotate(-45deg); }
+#mp-effects [data-effect="bluebloom"] .mp-particle[data-tint="1"]::before,
+#mp-effects [data-effect="bluebloom"] .mp-particle[data-tint="1"]::after {
+  background: radial-gradient(circle, #ffffff 0% 14%, #b5f2ff 28%, #2dc4eb 75%, #14749c 100%);
+}
+#mp-effects [data-effect="bluebloom"] .mp-particle[data-tint="2"]::before,
+#mp-effects [data-effect="bluebloom"] .mp-particle[data-tint="2"]::after {
+  background: radial-gradient(circle, #ffeeb0 0% 14%, #c2ceff 28%, #5e78ff 75%, #2f3db8 100%);
+}
+
+/* NEW #4: Swaying Grass (Колышущаяся трава) — bottom meadow frame */
+#mp-effects [data-effect="grass"]::before {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 12vh;
+  background: linear-gradient(to top, rgba(24, 68, 38, 0.34), transparent);
+}
+#mp-effects [data-effect="grass"] .mp-particle {
+  top: auto !important;
+  bottom: -1.5vh;
+  font-size: 0;
+  width: calc(6px * var(--scale, 1));
+  height: calc(var(--len, 75px) * var(--scale, 1));
+  border-radius: 100% 0 0 0;
+  border-left: calc(3.2px * var(--scale, 1)) solid #3ca65c;
+  background: transparent;
+  box-shadow: none;
+  transform-origin: 50% 100%;
+  animation: mp-grass-sway var(--dur) ease-in-out var(--delay) infinite alternate;
+}
+#mp-effects [data-effect="grass"] .mp-particle::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 3px;
+  width: 100%;
+  height: 78%;
+  border-radius: 0 100% 0 0;
+  border-right: calc(2.5px * var(--scale, 1)) solid #58c974;
+  transform: rotate(8deg);
+  transform-origin: 50% 100%;
+}
+#mp-effects [data-effect="grass"] .mp-particle[data-depth="0"] {
+  border-left-color: #24663b;
+  opacity: 0.7;
+}
+#mp-effects [data-effect="grass"] .mp-particle[data-tint="2"] {
+  border-left-color: #72de84;
+}
+#mp-effects [data-effect="grass"] .mp-particle[data-tint="3"]::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #d8ff9c;
+  box-shadow: 0 0 8px 2px rgba(186, 255, 128, 0.85);
+}
+
 #mp-effects [data-effect="whitefeathers"] .mp-particle,
 #mp-effects [data-effect="blackfeathers"] .mp-particle {
   top: -8vh;
@@ -440,7 +555,6 @@
   box-shadow: 0 0 6px rgba(18, 14, 28, 0.65);
 }
 
-/* Dandelion fluff: delicate seed stem + airy pappus crown */
 #mp-effects [data-effect="dandelion"] .mp-particle {
   font-size: 0;
   width: calc(12px * var(--scale, 1));
@@ -459,7 +573,6 @@
   transform: rotate(12deg);
 }
 
-/* Summer pollen: warm golden-green glowing motes */
 #mp-effects [data-effect="summerdust"] .mp-particle {
   font-size: 0;
   width: calc(clamp(3px, calc(var(--sz) * 0.34), 6px) * var(--scale, 1));
@@ -473,10 +586,9 @@
 #mp-effects [data-effect="summerdust"] .mp-particle[data-tint="2"] { background: #fff9e2; box-shadow: 0 0 11px 3px rgba(255, 244, 194, 0.8); }
 
 /* =========================================================
-   WINGED CREATURES: Butterflies & Bats (with 3D flapping!)
+   WINGED & CREATURES: Butterflies, Bats, Kitsune, Shark
    ========================================================= */
 
-/* Butterflies: previously raw emoji! Now 3D flapping wings */
 #mp-effects [data-effect="butterflies"] .mp-particle {
   font-size: 0;
   width: calc(clamp(16px, calc(var(--sz) * 1.45), 26px) * var(--scale, 1));
@@ -516,7 +628,6 @@
   background: linear-gradient(135deg, #e2c4ff 0%, #a66bff 60%, #5828a8 100%);
 }
 
-/* Bats: swooping silhouettes with animated wingbeats */
 #mp-effects [data-effect="bats"] .mp-particle {
   left: -12vw;
   top: var(--y);
@@ -532,12 +643,74 @@
 }
 #mp-effects [data-effect="bats"] .mp-particle[data-tint="1"] { background: #7c7e9e; }
 
+/* NEW #5: Kitsune Tails (Хвосты кицунэ) — materialize, sway, vanish in foxfire */
+#mp-effects [data-effect="kitsune"] .mp-particle {
+  font-size: 0;
+  width: calc(clamp(24px, calc(var(--sz) * 2.1), 42px) * var(--scale, 1));
+  height: calc(clamp(44px, calc(var(--sz) * 3.8), 76px) * var(--scale, 1));
+  border-radius: 85% 15% 80% 20% / 65% 35% 65% 35%;
+  background: linear-gradient(to top, rgba(212, 92, 28, 0.15) 0%, #ff9c38 35%, #ffd984 72%, #ffffff 95%);
+  box-shadow: 0 0 18px rgba(255, 178, 72, 0.75), inset -4px -6px 10px rgba(185, 68, 18, 0.45);
+  transform-origin: 50% 95%;
+  animation: mp-kitsune-pop var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="kitsune"] .mp-particle::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 12px 4px rgba(255, 212, 118, 0.95);
+}
+#mp-effects [data-effect="kitsune"] .mp-particle[data-tint="1"] {
+  background: linear-gradient(to top, rgba(64, 156, 255, 0.15) 0%, #58c4ff 35%, #b8f2ff 72%, #ffffff 95%);
+  box-shadow: 0 0 18px rgba(96, 212, 255, 0.8), inset -4px -6px 10px rgba(28, 98, 188, 0.45);
+}
+#mp-effects [data-effect="kitsune"] .mp-particle[data-tint="2"] {
+  background: linear-gradient(to top, rgba(215, 48, 88, 0.15) 0%, #ff6b96 35%, #ffd4e2 70%, #ffffff 95%);
+  box-shadow: 0 0 18px rgba(255, 118, 162, 0.8);
+}
+#mp-effects [data-effect="kitsune"] .mp-particle[data-tint="3"] {
+  background: linear-gradient(to top, rgba(142, 68, 255, 0.15) 0%, #b57cff 35%, #ead4ff 72%, #ffffff 95%);
+  box-shadow: 0 0 18px rgba(186, 128, 255, 0.8);
+}
+
+/* NEW #6: Shark Tail Splash (Акулий хвост) — crescent fin breaching with foam splash */
+#mp-effects [data-effect="shark"] .mp-particle {
+  font-size: 0;
+  width: calc(clamp(38px, calc(var(--sz) * 3.2), 64px) * var(--scale, 1));
+  height: calc(clamp(42px, calc(var(--sz) * 3.5), 72px) * var(--scale, 1));
+  transform-origin: 50% 95%;
+  animation: mp-shark-breach var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="shark"] .mp-particle::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #98bdd8 0%, #466985 55%, #1e3346 100%);
+  clip-path: polygon(50% 95%, 35% 68%, 6% 18%, 26% 24%, 52% 48%, 82% 8%, 94% 22%, 68% 66%);
+  filter: drop-shadow(0 0 6px rgba(165, 218, 255, 0.55));
+}
+#mp-effects [data-effect="shark"] .mp-particle::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: -15%;
+  width: 130%;
+  height: 26%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #ffffff 0%, rgba(196, 238, 255, 0.85) 48%, transparent 75%);
+  box-shadow: 0 -6px 14px rgba(225, 248, 255, 0.85);
+}
+
 /* =========================================================
-   MAGIC: Runes, Magic Circles, Wisps, Stardust, Portals,
-   Shooting Stars, Matrix, Glitch
+   MAGIC: Runes, Magic Circles, Wisps, Stardust, Prismstars,
+   Portals, Inkscript, Shooting Stars, Matrix, Glitch
    ========================================================= */
 
-/* Runes: Elder Futhark glyphs with arcane glow */
 #mp-effects [data-effect="runes"] .mp-particle {
   font-family: 'Segoe UI Symbol', 'Noto Sans Runic', serif;
   font-size: calc(clamp(15px, calc(var(--sz) * 1.35), 26px) * var(--scale, 1));
@@ -559,7 +732,6 @@
   text-shadow: 0 0 8px #3ee8a0, 0 0 18px rgba(42, 215, 145, 0.75);
 }
 
-/* Magic Circles: multi-ring counter-rotating arcane seals */
 #mp-effects [data-effect="magiccircle"] .mp-particle {
   font-size: 0;
   width: calc(clamp(34px, calc(var(--sz) * 3.4), 78px) * var(--scale, 1));
@@ -590,7 +762,6 @@
   box-shadow: 0 0 14px rgba(78, 198, 255, 0.65), inset 0 0 12px rgba(78, 198, 255, 0.35);
 }
 
-/* Will-o-wisps: bright core + ghostly outer aura */
 #mp-effects [data-effect="wisps"] .mp-particle {
   font-size: 0;
   width: calc(clamp(7px, calc(var(--sz) * 0.6), 13px) * var(--scale, 1));
@@ -609,7 +780,6 @@
   box-shadow: 0 0 12px 4px rgba(64, 228, 164, 0.75), 0 0 28px 10px rgba(32, 178, 128, 0.42);
 }
 
-/* Stardust: 4-point twinkling star sparkles + fine cosmic dust */
 #mp-effects [data-effect="stardust"] .mp-particle {
   font-size: 0;
   width: calc(clamp(6px, calc(var(--sz) * 0.65), 13px) * var(--scale, 1));
@@ -631,7 +801,33 @@
   box-shadow: 0 0 8px 2px rgba(255, 218, 142, 0.85);
 }
 
-/* Portal sparks: swirling arcane & sling-ring golden sparks */
+/* NEW #1: Rainbow Twinkling Stars (Разноцветные звёздочки) */
+#mp-effects [data-effect="prismstars"] .mp-particle {
+  font-size: 0;
+  width: calc(clamp(8px, calc(var(--sz) * 0.85), 17px) * var(--scale, 1));
+  height: calc(clamp(8px, calc(var(--sz) * 0.85), 17px) * var(--scale, 1));
+  background: #ffd6f2;
+  clip-path: polygon(50% 0%, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0% 50%, 38% 38%);
+  filter: drop-shadow(0 0 6px #ff66c4) drop-shadow(0 0 12px #ff2e9c);
+  animation: mp-prism-twinkle var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="prismstars"] .mp-particle[data-tint="1"] {
+  background: #d4f8ff;
+  filter: drop-shadow(0 0 6px #42d9ff) drop-shadow(0 0 12px #00a2ff);
+}
+#mp-effects [data-effect="prismstars"] .mp-particle[data-tint="2"] {
+  background: #fff6c4;
+  filter: drop-shadow(0 0 6px #ffd438) drop-shadow(0 0 12px #ff9900);
+}
+#mp-effects [data-effect="prismstars"] .mp-particle[data-tint="3"] {
+  background: #d8ffd8;
+  filter: drop-shadow(0 0 6px #48f58a) drop-shadow(0 0 12px #12b858);
+}
+#mp-effects [data-effect="prismstars"] .mp-particle[data-tint="4"] {
+  background: #ead6ff;
+  filter: drop-shadow(0 0 6px #b266ff) drop-shadow(0 0 12px #7c2ae8);
+}
+
 #mp-effects [data-effect="portals"] .mp-particle {
   font-size: 0;
   width: calc(4px * var(--scale, 1));
@@ -647,7 +843,30 @@
   box-shadow: 0 0 10px 2px #ff8c24, 0 0 20px #ff5500;
 }
 
-/* Shooting stars: diagonal meteors with glowing head & plasma trail */
+/* NEW #11: Ink & Manuscript Blots (Появляющиеся надписи и кляксы) */
+#mp-effects [data-effect="inkscript"] .mp-particle[data-ink="text"] {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-style: italic;
+  font-size: calc(clamp(15px, calc(var(--sz) * 1.25), 24px) * var(--scale, 1));
+  white-space: nowrap;
+  color: #e6d8c5;
+  text-shadow: 0 1px 6px rgba(15, 10, 18, 0.95), 0 0 12px rgba(195, 168, 132, 0.45);
+  animation: mp-ink-write var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="inkscript"] .mp-particle[data-ink="blot"] {
+  font-size: 0;
+  width: calc(clamp(22px, calc(var(--sz) * 2.2), 46px) * var(--scale, 1));
+  height: calc(clamp(20px, calc(var(--sz) * 2.0), 42px) * var(--scale, 1));
+  border-radius: 44% 56% 62% 38% / 53% 42% 58% 47%;
+  background: radial-gradient(circle at 45% 45%, #120d16 0%, #24192c 68%, rgba(42, 28, 52, 0.65) 100%);
+  box-shadow:
+    14px -10px 0 -8px #18111e,
+    -12px 12px 0 -9px #18111e,
+    18px 10px 0 -10px #24192c,
+    0 0 14px rgba(185, 155, 210, 0.35);
+  animation: mp-ink-blot var(--dur) ease-in-out var(--delay) infinite;
+}
+
 #mp-effects [data-effect="shootingstars"] .mp-particle {
   font-size: 0;
   width: clamp(85px, calc(var(--sz) * 7.5), 165px);
@@ -671,7 +890,6 @@
   box-shadow: 0 0 12px 4px rgba(198, 232, 255, 0.95);
 }
 
-/* Matrix: cascading vertical code streams with bright lead glyph */
 #mp-effects [data-effect="matrix"] .mp-particle {
   top: -18vh;
   white-space: pre;
@@ -688,7 +906,6 @@
   color: #88ffba;
 }
 
-/* Glitch: cyberpunk RGB slices & scan displacement */
 #mp-effects [data-effect="glitch"] .mp-overlay-glitch {
   background:
     repeating-linear-gradient(180deg, transparent 0 11vh, rgba(0, 245, 235, 0.22) 11.2vh 11.6vh, transparent 12vh 23vh, rgba(255, 56, 188, 0.22) 23.2vh 23.7vh, transparent 24vh 37vh);
@@ -703,11 +920,10 @@
 }
 
 /* =========================================================
-   AMBIENT & ROMANCE: Fireflies, Embers, Smoke, Ash, Bubbles,
-   Plankton, Dust, Jellyfish, Hearts, Confetti
+   AMBIENT: Fireflies, Embers, Smoke, Ash, Bubbles, Plankton,
+   Caustics, Dust, Jellyfish, Glowvines, Cobwebs
    ========================================================= */
 
-/* Fireflies: warm bioluminescent pulsing & lazy hovering */
 #mp-effects [data-effect="fireflies"] .mp-particle {
   font-size: 0;
   width: calc(4.5px * var(--scale, 1));
@@ -722,7 +938,6 @@
   box-shadow: 0 0 10px 3px rgba(255, 196, 84, 0.85), 0 0 24px 7px rgba(255, 156, 48, 0.45);
 }
 
-/* Campfire Embers: warm hearth glow at bottom + swirling rising sparks */
 #mp-effects [data-effect="embers"]::before {
   content: '';
   position: absolute;
@@ -742,7 +957,6 @@
   animation: mp-ember-rise var(--dur) ease-in-out var(--delay) infinite;
 }
 
-/* Smoke: soft billowing plumes */
 #mp-effects [data-effect="smoke"] .mp-overlay-fog {
   background:
     radial-gradient(ellipse 75% 45% at 30% 100%, rgba(145, 152, 162, 0.34), transparent 75%),
@@ -760,7 +974,6 @@
   animation: mp-smoke-rise var(--dur) ease-in-out var(--delay) infinite;
 }
 
-/* Ash: irregular flakes, some with smoldering ember edges */
 #mp-effects [data-effect="ash"] .mp-particle {
   top: -6vh;
   font-size: 0;
@@ -778,7 +991,6 @@
   box-shadow: 0 0 5px rgba(255, 110, 36, 0.65);
 }
 
-/* Bubbles: iridescent soap/water spheres with dual specular highlights */
 #mp-effects [data-effect="bubbles"] .mp-particle {
   top: 104vh;
   font-size: 0;
@@ -794,7 +1006,6 @@
   animation: mp-bubble-rise var(--dur) ease-in-out var(--delay) infinite;
 }
 
-/* Plankton: deep-sea bioluminescent organisms */
 #mp-effects [data-effect="plankton"] .mp-particle {
   font-size: 0;
   width: calc(clamp(3px, calc(var(--sz) * 0.42), 7px) * var(--scale, 1));
@@ -813,7 +1024,27 @@
   box-shadow: 0 0 10px 2px rgba(168, 122, 255, 0.8);
 }
 
-/* Dust motes: sunlit floating particles with soft bokeh */
+/* NEW #3: Water Ripples & Caustics (Водная рябь) */
+#mp-effects [data-effect="caustics"] .mp-overlay-fog {
+  inset: -15%;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(56, 204, 245, 0.24), transparent 75%),
+    repeating-radial-gradient(circle at 25% 30%, transparent 0 28px, rgba(124, 238, 255, 0.14) 30px 34px, transparent 36px 68px),
+    repeating-radial-gradient(circle at 75% 65%, transparent 0 34px, rgba(96, 224, 245, 0.14) 36px 40px, transparent 42px 76px);
+  filter: blur(3px);
+  animation: mp-caustic-wave 12s ease-in-out infinite alternate;
+}
+#mp-effects [data-effect="caustics"] .mp-particle {
+  font-size: 0;
+  width: calc(clamp(28px, calc(var(--sz) * 3.5), 75px) * var(--scale, 1));
+  height: calc(clamp(14px, calc(var(--sz) * 1.6), 36px) * var(--scale, 1));
+  border-radius: 50%;
+  border: 1.5px solid rgba(164, 242, 255, 0.72);
+  background: radial-gradient(ellipse, rgba(142, 236, 255, 0.14), transparent 70%);
+  box-shadow: 0 0 10px rgba(98, 224, 255, 0.45), inset 0 0 8px rgba(164, 242, 255, 0.35);
+  animation: mp-water-ripple var(--dur) ease-out var(--delay) infinite;
+}
+
 #mp-effects [data-effect="dust"] .mp-particle {
   font-size: 0;
   width: calc(clamp(2px, calc(var(--sz) * 0.28), 5px) * var(--scale, 1));
@@ -832,7 +1063,6 @@
   filter: blur(1.5px);
 }
 
-/* Jellyfish: pulsing dome propulsion & trailing tentacles */
 #mp-effects [data-effect="jellyfish"] .mp-particle {
   top: 106vh;
   font-size: 0;
@@ -858,7 +1088,81 @@
   box-shadow: 0 0 16px rgba(202, 138, 255, 0.65);
 }
 
-/* Hearts: swaying rose, coral & blush hearts */
+/* NEW #14: Glow Berry Vines (Светящиеся лианы из Майнкрафта) */
+#mp-effects [data-effect="glowvines"] .mp-particle {
+  top: -2vh !important;
+  font-size: 0;
+  width: 3px;
+  height: calc(var(--len, 180px) * var(--scale, 1));
+  background: linear-gradient(to bottom, #1e4d2b, #388246 70%, #58b864);
+  border-radius: 0 0 4px 4px;
+  box-shadow: none;
+  transform-origin: 50% 0%;
+  animation: mp-vine-sway var(--dur) ease-in-out var(--delay) infinite alternate;
+}
+#mp-effects [data-effect="glowvines"] .mp-particle::before {
+  content: '';
+  position: absolute;
+  inset: 10% -6px 15% -6px;
+  background: radial-gradient(ellipse 6px 4px at 20% 25%, #469c56 90%, transparent),
+              radial-gradient(ellipse 6px 4px at 80% 50%, #52b062 90%, transparent),
+              radial-gradient(ellipse 6px 4px at 25% 75%, #469c56 90%, transparent);
+  background-size: 100% 42px;
+}
+#mp-effects [data-effect="glowvines"] .mp-particle::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: -5px;
+  width: 13px;
+  height: 15px;
+  border-radius: 50% 50% 60% 60%;
+  background: radial-gradient(circle at 40% 35%, #ffffff 0%, #ffe694 38%, #ff9d2e 82%, #cc5800 100%);
+  box-shadow: 0 0 14px 4px rgba(255, 184, 68, 0.9), 0 0 32px 10px rgba(255, 136, 24, 0.45);
+}
+#mp-effects [data-effect="glowvines"] .mp-particle[data-tint="2"]::after {
+  background: radial-gradient(circle at 40% 35%, #ffffff 0%, #b8f8ff 38%, #38d2ff 82%, #0078b8 100%);
+  box-shadow: 0 0 14px 4px rgba(72, 222, 255, 0.9), 0 0 32px 10px rgba(32, 168, 255, 0.45);
+}
+
+/* NEW #15: Cobwebs (Паутина по углам и свисающие нити) */
+#mp-effects [data-effect="cobwebs"] .mp-overlay-fog {
+  background:
+    repeating-radial-gradient(circle at 0% 0%, transparent 0 18px, rgba(230, 238, 248, 0.32) 18.5px 19.5px, transparent 20px 38px),
+    conic-gradient(from 0deg at 0% 0%, transparent 0deg, rgba(230, 238, 248, 0.34) 1deg, transparent 2deg 18deg, rgba(230, 238, 248, 0.34) 19deg, transparent 20deg 38deg, rgba(230, 238, 248, 0.34) 39deg, transparent 40deg 58deg, rgba(230, 238, 248, 0.34) 59deg, transparent 60deg 78deg, rgba(230, 238, 248, 0.34) 79deg, transparent 80deg),
+    repeating-radial-gradient(circle at 100% 0%, transparent 0 20px, rgba(230, 238, 248, 0.32) 20.5px 21.5px, transparent 22px 42px),
+    conic-gradient(from 180deg at 100% 0%, transparent 0deg, rgba(230, 238, 248, 0.34) 1deg, transparent 2deg 22deg, rgba(230, 238, 248, 0.34) 23deg, transparent 24deg 46deg, rgba(230, 238, 248, 0.34) 47deg, transparent 48deg 70deg, rgba(230, 238, 248, 0.34) 71deg, transparent 72deg);
+  mask-image:
+    radial-gradient(circle at 0% 0%, #000 0%, transparent 28%),
+    radial-gradient(circle at 100% 0%, #000 0%, transparent 28%);
+  animation: mp-breathe 10s ease-in-out infinite alternate;
+}
+#mp-effects [data-effect="cobwebs"] .mp-particle {
+  top: -2vh !important;
+  font-size: 0;
+  width: 1px;
+  height: calc(var(--len, 140px) * var(--scale, 1));
+  background: linear-gradient(to bottom, rgba(235, 242, 250, 0.75), rgba(220, 230, 242, 0.25));
+  box-shadow: 0 0 4px rgba(235, 245, 255, 0.35);
+  transform-origin: 50% 0%;
+  animation: mp-vine-sway var(--dur) ease-in-out var(--delay) infinite alternate;
+}
+#mp-effects [data-effect="cobwebs"] .mp-particle::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: -2px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(240, 248, 255, 0.85);
+  box-shadow: 0 0 5px rgba(215, 235, 255, 0.8);
+}
+
+/* =========================================================
+   ROMANCE: Hearts, Pulsehearts, Confetti
+   ========================================================= */
+
 #mp-effects [data-effect="hearts"] .mp-particle {
   top: 104vh;
   font-size: 0;
@@ -884,7 +1188,36 @@
 #mp-effects [data-effect="hearts"] .mp-particle[data-tint="2"] { background: #ffbfd4; }
 #mp-effects [data-effect="hearts"] .mp-particle[data-tint="3"] { background: #ff7b89; }
 
-/* Confetti: 3D tumbling metallic & pastel ribbons */
+/* NEW #13: Pulsating Hearts (Пульсирующие сердечки на месте) */
+#mp-effects [data-effect="pulsehearts"] .mp-particle {
+  font-size: 0;
+  width: calc(clamp(11px, calc(var(--sz) * 1.15), 22px) * var(--scale, 1));
+  height: calc(clamp(11px, calc(var(--sz) * 1.15), 22px) * var(--scale, 1));
+  background: #ff4d84;
+  border-radius: 2px;
+  box-shadow: 0 0 14px rgba(255, 77, 132, 0.85), 0 0 28px rgba(255, 42, 108, 0.45);
+  animation: mp-heart-beat var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="pulsehearts"] .mp-particle::before,
+#mp-effects [data-effect="pulsehearts"] .mp-particle::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: inherit;
+}
+#mp-effects [data-effect="pulsehearts"] .mp-particle::before { top: -50%; left: 0; }
+#mp-effects [data-effect="pulsehearts"] .mp-particle::after { left: 50%; top: 0; }
+#mp-effects [data-effect="pulsehearts"] .mp-particle[data-tint="1"] {
+  background: #ff85b3;
+  box-shadow: 0 0 14px rgba(255, 133, 179, 0.85);
+}
+#mp-effects [data-effect="pulsehearts"] .mp-particle[data-tint="2"] {
+  background: #e01e5a;
+  box-shadow: 0 0 16px rgba(224, 30, 90, 0.9);
+}
+
 #mp-effects [data-effect="confetti"] .mp-particle {
   top: -8vh;
   font-size: 0;
@@ -901,16 +1234,15 @@
 #mp-effects [data-effect="confetti"] .mp-particle[data-tint="4"] { background: #ffd175; }
 
 /* =========================================================
-   CINEMA: Police, Alarm, Flicker, VHS, Neon, Danger
+   CINEMA & HORROR: Police, Alarm, Flicker, VHS, AnalogHorror,
+   Neon, Disco, Danger, Blooddrip, Tiretracks
    ========================================================= */
 
-/* Police lights: double-strobe red (left) & double-strobe blue (right) */
 #mp-effects [data-effect="police"] .mp-overlay-police {
   background: radial-gradient(ellipse 80% 85% at 0% 48%, rgba(245, 42, 68, 0.34), transparent 72%);
   animation: mp-police-alternate 4.2s steps(1, end) infinite;
 }
 
-/* Alarm light: rotating emergency beacon pulse */
 #mp-effects [data-effect="alarm"] .mp-overlay-alarm {
   background:
     radial-gradient(ellipse at 50% 0%, rgba(255, 38, 48, 0.32), transparent 65%),
@@ -918,14 +1250,12 @@
   animation: mp-alarm-pulse 2.2s ease-in-out infinite;
 }
 
-/* Danger vignette: double-beat heartbeat crimson pulse */
 #mp-effects [data-effect="danger"] .mp-overlay-danger {
   background: radial-gradient(ellipse, transparent 42%, rgba(220, 18, 32, 0.44) 100%);
   box-shadow: inset 0 0 90px 25px rgba(185, 12, 24, 0.35);
   animation: mp-heartbeat 2.4s ease-in-out infinite;
 }
 
-/* Flickering lamp: erratic tungsten fluorescent hum */
 #mp-effects [data-effect="flicker"] .mp-overlay-flicker {
   background:
     radial-gradient(ellipse 75% 60% at 50% 0%, rgba(255, 242, 198, 0.32), transparent 75%),
@@ -933,7 +1263,6 @@
   animation: mp-lamp-erratic 7s steps(1, end) infinite;
 }
 
-/* VHS noise: CRT scanlines + rolling tracking bar + RGB jitter */
 #mp-effects [data-effect="vhs"] .mp-overlay-vhs {
   background:
     repeating-linear-gradient(0deg, transparent 0 2px, rgba(228, 241, 255, 0.14) 3px 4px),
@@ -947,12 +1276,100 @@
   animation: mp-vhs-track 7.5s linear infinite;
 }
 
-/* Neon glow: dual-edge cyberpunk magenta & cyan rim light */
+/* NEW #16: Analog Horror / 8mm Film Decay (Аналоговый хоррор) */
+#mp-effects [data-effect="analoghorror"] .mp-overlay-vhs {
+  background:
+    radial-gradient(ellipse, transparent 35%, rgba(18, 2, 4, 0.72) 95%),
+    repeating-linear-gradient(90deg, transparent 0 7vw, rgba(255, 235, 215, 0.07) 7.1vw 7.15vw, transparent 7.2vw 19vw);
+  box-shadow: inset 0 0 130px 45px rgba(8, 0, 2, 0.78);
+  animation: mp-horror-film 4.5s steps(1, end) infinite;
+}
+#mp-effects [data-effect="analoghorror"] .mp-particle {
+  font-size: 0;
+  width: 1.5px;
+  height: calc(clamp(60px, 22vh, 220px) * var(--scale, 1));
+  background: linear-gradient(to bottom, transparent, rgba(255, 220, 200, 0.55), rgba(215, 32, 48, 0.45), transparent);
+  animation: mp-horror-scratch var(--dur) steps(2, end) var(--delay) infinite;
+}
+
 #mp-effects [data-effect="neon"] .mp-overlay-neon {
   background:
     radial-gradient(ellipse 55% 80% at 0% 50%, rgba(218, 48, 255, 0.38), transparent 85%),
     radial-gradient(ellipse 55% 80% at 100% 55%, rgba(24, 212, 255, 0.38), transparent 85%);
   animation: mp-neon-pulse 6s ease-in-out infinite alternate;
+}
+
+/* NEW #8: Disco Party Beams & Mirrorball Glints (Диско-лучи) */
+#mp-effects [data-effect="disco"] .mp-overlay-neon {
+  inset: -25%;
+  background:
+    conic-gradient(from 135deg at 50% 0%,
+      transparent 0deg,
+      rgba(255, 42, 168, 0.34) 10deg, transparent 20deg,
+      rgba(0, 228, 255, 0.34) 32deg, transparent 42deg,
+      rgba(128, 255, 42, 0.30) 54deg, transparent 64deg,
+      rgba(178, 68, 255, 0.36) 76deg, transparent 88deg,
+      rgba(255, 212, 42, 0.32) 100deg, transparent 112deg);
+  filter: blur(10px);
+  transform-origin: 50% 0%;
+  animation: mp-disco-sweep 7s ease-in-out infinite alternate;
+}
+#mp-effects [data-effect="disco"] .mp-particle {
+  font-size: 0;
+  width: calc(clamp(8px, calc(var(--sz) * 0.9), 18px) * var(--scale, 1));
+  height: calc(clamp(8px, calc(var(--sz) * 0.9), 18px) * var(--scale, 1));
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 12px 4px #ff38b8;
+  animation: mp-disco-fleck var(--dur) linear var(--delay) infinite;
+}
+#mp-effects [data-effect="disco"] .mp-particle[data-tint="1"] { box-shadow: 0 0 12px 4px #00e5ff; }
+#mp-effects [data-effect="disco"] .mp-particle[data-tint="2"] { box-shadow: 0 0 12px 4px #9dff2e; }
+#mp-effects [data-effect="disco"] .mp-particle[data-tint="3"] { box-shadow: 0 0 12px 4px #b84dff; }
+
+/* NEW #12: Dripping Blood (Стекающая кровь сверху) */
+#mp-effects [data-effect="blooddrip"]::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4.5vh;
+  background: linear-gradient(to bottom, rgba(128, 4, 14, 0.88) 0%, rgba(168, 12, 24, 0.45) 45%, transparent 100%);
+}
+#mp-effects [data-effect="blooddrip"] .mp-particle {
+  top: -1vh !important;
+  font-size: 0;
+  width: calc(clamp(4px, calc(var(--sz) * 0.4), 8px) * var(--scale, 1));
+  height: calc(var(--len, 160px) * var(--scale, 1));
+  border-radius: 0 0 999px 999px;
+  background: linear-gradient(to bottom, #4a0006 0%, #9e0816 65%, #d91426 100%);
+  box-shadow: inset -1px 0 2px rgba(255, 120, 130, 0.45), 0 0 6px rgba(140, 0, 15, 0.55);
+  transform-origin: 50% 0%;
+  animation: mp-blood-ooze var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="blooddrip"] .mp-particle::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: -32%;
+  width: 164%;
+  height: calc(clamp(8px, calc(var(--sz) * 0.7), 14px) * var(--scale, 1));
+  border-radius: 50% 50% 55% 55%;
+  background: radial-gradient(circle at 35% 35%, #ff6b78 0%, #c40c1d 45%, #5e0008 100%);
+}
+
+/* NEW #10: Tire Tracks (Следы дорожных шин / Дрифт) */
+#mp-effects [data-effect="tiretracks"] .mp-particle {
+  font-size: 0;
+  width: clamp(160px, 28vw, 340px);
+  height: 34px;
+  background:
+    repeating-linear-gradient(90deg, rgba(22, 22, 26, 0.82) 0 8px, rgba(22, 22, 26, 0.25) 8px 12px),
+    repeating-linear-gradient(90deg, rgba(22, 22, 26, 0.82) 0 8px, rgba(22, 22, 26, 0.25) 8px 12px);
+  background-size: 100% 10px, 100% 10px;
+  background-position: 0 0, 0 100%;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 0 8px rgba(185, 190, 200, 0.35));
+  animation: mp-tire-skid var(--dur) ease-out var(--delay) infinite;
 }
 
 /* =========================================================
@@ -1034,6 +1451,127 @@
   68% { transform: translateY(37vh) scale(1); }
   90% { opacity: 0.9; }
   100% { transform: translateY(88vh) scale(0.85); opacity: 0; }
+}
+
+@keyframes mp-rime-grow {
+  0%, 100% { transform: scale(0.15) rotate(0deg); opacity: 0; }
+  35%, 70% { transform: scale(1.1) rotate(30deg); opacity: 0.92; }
+}
+
+@keyframes mp-star-blink {
+  0%, 100% { opacity: 0.18; transform: scale(0.75); }
+  50% { opacity: 1; transform: scale(1.18); }
+}
+
+@keyframes mp-prism-twinkle {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(0.3) rotate(0deg); opacity: 0; filter: hue-rotate(0deg); }
+  30% { transform: translate3d(calc(var(--sway, 18px) * 0.4), -10px, 0) scale(1.2) rotate(45deg); opacity: 1; }
+  65% { transform: translate3d(var(--sway, 18px), -20px, 0) scale(0.85) rotate(90deg); opacity: 0.85; filter: hue-rotate(90deg); }
+}
+
+@keyframes mp-flower-bloom {
+  0% { transform: scale(0.1) rotate(-75deg); opacity: 0; }
+  30% { transform: scale(1.05) rotate(0deg); opacity: 0.95; }
+  70% { transform: scale(1.18) rotate(25deg); opacity: 0.92; }
+  100% { transform: scale(0.6) rotate(55deg); opacity: 0; }
+}
+
+@keyframes mp-grass-sway {
+  from { transform: rotate(-10deg) skewX(-6deg); }
+  to { transform: rotate(14deg) skewX(8deg); }
+}
+
+@keyframes mp-kitsune-pop {
+  0%, 18% { transform: translate3d(0, 14px, 0) scale(0.15) rotate(-28deg); opacity: 0; }
+  32% { transform: translate3d(0, 0, 0) scale(1.05) rotate(14deg); opacity: 0.96; }
+  48% { transform: translate3d(0, -4px, 0) scale(1) rotate(-12deg); opacity: 0.98; }
+  64% { transform: translate3d(0, -8px, 0) scale(1.06) rotate(10deg); opacity: 0.92; }
+  78%, 100% { transform: translate3d(0, -26px, 0) scale(0.2) rotate(32deg); opacity: 0; }
+}
+
+@keyframes mp-shark-breach {
+  0%, 25% { transform: translate3d(-24px, 28px, 0) scale(0.25) rotate(-38deg); opacity: 0; }
+  42% { transform: translate3d(0, -8px, 0) scale(1.08) rotate(8deg); opacity: 0.96; }
+  58% { transform: translate3d(16px, 4px, 0) scale(0.95) rotate(28deg); opacity: 0.88; }
+  74%, 100% { transform: translate3d(32px, 32px, 0) scale(0.2) rotate(48deg); opacity: 0; }
+}
+
+@keyframes mp-ink-write {
+  0%, 10% { clip-path: inset(0 100% 0 0); opacity: 0; transform: translateY(4px); }
+  15% { opacity: 0.95; }
+  55%, 78% { clip-path: inset(0 0 0 0); opacity: 0.92; transform: translateY(0); }
+  100% { clip-path: inset(0 0 0 0); opacity: 0; transform: translateY(-6px); }
+}
+
+@keyframes mp-ink-blot {
+  0%, 12% { transform: scale(0.1) rotate(0deg); opacity: 0; }
+  28% { transform: scale(1.08) rotate(var(--rotate, 25deg)); opacity: 0.88; }
+  72% { transform: scale(1.22) rotate(var(--rotate, 25deg)); opacity: 0.75; }
+  100% { transform: scale(1.35) rotate(var(--rotate, 25deg)); opacity: 0; }
+}
+
+@keyframes mp-caustic-wave {
+  from { transform: translate3d(-3%, -2%, 0) scale(1); }
+  to { transform: translate3d(3%, 2%, 0) scale(1.08); }
+}
+
+@keyframes mp-water-ripple {
+  0% { transform: scale(0.15); opacity: 0; }
+  25% { opacity: 0.85; }
+  100% { transform: scale(1.85); opacity: 0; }
+}
+
+@keyframes mp-vine-sway {
+  from { transform: rotate(-5deg); }
+  to { transform: rotate(6deg); }
+}
+
+@keyframes mp-heart-beat {
+  0%, 100% { transform: rotate(-45deg) scale(0.2); opacity: 0; }
+  18% { transform: rotate(-45deg) scale(1.18); opacity: 0.96; }
+  28% { transform: rotate(-45deg) scale(0.88); opacity: 0.85; }
+  38% { transform: rotate(-45deg) scale(1.28); opacity: 1; }
+  52% { transform: rotate(-45deg) scale(0.95); opacity: 0.88; }
+  65% { transform: rotate(-45deg) scale(1.15); opacity: 0.92; }
+  88% { transform: rotate(-45deg) scale(0.4); opacity: 0; }
+}
+
+@keyframes mp-blood-ooze {
+  0% { transform: scaleY(0.05); opacity: 0; }
+  12% { opacity: 0.95; }
+  75% { transform: scaleY(1); opacity: 0.95; }
+  92% { transform: scaleY(1.18) translateY(12vh); opacity: 0.75; }
+  100% { transform: scaleY(1.25) translateY(24vh); opacity: 0; }
+}
+
+@keyframes mp-tire-skid {
+  0%, 15% { clip-path: inset(0 100% 0 0); opacity: 0; transform: rotate(var(--rotate, -25deg)); }
+  22% { opacity: 0.95; }
+  45%, 72% { clip-path: inset(0 0 0 0); opacity: 0.88; transform: rotate(var(--rotate, -25deg)); }
+  100% { clip-path: inset(0 0 0 0); opacity: 0; transform: rotate(var(--rotate, -25deg)); }
+}
+
+@keyframes mp-disco-sweep {
+  from { transform: rotate(-22deg) scale(1.1); filter: blur(10px) hue-rotate(0deg); }
+  to { transform: rotate(22deg) scale(1.15); filter: blur(10px) hue-rotate(90deg); }
+}
+
+@keyframes mp-disco-fleck {
+  0% { transform: translate3d(-20vw, -10vh, 0) scale(0.4); opacity: 0; }
+  20%, 80% { opacity: 0.92; }
+  50% { transform: translate3d(15vw, 12vh, 0) scale(1.2); }
+  100% { transform: translate3d(45vw, 28vh, 0) scale(0.3); opacity: 0; }
+}
+
+@keyframes mp-horror-film {
+  0%, 64%, 70%, 88%, 100% { opacity: 0.72; transform: translate(0, 0); filter: none; }
+  65%, 67% { opacity: 0.95; transform: translate(-4px, 3px); filter: contrast(1.4) sepia(0.5); }
+  89%, 91% { opacity: 0.98; transform: translate(5px, -4px); filter: invert(0.18) hue-rotate(-30deg); }
+}
+
+@keyframes mp-horror-scratch {
+  0%, 75%, 100% { opacity: 0; }
+  78%, 86% { opacity: 0.85; transform: translateX(var(--sway, 12px)); }
 }
 
 @keyframes mp-flutter-fall {
@@ -1334,6 +1872,8 @@
   #mp-effects [data-effect="police"] .mp-overlay-police,
   #mp-effects [data-effect="alarm"] .mp-overlay-alarm,
   #mp-effects [data-effect="flicker"] .mp-overlay-flicker,
+  #mp-effects [data-effect="analoghorror"] .mp-overlay-vhs,
+  #mp-effects [data-effect="disco"] .mp-overlay-neon,
   #mp-effects [data-effect="shootingstars"] .mp-particle {
     animation: none !important;
     opacity: 0 !important;
