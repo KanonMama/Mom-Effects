@@ -26,7 +26,7 @@ const overlayIds=new Set(['mist','smoke','frost','rime','sunbeams','golden','twi
 const volume={snow:80,blizzard:190,rain:100,downpour:230,wind:28,sandstorm:210,rime:36,nightsky:95,grass:85,autumn:38,sakura:42,dandelion:38,whitefeathers:28,blackfeathers:28,bats:22,summerdust:95,ash:90,plankton:85,caustics:26,shark:8,glowvines:24,cobwebs:20,dust:100,hearts:52,pulsehearts:34,bluebloom:28,shootingstars:9,stardust:70,prismstars:65,kitsune:14,inkscript:24,portals:58,fireflies:38,embers:52,glassrain:68,matrix:55,confetti:60,rose:40,lavender:42,butterflies:24,runes:32,magiccircle:14,wisps:28,bubbles:38,jellyfish:12,blooddrip:30,tiretracks:8,disco:44,analoghorror:18};
 const runeGlyphs=['ᚠ','ᚢ','ᚦ','ᚨ','ᚱ','ᚲ','ᚷ','ᚹ','ᚺ','ᚾ','ᛁ','ᛃ','ᛇ','ᛈ','ᛉ','ᛊ','ᛏ','ᛒ','ᛖ','ᛗ','ᛚ','ᛜ','ᛞ','ᛟ'];
 const matrixGlyphs=['0','1','1','0','2','4','7','9','A','E','K','M','N','R','S','X','Δ','Λ','◦','·','░','▒'];
-const inkPhrases=['“Do not erase”','“Remember”','“Keep hidden”','“Midnight note”','“Don't look back”','“Ink remembers”','“For your eyes only”','“Stay quiet”','“Unfinished”','“Never send”','“Burn after reading”','“Secret”'];
+const inkPhrases=['“Do not erase”','“Remember”','“Keep hidden”','“Midnight note”','“Do not look back”','“Ink remembers”','“For your eyes only”','“Stay quiet”','“Unfinished”','“Never send”','“Burn after reading”','“Secret”'];
 
 function makeEffect(effect){
  ensureLayer();const wrap=document.createElement('div');wrap.className='mp-effect mp-'+effect.type;wrap.dataset.effect=effect.id;layer.append(wrap);nodes.set(effect.id,wrap);
