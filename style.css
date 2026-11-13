@@ -1125,44 +1125,30 @@
     linear-gradient(145deg, rgba(70, 140, 82, 0.95) 0%, rgba(42, 92, 56, 0.25) 100%);
 }
 
-/* NEW #15: Cobwebs (Паутина по углам и свисающие нити) */
-#mp-effects [data-effect="cobwebs"] .mp-overlay-fog {
-  inset: 0;
-  background:
-    radial-gradient(circle at 0% 0%, transparent 0 7%, rgba(232,240,250,0.22) 7.2% 7.5%, transparent 7.7% 13%, rgba(232,240,250,0.18) 13.2% 13.5%, transparent 13.7% 20%, rgba(232,240,250,0.14) 20.2% 20.5%, transparent 20.7% 100%),
-    radial-gradient(circle at 100% 0%, transparent 0 7%, rgba(232,240,250,0.22) 7.2% 7.5%, transparent 7.7% 13%, rgba(232,240,250,0.18) 13.2% 13.5%, transparent 13.7% 20%, rgba(232,240,250,0.14) 20.2% 20.5%, transparent 20.7% 100%),
-    linear-gradient(24deg, transparent 49.2%, rgba(232,240,250,0.25) 49.6% 50.1%, transparent 50.5%) left top / 22% 22% no-repeat,
-    linear-gradient(48deg, transparent 49.2%, rgba(232,240,250,0.18) 49.6% 50.1%, transparent 50.5%) left top / 22% 22% no-repeat,
-    linear-gradient(72deg, transparent 49.2%, rgba(232,240,250,0.16) 49.6% 50.1%, transparent 50.5%) left top / 22% 22% no-repeat,
-    linear-gradient(156deg, transparent 49.2%, rgba(232,240,250,0.25) 49.6% 50.1%, transparent 50.5%) right top / 22% 22% no-repeat,
-    linear-gradient(132deg, transparent 49.2%, rgba(232,240,250,0.18) 49.6% 50.1%, transparent 50.5%) right top / 22% 22% no-repeat,
-    linear-gradient(108deg, transparent 49.2%, rgba(232,240,250,0.16) 49.6% 50.1%, transparent 50.5%) right top / 22% 22% no-repeat;
+/* Corner cobwebs: quiet, fixed, correctly drawn SVG arcs and spokes. */
+#mp-effects [data-effect="cobwebs"] .mp-cobweb-corner {
+  position: absolute;
+  top: 0;
+  width: clamp(170px, 31vw, 420px);
+  aspect-ratio: 1;
+  height: auto;
   background-repeat: no-repeat;
-  opacity: 0.9;
-  filter: drop-shadow(0 0 2px rgba(235,242,250,0.22));
+  background-size: contain;
+  pointer-events: none;
+  opacity: 0.68;
+  filter: drop-shadow(0 0 2px rgba(225, 239, 255, 0.22));
 }
-#mp-effects [data-effect="cobwebs"] .mp-particle {
-  top: 0 !important;
-  font-size: 0;
-  width: 2px;
-  height: calc(var(--len, 140px) * var(--scale,1));
-  background: linear-gradient(to bottom, rgba(236,242,248,0.55), rgba(236,242,248,0.08) 78%, transparent 100%);
-  border-radius: 999px;
-  opacity: .82;
-  transform-origin: 50% 0%;
-  animation: mp-cobweb-drip var(--dur) ease-in-out var(--delay) infinite;
+#mp-effects [data-effect="cobwebs"] .mp-cobweb-right {
+  right: 0;
+  background-image: url('./assets/cobweb-right.svg');
+  background-position: top right;
 }
-#mp-effects [data-effect="cobwebs"] .mp-particle::after {
-  content:'';
-  position:absolute;
-  bottom:-4px;
-  left:50%;
-  width:6px;
-  height:6px;
-  margin-left:-3px;
-  border-radius:50%;
-  background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.92), rgba(219,231,242,0.58) 55%, rgba(219,231,242,0) 76%);
-  box-shadow: 0 0 4px rgba(219,231,242,0.3);
+#mp-effects [data-effect="cobwebs"] .mp-cobweb-left {
+  left: 0;
+  width: clamp(140px, 21vw, 300px);
+  opacity: 0.50;
+  background-image: url('./assets/cobweb-left.svg');
+  background-position: top left;
 }
 
 /* =========================================================
@@ -1880,8 +1866,4 @@
   .mp-check{min-height:36px}
   .mp-effect-density{max-width:90px}
   .mp-drawer>.inline-drawer-content{padding:4px 2px}
-}
-@keyframes mp-cobweb-drip {
-  0%,100% { transform: translateY(0); opacity: .22; }
-  50% { transform: translateY(12px); opacity: .92; }
 }

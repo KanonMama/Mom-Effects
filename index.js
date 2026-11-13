@@ -36,6 +36,15 @@ const inkPhrases=['“Do not erase”','“Remember”','“Keep hidden”','“
 
 function makeEffect(effect){
  ensureLayer();const wrap=document.createElement('div');wrap.className='mp-effect mp-'+effect.type;wrap.dataset.effect=effect.id;layer.append(wrap);nodes.set(effect.id,wrap);
+ // Static SVG cobwebs: no particles, drips, or animated rings.
+ if(effect.id==='cobwebs'){
+  for(const side of ['right','left']){
+   const corner=document.createElement('div');
+   corner.className='mp-cobweb-corner mp-cobweb-'+side;
+   wrap.append(corner);
+  }
+  return;
+ }
  const base=volume[effect.id]??(effect.type==='fall'?42:effect.type==='rise'?36:28);
  const scaled=budgetCount(Math.max(3,Math.min(360,Math.round(base*state.density/55*(state.effectDensity[effect.id]??100)/100))));
  if(overlayIds.has(effect.id)){
@@ -44,7 +53,7 @@ function makeEffect(effect){
   if(effect.id==='smoke')addParticles(wrap,effect,budgetCount(26));
   if(effect.id==='frost')addParticles(wrap,effect,budgetCount(22));
   if(effect.id==='golden')addParticles(wrap,effect,budgetCount(18));
-  if(['rime','caustics','cobwebs','disco','analoghorror'].includes(effect.id))addParticles(wrap,effect,scaled);
+  if(['rime','caustics','disco','analoghorror'].includes(effect.id))addParticles(wrap,effect,scaled);
   return;
  }
  addParticles(wrap,effect,scaled);
