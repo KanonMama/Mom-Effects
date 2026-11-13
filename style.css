@@ -205,40 +205,54 @@
 #mp-effects [data-effect="glassrain"] .mp-particle {
   top: -10vh;
   font-size: 0;
-  width: calc(5px * var(--scale, 1));
-  height: calc(9px * var(--scale, 1));
-  border-radius: 50% 50% 50% 50% / 72% 72% 28% 28%;
-  background: radial-gradient(circle at 35% 65%, rgba(255, 255, 255, 0.95) 0%, rgba(195, 230, 255, 0.75) 38%, rgba(130, 185, 230, 0.25) 78%, transparent 100%);
-  box-shadow: inset 0 -1.5px 2px rgba(255, 255, 255, 0.85), 0 2px 5px rgba(20, 45, 75, 0.25);
+  width: calc(7px * var(--scale, 1));
+  height: calc(12px * var(--scale, 1));
+  border-radius: 45% 45% 55% 55% / 78% 78% 25% 25%;
+  background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.92) 0 14%, rgba(219,241,255,0.88) 15% 45%, rgba(141,193,231,0.32) 46% 80%, transparent 81%);
+  box-shadow: inset 0 -1px 2px rgba(255, 255, 255, 0.85), 0 1px 5px rgba(24, 48, 79, 0.30);
+  filter: blur(0.2px);
   animation: mp-glassdrip var(--dur) ease-in-out var(--delay) infinite;
 }
 #mp-effects [data-effect="glassrain"] .mp-particle::before {
   content: '';
   position: absolute;
-  bottom: 85%;
-  left: 32%;
-  width: 36%;
-  height: clamp(22px, 5.5vh, 64px);
+  bottom: 72%;
+  left: 36%;
+  width: 30%;
+  height: clamp(26px, 7vh, 92px);
   border-radius: 999px;
-  background: linear-gradient(to top, rgba(205, 235, 255, 0.65), rgba(190, 225, 250, 0.18) 60%, transparent);
+  background: linear-gradient(to top, rgba(215, 239, 255, 0.68), rgba(190, 225, 250, 0.24) 56%, transparent 100%);
+}
+#mp-effects [data-effect="glassrain"] .mp-particle::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 14%;
+  width: 28%;
+  height: 28%;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.75);
+  filter: blur(0.5px);
 }
 
 /* NEW #9: Rime (Узоры инея) — sharp dendritic ice crystals along screen edges */
 #mp-effects [data-effect="rime"] .mp-overlay-frost {
-  box-shadow: inset 0 0 65px 18px rgba(195, 236, 255, 0.45), inset 0 0 18px 4px rgba(235, 250, 255, 0.65);
+  box-shadow: inset 0 0 75px 22px rgba(195, 236, 255, 0.22), inset 0 0 18px 4px rgba(235, 250, 255, 0.38);
   background:
-    conic-gradient(from 45deg at 0% 0%, rgba(225, 246, 255, 0.45) 0deg, transparent 25deg, rgba(200, 236, 255, 0.35) 45deg, transparent 90deg),
-    conic-gradient(from 135deg at 100% 0%, rgba(225, 246, 255, 0.45) 0deg, transparent 25deg, rgba(200, 236, 255, 0.35) 45deg, transparent 90deg),
-    conic-gradient(from 225deg at 100% 100%, rgba(225, 246, 255, 0.45) 0deg, transparent 25deg, rgba(200, 236, 255, 0.35) 45deg, transparent 90deg),
-    conic-gradient(from 315deg at 0% 100%, rgba(225, 246, 255, 0.45) 0deg, transparent 25deg, rgba(200, 236, 255, 0.35) 45deg, transparent 90deg);
+    radial-gradient(ellipse 22% 90% at 0% 50%, rgba(210,245,255,0.24), transparent 84%),
+    radial-gradient(ellipse 22% 90% at 100% 50%, rgba(210,245,255,0.24), transparent 84%),
+    radial-gradient(ellipse 80% 18% at 50% 0%, rgba(210,245,255,0.16), transparent 84%);
   animation: mp-breathe 9s ease-in-out infinite alternate;
 }
 #mp-effects [data-effect="rime"] .mp-particle {
   font-size: 0;
-  width: calc(clamp(18px, calc(var(--sz) * 2.1), 42px) * var(--scale, 1));
-  height: calc(clamp(18px, calc(var(--sz) * 2.1), 42px) * var(--scale, 1));
-  background: linear-gradient(135deg, #ffffff 0%, #c4ecff 60%, #7ec8f8 100%);
-  clip-path: polygon(50% 0%, 55% 36%, 86% 14%, 64% 45%, 100% 50%, 64% 55%, 86% 86%, 55% 64%, 50% 100%, 45% 64%, 14% 86%, 36% 55%, 0% 50%, 36% 45%, 14% 14%, 45% 36%);
+  width: calc(clamp(22px, calc(var(--sz) * 2.2), 44px) * var(--scale, 1));
+  height: calc(clamp(22px, calc(var(--sz) * 2.2), 44px) * var(--scale, 1));
+  background:
+    linear-gradient(90deg, transparent 47%, rgba(255,255,255,0.95) 47% 53%, transparent 53%),
+    linear-gradient(0deg, transparent 47%, rgba(255,255,255,0.95) 47% 53%, transparent 53%),
+    linear-gradient(45deg, transparent 48%, rgba(212,242,255,0.92) 48% 52%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, rgba(212,242,255,0.92) 48% 52%, transparent 52%);
   filter: drop-shadow(0 0 6px rgba(195, 238, 255, 0.9));
   animation: mp-rime-grow var(--dur) ease-in-out var(--delay) infinite;
 }
@@ -629,81 +643,120 @@
 }
 
 #mp-effects [data-effect="bats"] .mp-particle {
-  left: -12vw;
+  left: -14vw;
   top: var(--y);
   font-size: 0;
-  width: calc(clamp(22px, calc(var(--sz) * 2), 36px) * var(--scale, 1));
-  height: calc(clamp(11px, var(--sz), 18px) * var(--scale, 1));
-  background: #5b5d7a;
-  clip-path: polygon(0 12%, 18% 34%, 30% 10%, 43% 38%, 50% 14%, 57% 38%, 70% 10%, 82% 34%, 100% 12%, 86% 98%, 68% 64%, 50% 94%, 32% 64%, 14% 98%);
-  filter: drop-shadow(0 0 4px rgba(175, 185, 245, 0.55));
+  width: calc(clamp(22px, calc(var(--sz) * 2.2), 42px) * var(--scale, 1));
+  height: calc(clamp(12px, calc(var(--sz) * 1.15), 24px) * var(--scale, 1));
+  background: radial-gradient(circle at 50% 45%, #7b7fa0 0%, #434761 55%, #1b1d2d 100%);
+  border-radius: 40% 40% 50% 50%;
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 0 5px rgba(160, 170, 235, 0.45));
   animation:
-    mp-bat-flight var(--dur) linear var(--delay) infinite,
-    mp-bat-flap var(--flap, 0.22s) ease-in-out infinite alternate;
+    mp-bat-flight var(--dur) linear var(--delay) infinite;
 }
-#mp-effects [data-effect="bats"] .mp-particle[data-tint="1"] { background: #7c7e9e; }
+#mp-effects [data-effect="bats"] .mp-particle::before,
+#mp-effects [data-effect="bats"] .mp-particle::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 56%;
+  height: 100%;
+  background: linear-gradient(180deg, #8b8fb1 0%, #4c516e 45%, #181a28 100%);
+  box-shadow: inset 0 -2px 4px rgba(255,255,255,0.12);
+}
+#mp-effects [data-effect="bats"] .mp-particle::before {
+  right: 48%;
+  border-radius: 85% 20% 100% 0 / 75% 10% 90% 10%;
+  clip-path: polygon(100% 30%, 68% 10%, 25% 0%, 0% 42%, 16% 82%, 54% 100%, 100% 68%);
+  transform-origin: 100% 44%;
+  animation: mp-wing-left var(--flap, 0.22s) ease-in-out infinite alternate;
+}
+#mp-effects [data-effect="bats"] .mp-particle::after {
+  left: 48%;
+  border-radius: 20% 85% 0 100% / 10% 75% 10% 90%;
+  clip-path: polygon(0% 30%, 32% 10%, 75% 0%, 100% 42%, 84% 82%, 46% 100%, 0% 68%);
+  transform-origin: 0% 44%;
+  animation: mp-wing-right var(--flap, 0.22s) ease-in-out infinite alternate;
+}
+#mp-effects [data-effect="bats"] .mp-particle[data-tint="1"] {
+  background: radial-gradient(circle at 50% 45%, #9ca1c0 0%, #5a607c 55%, #212433 100%);
+}
 
 /* NEW #5: Kitsune Tails (Хвосты кицунэ) — materialize, sway, vanish in foxfire */
 #mp-effects [data-effect="kitsune"] .mp-particle {
   font-size: 0;
-  width: calc(clamp(24px, calc(var(--sz) * 2.1), 42px) * var(--scale, 1));
-  height: calc(clamp(44px, calc(var(--sz) * 3.8), 76px) * var(--scale, 1));
-  border-radius: 85% 15% 80% 20% / 65% 35% 65% 35%;
-  background: linear-gradient(to top, rgba(212, 92, 28, 0.15) 0%, #ff9c38 35%, #ffd984 72%, #ffffff 95%);
-  box-shadow: 0 0 18px rgba(255, 178, 72, 0.75), inset -4px -6px 10px rgba(185, 68, 18, 0.45);
-  transform-origin: 50% 95%;
+  width: calc(clamp(22px, calc(var(--sz) * 1.8), 38px) * var(--scale, 1));
+  height: calc(clamp(44px, calc(var(--sz) * 3.1), 78px) * var(--scale, 1));
+  border-radius: 74% 18% 76% 24% / 86% 22% 70% 18%;
+  background: linear-gradient(160deg, #fff9e8 0%, #ffe3b0 22%, #ffbf65 48%, #ff8f2f 72%, rgba(255,143,47,0.08) 100%);
+  box-shadow: 0 0 22px rgba(255, 180, 88, 0.58), inset -5px -8px 14px rgba(170, 68, 10, 0.38);
+  transform-origin: 55% 95%;
+  overflow: visible;
   animation: mp-kitsune-pop var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="kitsune"] .mp-particle::before {
+  content: '';
+  position: absolute;
+  inset: 10% 20% 12% 18%;
+  border-radius: 78% 24% 72% 30% / 80% 26% 70% 22%;
+  background: linear-gradient(160deg, rgba(255,255,255,0.95) 0%, rgba(255,248,233,0.98) 45%, rgba(255,230,190,0.0) 100%);
+  transform: rotate(-10deg);
+  opacity: 0.95;
 }
 #mp-effects [data-effect="kitsune"] .mp-particle::after {
   content: '';
   position: absolute;
-  top: -8px;
-  right: 2px;
-  width: 8px;
-  height: 8px;
+  top: 8%;
+  right: -6px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: #ffffff;
-  box-shadow: 0 0 12px 4px rgba(255, 212, 118, 0.95);
+  background: #fff8d4;
+  box-shadow: 0 0 14px 5px rgba(255, 212, 118, 0.95);
 }
 #mp-effects [data-effect="kitsune"] .mp-particle[data-tint="1"] {
-  background: linear-gradient(to top, rgba(64, 156, 255, 0.15) 0%, #58c4ff 35%, #b8f2ff 72%, #ffffff 95%);
-  box-shadow: 0 0 18px rgba(96, 212, 255, 0.8), inset -4px -6px 10px rgba(28, 98, 188, 0.45);
+  background: linear-gradient(160deg, #f5feff 0%, #dff8ff 24%, #95e0ff 50%, #4db5ff 74%, rgba(77,181,255,0.08) 100%);
+  box-shadow: 0 0 22px rgba(120, 225, 255, 0.55), inset -5px -8px 14px rgba(35, 102, 188, 0.36);
 }
 #mp-effects [data-effect="kitsune"] .mp-particle[data-tint="2"] {
-  background: linear-gradient(to top, rgba(215, 48, 88, 0.15) 0%, #ff6b96 35%, #ffd4e2 70%, #ffffff 95%);
-  box-shadow: 0 0 18px rgba(255, 118, 162, 0.8);
+  background: linear-gradient(160deg, #fff6fb 0%, #ffe3f0 24%, #ff9dc1 50%, #ff5c8e 74%, rgba(255,92,142,0.08) 100%);
+  box-shadow: 0 0 22px rgba(255, 132, 182, 0.58), inset -5px -8px 14px rgba(164, 36, 88, 0.34);
 }
 #mp-effects [data-effect="kitsune"] .mp-particle[data-tint="3"] {
-  background: linear-gradient(to top, rgba(142, 68, 255, 0.15) 0%, #b57cff 35%, #ead4ff 72%, #ffffff 95%);
-  box-shadow: 0 0 18px rgba(186, 128, 255, 0.8);
+  background: linear-gradient(160deg, #fbf8ff 0%, #eee2ff 24%, #c69bff 50%, #915dff 74%, rgba(145,93,255,0.08) 100%);
+  box-shadow: 0 0 22px rgba(186, 128, 255, 0.56), inset -5px -8px 14px rgba(94, 42, 174, 0.34);
 }
 
 /* NEW #6: Shark Tail Splash (Акулий хвост) — crescent fin breaching with foam splash */
 #mp-effects [data-effect="shark"] .mp-particle {
   font-size: 0;
-  width: calc(clamp(38px, calc(var(--sz) * 3.2), 64px) * var(--scale, 1));
-  height: calc(clamp(42px, calc(var(--sz) * 3.5), 72px) * var(--scale, 1));
+  width: calc(clamp(34px, calc(var(--sz) * 2.5), 58px) * var(--scale, 1));
+  height: calc(clamp(28px, calc(var(--sz) * 2.1), 48px) * var(--scale, 1));
   transform-origin: 50% 95%;
   animation: mp-shark-breach var(--dur) ease-in-out var(--delay) infinite;
 }
 #mp-effects [data-effect="shark"] .mp-particle::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #98bdd8 0%, #466985 55%, #1e3346 100%);
-  clip-path: polygon(50% 95%, 35% 68%, 6% 18%, 26% 24%, 52% 48%, 82% 8%, 94% 22%, 68% 66%);
-  filter: drop-shadow(0 0 6px rgba(165, 218, 255, 0.55));
+  left: 16%;
+  bottom: 18%;
+  width: 52%;
+  height: 56%;
+  background: linear-gradient(150deg, #b1d4e8 0%, #6288a8 46%, #22394e 100%);
+  clip-path: polygon(10% 100%, 52% 0%, 88% 84%, 70% 78%, 64% 100%, 42% 88%, 20% 100%);
+  filter: drop-shadow(0 0 6px rgba(165, 218, 255, 0.48));
 }
 #mp-effects [data-effect="shark"] .mp-particle::after {
   content: '';
   position: absolute;
-  bottom: -4px;
-  left: -15%;
-  width: 130%;
+  bottom: 0;
+  left: -8%;
+  width: 116%;
   height: 26%;
   border-radius: 50%;
-  background: radial-gradient(ellipse, #ffffff 0%, rgba(196, 238, 255, 0.85) 48%, transparent 75%);
-  box-shadow: 0 -6px 14px rgba(225, 248, 255, 0.85);
+  background: radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.95) 0%, rgba(196, 238, 255, 0.88) 48%, transparent 76%);
+  box-shadow: 0 -4px 12px rgba(225, 248, 255, 0.78);
 }
 
 /* =========================================================
@@ -845,8 +898,9 @@
 
 /* NEW #11: Ink & Manuscript Blots (Появляющиеся надписи и кляксы) */
 #mp-effects [data-effect="inkscript"] .mp-particle[data-ink="text"] {
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-style: italic;
+  font-family: 'Segoe Script', 'Bradley Hand', 'Snell Roundhand', 'Comic Sans MS', cursive;
+  font-style: normal;
+  letter-spacing: 0.02em;
   font-size: calc(clamp(15px, calc(var(--sz) * 1.25), 24px) * var(--scale, 1));
   white-space: nowrap;
   color: #e6d8c5;
@@ -1031,17 +1085,19 @@
     radial-gradient(ellipse 80% 60% at 50% 0%, rgba(56, 204, 245, 0.24), transparent 75%),
     repeating-radial-gradient(circle at 25% 30%, transparent 0 28px, rgba(124, 238, 255, 0.14) 30px 34px, transparent 36px 68px),
     repeating-radial-gradient(circle at 75% 65%, transparent 0 34px, rgba(96, 224, 245, 0.14) 36px 40px, transparent 42px 76px);
-  filter: blur(3px);
+  filter: blur(4px);
+  opacity: 0.9;
   animation: mp-caustic-wave 12s ease-in-out infinite alternate;
 }
 #mp-effects [data-effect="caustics"] .mp-particle {
   font-size: 0;
-  width: calc(clamp(28px, calc(var(--sz) * 3.5), 75px) * var(--scale, 1));
-  height: calc(clamp(14px, calc(var(--sz) * 1.6), 36px) * var(--scale, 1));
+  width: calc(clamp(42px, calc(var(--sz) * 4.8), 120px) * var(--scale, 1));
+  height: calc(clamp(18px, calc(var(--sz) * 2.0), 54px) * var(--scale, 1));
   border-radius: 50%;
-  border: 1.5px solid rgba(164, 242, 255, 0.72);
-  background: radial-gradient(ellipse, rgba(142, 236, 255, 0.14), transparent 70%);
-  box-shadow: 0 0 10px rgba(98, 224, 255, 0.45), inset 0 0 8px rgba(164, 242, 255, 0.35);
+  border: 1px solid rgba(196, 247, 255, 0.55);
+  background: radial-gradient(ellipse, rgba(170, 242, 255, 0.16), transparent 68%);
+  box-shadow: 0 0 14px rgba(98, 224, 255, 0.34), inset 0 0 10px rgba(164, 242, 255, 0.22);
+  mix-blend-mode: screen;
   animation: mp-water-ripple var(--dur) ease-out var(--delay) infinite;
 }
 
@@ -1092,49 +1148,63 @@
 #mp-effects [data-effect="glowvines"] .mp-particle {
   top: -2vh !important;
   font-size: 0;
-  width: 3px;
-  height: calc(var(--len, 180px) * var(--scale, 1));
-  background: linear-gradient(to bottom, #1e4d2b, #388246 70%, #58b864);
-  border-radius: 0 0 4px 4px;
-  box-shadow: none;
+  width: 2px;
+  height: calc(var(--len, 160px) * var(--scale, 1));
+  background: linear-gradient(to bottom, rgba(92, 168, 98, 0.88), rgba(74, 110, 64, 0.35));
+  box-shadow: 0 0 3px rgba(128, 196, 118, 0.2);
   transform-origin: 50% 0%;
   animation: mp-vine-sway var(--dur) ease-in-out var(--delay) infinite alternate;
 }
 #mp-effects [data-effect="glowvines"] .mp-particle::before {
   content: '';
   position: absolute;
-  inset: 10% -6px 15% -6px;
-  background: radial-gradient(ellipse 6px 4px at 20% 25%, #469c56 90%, transparent),
-              radial-gradient(ellipse 6px 4px at 80% 50%, #52b062 90%, transparent),
-              radial-gradient(ellipse 6px 4px at 25% 75%, #469c56 90%, transparent);
-  background-size: 100% 42px;
+  top: 18%;
+  left: -5px;
+  width: 12px;
+  height: 18px;
+  background:
+    radial-gradient(circle at 50% 70%, rgba(255, 230, 145, 0.95) 0 18%, rgba(255,184,77,0.92) 19% 34%, transparent 35%),
+    radial-gradient(circle at 25% 25%, rgba(255,255,255,0.85) 0 7%, transparent 8%),
+    linear-gradient(145deg, rgba(70, 140, 82, 0.95) 0%, rgba(42, 92, 56, 0.25) 100%);
+  border-radius: 55% 55% 45% 45% / 38% 38% 62% 62%;
+  box-shadow: 0 0 10px rgba(255, 190, 82, 0.55);
 }
 #mp-effects [data-effect="glowvines"] .mp-particle::after {
   content: '';
   position: absolute;
-  bottom: -6px;
-  left: -5px;
-  width: 13px;
-  height: 15px;
-  border-radius: 50% 50% 60% 60%;
-  background: radial-gradient(circle at 40% 35%, #ffffff 0%, #ffe694 38%, #ff9d2e 82%, #cc5800 100%);
-  box-shadow: 0 0 14px 4px rgba(255, 184, 68, 0.9), 0 0 32px 10px rgba(255, 136, 24, 0.45);
+  top: 46%;
+  left: -6px;
+  width: 14px;
+  height: 20px;
+  background:
+    radial-gradient(circle at 50% 70%, rgba(255, 230, 145, 0.95) 0 18%, rgba(255,184,77,0.92) 19% 34%, transparent 35%),
+    radial-gradient(circle at 25% 25%, rgba(255,255,255,0.85) 0 7%, transparent 8%),
+    linear-gradient(145deg, rgba(70, 140, 82, 0.95) 0%, rgba(42, 92, 56, 0.25) 100%);
+  border-radius: 55% 55% 45% 45% / 38% 38% 62% 62%;
+  box-shadow: 0 0 10px rgba(255, 190, 82, 0.55);
 }
 #mp-effects [data-effect="glowvines"] .mp-particle[data-tint="2"]::after {
-  background: radial-gradient(circle at 40% 35%, #ffffff 0%, #b8f8ff 38%, #38d2ff 82%, #0078b8 100%);
-  box-shadow: 0 0 14px 4px rgba(72, 222, 255, 0.9), 0 0 32px 10px rgba(32, 168, 255, 0.45);
+  box-shadow: 0 0 12px rgba(132, 225, 255, 0.62);
+  background:
+    radial-gradient(circle at 50% 70%, rgba(209, 247, 255, 0.96) 0 18%, rgba(122, 218, 255, 0.92) 19% 34%, transparent 35%),
+    radial-gradient(circle at 25% 25%, rgba(255,255,255,0.85) 0 7%, transparent 8%),
+    linear-gradient(145deg, rgba(70, 140, 82, 0.95) 0%, rgba(42, 92, 56, 0.25) 100%);
 }
 
 /* NEW #15: Cobwebs (Паутина по углам и свисающие нити) */
 #mp-effects [data-effect="cobwebs"] .mp-overlay-fog {
+  inset: 0;
   background:
-    repeating-radial-gradient(circle at 0% 0%, transparent 0 18px, rgba(230, 238, 248, 0.32) 18.5px 19.5px, transparent 20px 38px),
-    conic-gradient(from 0deg at 0% 0%, transparent 0deg, rgba(230, 238, 248, 0.34) 1deg, transparent 2deg 18deg, rgba(230, 238, 248, 0.34) 19deg, transparent 20deg 38deg, rgba(230, 238, 248, 0.34) 39deg, transparent 40deg 58deg, rgba(230, 238, 248, 0.34) 59deg, transparent 60deg 78deg, rgba(230, 238, 248, 0.34) 79deg, transparent 80deg),
-    repeating-radial-gradient(circle at 100% 0%, transparent 0 20px, rgba(230, 238, 248, 0.32) 20.5px 21.5px, transparent 22px 42px),
-    conic-gradient(from 180deg at 100% 0%, transparent 0deg, rgba(230, 238, 248, 0.34) 1deg, transparent 2deg 22deg, rgba(230, 238, 248, 0.34) 23deg, transparent 24deg 46deg, rgba(230, 238, 248, 0.34) 47deg, transparent 48deg 70deg, rgba(230, 238, 248, 0.34) 71deg, transparent 72deg);
+    linear-gradient(135deg, rgba(236, 244, 255, 0.20) 0 1px, transparent 1px 100%),
+    linear-gradient(155deg, rgba(236, 244, 255, 0.16) 0 1px, transparent 1px 100%),
+    repeating-radial-gradient(circle at 0% 0%, transparent 0 24px, rgba(236, 244, 255, 0.18) 24.5px 25.5px, transparent 26px 48px),
+    repeating-radial-gradient(circle at 100% 0%, transparent 0 24px, rgba(236, 244, 255, 0.18) 24.5px 25.5px, transparent 26px 48px);
+  background-size: 36% 36%, 36% 36%, 34% 34%, 34% 34%;
+  background-position: left top, right top, left top, right top;
+  background-repeat: no-repeat;
   mask-image:
-    radial-gradient(circle at 0% 0%, #000 0%, transparent 28%),
-    radial-gradient(circle at 100% 0%, #000 0%, transparent 28%);
+    radial-gradient(circle at 0% 0%, #000 0%, #000 16%, transparent 42%),
+    radial-gradient(circle at 100% 0%, #000 0%, #000 16%, transparent 42%);
   animation: mp-breathe 10s ease-in-out infinite alternate;
 }
 #mp-effects [data-effect="cobwebs"] .mp-particle {
@@ -1142,7 +1212,7 @@
   font-size: 0;
   width: 1px;
   height: calc(var(--len, 140px) * var(--scale, 1));
-  background: linear-gradient(to bottom, rgba(235, 242, 250, 0.75), rgba(220, 230, 242, 0.25));
+  background: linear-gradient(to bottom, rgba(235, 242, 250, 0.75), rgba(220, 230, 242, 0.16));
   box-shadow: 0 0 4px rgba(235, 245, 255, 0.35);
   transform-origin: 50% 0%;
   animation: mp-vine-sway var(--dur) ease-in-out var(--delay) infinite alternate;
@@ -1332,8 +1402,8 @@
   content: '';
   position: absolute;
   inset: 0 0 auto 0;
-  height: 4.5vh;
-  background: linear-gradient(to bottom, rgba(128, 4, 14, 0.88) 0%, rgba(168, 12, 24, 0.45) 45%, transparent 100%);
+  height: 5.5vh;
+  background: radial-gradient(circle at 8% 100%, rgba(165,16,28,0.95) 0 12px, transparent 13px), radial-gradient(circle at 24% 100%, rgba(165,16,28,0.95) 0 9px, transparent 10px), radial-gradient(circle at 48% 100%, rgba(165,16,28,0.95) 0 14px, transparent 15px), radial-gradient(circle at 76% 100%, rgba(165,16,28,0.95) 0 11px, transparent 12px), radial-gradient(circle at 92% 100%, rgba(165,16,28,0.95) 0 8px, transparent 9px), linear-gradient(to bottom, rgba(128, 4, 14, 0.90) 0%, rgba(168, 12, 24, 0.55) 45%, transparent 100%);
 }
 #mp-effects [data-effect="blooddrip"] .mp-particle {
   top: -1vh !important;
@@ -1361,14 +1431,15 @@
 #mp-effects [data-effect="tiretracks"] .mp-particle {
   font-size: 0;
   width: clamp(160px, 28vw, 340px);
-  height: 34px;
+  height: 38px;
   background:
-    repeating-linear-gradient(90deg, rgba(22, 22, 26, 0.82) 0 8px, rgba(22, 22, 26, 0.25) 8px 12px),
-    repeating-linear-gradient(90deg, rgba(22, 22, 26, 0.82) 0 8px, rgba(22, 22, 26, 0.25) 8px 12px);
-  background-size: 100% 10px, 100% 10px;
-  background-position: 0 0, 0 100%;
+    repeating-linear-gradient(90deg, rgba(22, 22, 26, 0.88) 0 7px, rgba(22, 22, 26, 0.18) 7px 11px),
+    repeating-linear-gradient(90deg, rgba(22, 22, 26, 0.88) 0 7px, rgba(22, 22, 26, 0.18) 7px 11px),
+    linear-gradient(90deg, rgba(255,255,255,0.08), transparent 35% 65%, rgba(255,255,255,0.08));
+  background-size: 100% 9px, 100% 9px, 100% 100%;
+  background-position: 0 2px, 0 calc(100% - 2px), 0 0;
   background-repeat: no-repeat;
-  filter: drop-shadow(0 0 8px rgba(185, 190, 200, 0.35));
+  filter: blur(0.15px) drop-shadow(0 0 6px rgba(185, 190, 200, 0.18));
   animation: mp-tire-skid var(--dur) ease-out var(--delay) infinite;
 }
 
@@ -1482,18 +1553,18 @@
 }
 
 @keyframes mp-kitsune-pop {
-  0%, 18% { transform: translate3d(0, 14px, 0) scale(0.15) rotate(-28deg); opacity: 0; }
-  32% { transform: translate3d(0, 0, 0) scale(1.05) rotate(14deg); opacity: 0.96; }
-  48% { transform: translate3d(0, -4px, 0) scale(1) rotate(-12deg); opacity: 0.98; }
-  64% { transform: translate3d(0, -8px, 0) scale(1.06) rotate(10deg); opacity: 0.92; }
-  78%, 100% { transform: translate3d(0, -26px, 0) scale(0.2) rotate(32deg); opacity: 0; }
+  0%, 18% { transform: translate3d(0, 18px, 0) scale(0.18) rotate(-18deg); opacity: 0; }
+  30% { transform: translate3d(0, 2px, 0) scale(1.02) rotate(10deg); opacity: 0.96; }
+  46% { transform: translate3d(calc(var(--sway, 16px) * 0.18), -2px, 0) scale(1.08) rotate(-8deg); opacity: 0.99; }
+  64% { transform: translate3d(calc(var(--sway, 16px) * -0.14), -8px, 0) scale(1.02) rotate(8deg); opacity: 0.94; }
+  80%, 100% { transform: translate3d(calc(var(--sway, 16px) * 0.22), -26px, 0) scale(0.25) rotate(24deg); opacity: 0; }
 }
 
 @keyframes mp-shark-breach {
-  0%, 25% { transform: translate3d(-24px, 28px, 0) scale(0.25) rotate(-38deg); opacity: 0; }
-  42% { transform: translate3d(0, -8px, 0) scale(1.08) rotate(8deg); opacity: 0.96; }
-  58% { transform: translate3d(16px, 4px, 0) scale(0.95) rotate(28deg); opacity: 0.88; }
-  74%, 100% { transform: translate3d(32px, 32px, 0) scale(0.2) rotate(48deg); opacity: 0; }
+  0%, 28% { transform: translate3d(-10px, 22px, 0) scale(0.25) rotate(-22deg); opacity: 0; }
+  42% { transform: translate3d(0, -12px, 0) scale(1.08) rotate(2deg); opacity: 0.96; }
+  56% { transform: translate3d(10px, -2px, 0) scale(1.0) rotate(14deg); opacity: 0.92; }
+  72%, 100% { transform: translate3d(22px, 22px, 0) scale(0.22) rotate(28deg); opacity: 0; }
 }
 
 @keyframes mp-ink-write {
@@ -1516,9 +1587,10 @@
 }
 
 @keyframes mp-water-ripple {
-  0% { transform: scale(0.15); opacity: 0; }
-  25% { opacity: 0.85; }
-  100% { transform: scale(1.85); opacity: 0; }
+  0% { transform: scale(0.3) rotate(var(--rotate, 0deg)); opacity: 0; }
+  18% { opacity: 0.68; }
+  54% { opacity: 0.35; }
+  100% { transform: scale(1.5) rotate(var(--rotate, 0deg)); opacity: 0; }
 }
 
 @keyframes mp-vine-sway {
@@ -1539,9 +1611,9 @@
 @keyframes mp-blood-ooze {
   0% { transform: scaleY(0.05); opacity: 0; }
   12% { opacity: 0.95; }
-  75% { transform: scaleY(1); opacity: 0.95; }
-  92% { transform: scaleY(1.18) translateY(12vh); opacity: 0.75; }
-  100% { transform: scaleY(1.25) translateY(24vh); opacity: 0; }
+  68% { transform: scaleY(1); opacity: 0.96; }
+  88% { transform: scaleY(1.04) translateY(8vh); opacity: 0.78; }
+  100% { transform: scaleY(1.08) translateY(16vh); opacity: 0; }
 }
 
 @keyframes mp-tire-skid {

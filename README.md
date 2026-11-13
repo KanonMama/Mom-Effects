@@ -2,7 +2,7 @@
 
 A standalone visual effects extension for **SillyTavern** by KanonMama.
 
-**Version:** 0.5.4
+**Version:** 0.5.5 (visual tuning test)
 
 Mom Effects adds weather, seasons, particles, lighting and atmospheric effects to your chats. Effects can be enabled manually, adjusted individually and grouped into saved presets.
 

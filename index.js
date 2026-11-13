@@ -25,8 +25,8 @@ function ensureLayer(){if(layer?.isConnected)return;layer=document.createElement
 const overlayIds=new Set(['mist','smoke','frost','rime','sunbeams','golden','twilight','moonlight','aurora','police','alarm','flicker','vhs','analoghorror','neon','disco','danger','thunder','glitch','caustics','cobwebs']);
 const volume={snow:80,blizzard:190,rain:100,downpour:230,wind:28,sandstorm:210,rime:36,nightsky:95,grass:85,autumn:38,sakura:42,dandelion:38,whitefeathers:28,blackfeathers:28,bats:22,summerdust:95,ash:90,plankton:85,caustics:26,shark:8,glowvines:24,cobwebs:20,dust:100,hearts:52,pulsehearts:34,bluebloom:28,shootingstars:9,stardust:70,prismstars:65,kitsune:14,inkscript:24,portals:58,fireflies:38,embers:52,glassrain:68,matrix:55,confetti:60,rose:40,lavender:42,butterflies:24,runes:32,magiccircle:14,wisps:28,bubbles:38,jellyfish:12,blooddrip:30,tiretracks:8,disco:44,analoghorror:18};
 const runeGlyphs=['ᚠ','ᚢ','ᚦ','ᚨ','ᚱ','ᚲ','ᚷ','ᚹ','ᚺ','ᚾ','ᛁ','ᛃ','ᛇ','ᛈ','ᛉ','ᛊ','ᛏ','ᛒ','ᛖ','ᛗ','ᛚ','ᛜ','ᛞ','ᛟ'];
-const matrixGlyphs=['0','1','2','4','7','9','ア','カ','サ','タ','ナ','ハ','マ','ヤ','ラ','ワ','ミ','ネ','シ','ツ','ソ','ホ','モ','エ'];
-const inkPhrases=['«Не оглядывайся...»','«Memento mori»','«Полночь близко»','«Кто здесь?»','«Тень за спиной»','«Слова на ветру»','«Вечность»','«Не стирать»','«Забытый обет»','«Следы чернил»','«Silentium»','«Тайна»'];
+const matrixGlyphs=['0','1','1','0','2','4','7','9','A','E','K','M','N','R','S','X','Δ','Λ','◦','·','░','▒'];
+const inkPhrases=['“Do not erase”','“Remember”','“Keep hidden”','“Midnight note”','“Don't look back”','“Ink remembers”','“For your eyes only”','“Stay quiet”','“Unfinished”','“Never send”','“Burn after reading”','“Secret”'];
 
 function makeEffect(effect){
  ensureLayer();const wrap=document.createElement('div');wrap.className='mp-effect mp-'+effect.type;wrap.dataset.effect=effect.id;layer.append(wrap);nodes.set(effect.id,wrap);
@@ -88,18 +88,29 @@ function addParticles(wrap,effect,count){
    el.style.setProperty('--y','0vh');
    el.style.setProperty('--len',rand(45,115).toFixed(0)+'px');
   } else if(id==='glowvines'||id==='blooddrip'||id==='cobwebs'){
-   el.style.setProperty('--x',rand(1,99).toFixed(2)+'vw');
+   if(id==='cobwebs'){
+    const side=i%4;
+    const x=side===0?rand(0,10):side===1?rand(90,100):side===2?rand(0,22):rand(78,100);
+    el.style.setProperty('--x',x.toFixed(2)+'vw');
+    el.style.setProperty('--len',rand(70,210).toFixed(0)+'px');
+   }else if(id==='glowvines'){
+    el.style.setProperty('--x',rand(2,98).toFixed(2)+'vw');
+    el.style.setProperty('--len',rand(110,260).toFixed(0)+'px');
+   }else{
+    el.style.setProperty('--x',rand(1,99).toFixed(2)+'vw');
+    el.style.setProperty('--len',rand(85,300).toFixed(0)+'px');
+   }
    el.style.setProperty('--y','0vh');
-   el.style.setProperty('--len',rand(id==='blooddrip'?75:95,id==='blooddrip'?260:280).toFixed(0)+'px');
   } else if(id==='rime'){
    const edge=i%4;
-   const ex=edge===0?rand(0,10):edge===1?rand(90,100):rand(0,100);
-   const ey=edge===2?rand(0,12):edge===3?rand(88,100):rand(0,100);
+   const ex=edge===0?rand(0,5):edge===1?rand(95,100):rand(0,100);
+   const ey=edge===2?rand(0,6):edge===3?rand(94,100):rand(0,100);
    el.style.setProperty('--x',ex.toFixed(2)+'vw');
    el.style.setProperty('--y',ey.toFixed(2)+'vh');
+   el.style.setProperty('--rotate',rand(-25,25).toFixed(0)+'deg');
   } else if(id==='shark'){
-   el.style.setProperty('--x',rand(10,88).toFixed(2)+'vw');
-   el.style.setProperty('--y',rand(18,86).toFixed(2)+'vh');
+   el.style.setProperty('--x',rand(8,88).toFixed(2)+'vw');
+   el.style.setProperty('--y',rand(58,94).toFixed(2)+'vh');
   } else if(id==='tiretracks'){
    el.style.setProperty('--x',rand(5,72).toFixed(2)+'vw');
    el.style.setProperty('--y',rand(12,84).toFixed(2)+'vh');
@@ -109,9 +120,11 @@ function addParticles(wrap,effect,count){
   const dir=i%2===0?1:-1;
   el.style.setProperty('--dx',rand(-95,95).toFixed(1)+'px');
   el.style.setProperty('--dy',rand(-85,85).toFixed(1)+'px');
-  el.style.setProperty('--sway',(dir*rand(18,54)).toFixed(1)+'px');
+  const sway=(id==='glowvines'?dir*rand(8,20):id==='bats'?dir*rand(30,75):id==='kitsune'?dir*rand(10,26):dir*rand(18,54));
+  el.style.setProperty('--sway',sway.toFixed(1)+'px');
   el.style.setProperty('--drift',rand(-45,95).toFixed(1)+'px');
-  el.style.setProperty('--sz',rand(kind==='rain'?8:7,kind==='rain'?22:18).toFixed(1)+'px');
+  const sz=(id==='bats'?rand(12,20):id==='kitsune'?rand(18,28):id==='shark'?rand(20,34):id==='tiretracks'?rand(10,16):kind==='rain'?rand(8,22):rand(7,18));
+  el.style.setProperty('--sz',sz.toFixed(1)+'px');
   el.style.setProperty('--dur',dur.toFixed(2)+'s');
   el.style.setProperty('--delay',(-rand(0,dur)).toFixed(2)+'s');
   el.style.setProperty('--flap',rand(.18,.32).toFixed(2)+'s');
