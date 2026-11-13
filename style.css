@@ -1,173 +1,4 @@
-#mp-effects{position:fixed;inset:0;z-index:9990;pointer-events:none;overflow:hidden;opacity:var(--mp-opacity,.55)}.mp-effect{position:absolute;inset:0;pointer-events:none}.mp-particle{position:absolute;left:var(--x);top:var(--y);font-size:var(--sz);color:var(--hue);text-shadow:0 0 9px currentColor;will-change:transform,opacity;animation:mp-float var(--dur) linear var(--delay) infinite}.mp-fall .mp-particle,.mp-snow .mp-particle,.mp-rain .mp-particle{animation-name:mp-fall}.mp-rise .mp-particle{animation-name:mp-rise}.mp-shoot .mp-particle{animation-name:mp-shoot}.mp-particle.mp-simple{font-weight:400}.mp-rain .mp-particle{font-size:18px;opacity:.6}.mp-overlay{position:absolute;inset:0;animation:mp-breathe 14s ease-in-out infinite alternate}.mp-overlay-fog{background:radial-gradient(ellipse at 20% 85%,#aab5c044,transparent 60%),radial-gradient(ellipse at 90% 40%,#b5b8cc33,transparent 70%);filter:blur(25px);animation:mp-drift 24s ease-in-out infinite alternate}.mp-overlay-sun{background:linear-gradient(120deg,#ffe7a222,transparent 55%)}.mp-overlay-gold{background:linear-gradient(125deg,#ffb66d3a,transparent 70%)}.mp-overlay-twilight{background:linear-gradient(130deg,#354b923a,transparent 70%)}.mp-overlay-moon{background:radial-gradient(ellipse at 90% 0,#a3c5ff40,transparent 65%)}.mp-overlay-aurora{background:linear-gradient(120deg,transparent,#56e4b622,#9d74e922,transparent);filter:blur(45px);animation:mp-drift 15s infinite alternate}.mp-overlay-police{background:linear-gradient(90deg,#ff204033,transparent 55%,#226dff33);animation:mp-police 5s ease-in-out infinite}.mp-overlay-alarm,.mp-overlay-danger{background:radial-gradient(ellipse,transparent 40%,#ff30402e);animation:mp-breathe 8s ease-in-out infinite alternate}.mp-overlay-flicker{background:#fff4c21a;animation:mp-flicker 9s infinite}.mp-overlay-vhs{background:repeating-linear-gradient(to bottom,transparent 0 4px,#ffffff0c 5px 6px);animation:mp-drift 20s linear infinite}.mp-overlay-neon{background:radial-gradient(ellipse at 100% 70%,#c755ff35,transparent 70%)}.mp-overlay-frost{box-shadow:inset 0 0 80px 15px #b5dfff35}.mp-overlay-storm{background:#c3d8ff18;animation:mp-lightning 15s infinite}@keyframes mp-float{0%{transform:translate(0,0) rotate(0);opacity:0}15%{opacity:1}85%{opacity:1}100%{transform:translate(var(--dx),var(--dy)) rotate(var(--rotate));opacity:0}}@keyframes mp-fall{0%{transform:translate(0,-110vh) rotate(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translate(var(--dx),110vh) rotate(var(--rotate));opacity:0}}@keyframes mp-rise{0%{transform:translate(0,110vh);opacity:0}15%{opacity:1}85%{opacity:1}100%{transform:translate(var(--dx),-110vh);opacity:0}}@keyframes mp-shoot{0%,85%{opacity:0}88%{opacity:1}100%{transform:translate(-65vw,65vh);opacity:0}}@keyframes mp-drift{to{transform:translateX(7%) scale(1.1)}}@keyframes mp-breathe{to{opacity:.25}}@keyframes mp-police{0%,100%{opacity:.12}20%,40%{opacity:.4}30%,50%{opacity:.08}70%{opacity:.35}}@keyframes mp-flicker{0%,95%,100%{opacity:.15}96%{opacity:.02}97%{opacity:.2}98%{opacity:.03}}@keyframes mp-lightning{0%,95%,98%,100%{opacity:.05}96%{opacity:.35}97%{opacity:.04}}.mp-paused *,.mp-reduced *{animation-play-state:paused!important}.mp-ui{box-sizing:border-box;color:var(--SmartThemeBodyColor,#ddd);font-size:14px}.mp-ui *{box-sizing:border-box}.mp-ui button{border:1px solid #887ba366;border-radius:8px;background:#393344;color:#f0e8ff;padding:6px 10px;cursor:pointer}.mp-ui button:hover{background:#57476a}.mp-head{display:flex;justify-content:space-between;align-items:center;font-size:17px;margin:8px 0}.mp-tools,.mp-presets,.mp-save{display:flex;gap:6px;flex-wrap:wrap;margin:9px 0}.mp-section{padding:10px 0}.mp-range{display:grid;grid-template-columns:1fr auto;gap:5px;margin:8px 0}.mp-range input{grid-column:1/-1;width:100%;accent-color:#aa92e6}.mp-check{display:flex;align-items:center;gap:9px;padding:6px 2px;cursor:pointer}.mp-check input{accent-color:#aa92e6}.mp-category{border-top:1px solid #9385a444;padding:8px 0}.mp-category summary{cursor:pointer;font-weight:600;padding:5px}.mp-save input{min-width:0;flex:1;border:1px solid #887ba366;border-radius:6px;padding:7px;background:#25212c;color:white}#mp-settings{padding:12px;max-width:540px}#mp-fab{position:fixed;right:18px;bottom:100px;z-index:10000;width:46px;height:46px;border-radius:50%;border:1px solid #c0a8ed88;background:#292339ee;color:#e1d1ff;box-shadow:0 4px 20px #0008;font-size:25px;cursor:grab;touch-action:none}#mp-panel{position:fixed;right:18px;bottom:156px;z-index:10001;width:min(360px,calc(100vw - 24px));max-height:min(72vh,650px);overflow-y:auto;background:#211e2cf7;border:1px solid #9e86b866;border-radius:14px;padding:14px;box-shadow:0 12px 35px #0009;color:#eee}#mp-panel[hidden],#mp-fab[hidden]{display:none!important}@media(max-width:600px){#mp-fab{right:12px;bottom:84px;width:42px;height:42px}#mp-panel{left:8px;right:8px;bottom:calc(72px + env(safe-area-inset-bottom));width:auto;max-height:65dvh;border-radius:14px;padding:12px}#mp-settings{max-width:100%;padding:8px}.mp-check{min-height:36px}}@media(prefers-reduced-motion:reduce){#mp-effects *{animation-play-state:paused!important}}
-
-/* v0.2 settings */
-.mp-drawer{width:100%;margin:6px 0 12px}.mp-drawer>.inline-drawer-toggle{cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-radius:7px;background:var(--SmartThemeBlurTintColor,#253329);color:var(--SmartThemeBodyColor,#ddd)}.mp-drawer>.inline-drawer-content{padding:4px 8px}.mp-preset-item{display:inline-flex;align-items:center;gap:2px;border:1px solid #887ba355;border-radius:8px}.mp-preset-item button{border:0;border-radius:5px}.mp-preset-item button:not(:first-child){padding:5px 7px}.mp-search{display:block;width:100%;padding:8px;border-radius:7px;border:1px solid #887ba366;background:#25212c;color:white;margin:10px 0}.mp-effect-row{flex-wrap:wrap}.mp-effect-density{margin-left:auto;max-width:110px;width:25%;accent-color:#aa92e6}.mp-chat small,.mp-section small{display:block;opacity:.75;line-height:1.5}.mp-category[hidden],.mp-effect-row[hidden]{display:none!important}@media(max-width:600px){.mp-effect-density{max-width:90px}.mp-drawer>.inline-drawer-content{padding:4px 2px}#mp-panel{padding-bottom:calc(12px + env(safe-area-inset-bottom))}}
-
-.mp-time-mode{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 2px}.mp-time-mode select{background:#25212c;color:inherit;border:1px solid #887ba366;border-radius:6px;padding:5px;max-width:50%}
-
-/* Automatic scene indicators: never change the manual checkbox. */
-.mp-auto-badge{display:inline-flex;align-items:center;padding:2px 6px;border:1px solid #70bd9680;border-radius:6px;color:#a5dfbb;background:#28563b33;font:600 10px/1.3 system-ui,sans-serif;letter-spacing:.025em;white-space:nowrap}
-.mp-auto-badge[hidden]{display:none!important}
-
-/* Mom Effects 0.5: theme-native, draggable panel. */
-#mp-panel{display:flex;flex-direction:column;padding:0;overflow:hidden;resize:both;min-width:min(300px,calc(100vw - 16px));min-height:220px;width:min(400px,calc(100vw - 20px));max-height:min(82dvh,800px);background:var(--SmartThemeBlurTintColor,rgba(30,30,35,.96));color:var(--SmartThemeBodyColor,#ececec);border:1px solid var(--SmartThemeBorderColor,#8888);box-shadow:0 14px 38px #0008;backdrop-filter:blur(18px)}
-#mp-panel-grip{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;background:color-mix(in srgb,var(--SmartThemeBlurTintColor,#292b32) 78%,var(--SmartThemeBodyColor,#fff) 8%);border-bottom:1px solid var(--SmartThemeBorderColor,#8886);cursor:grab;user-select:none;flex-shrink:0}
-#mp-panel-grip:active{cursor:grabbing}
-#mp-panel-body{padding:12px 14px;overflow:auto;overscroll-behavior:contain;min-height:0;flex:1}
-#mp-panel-grip .mp-close{font-size:20px;line-height:1;padding:0 8px;background:transparent;color:inherit;border-color:transparent}
-.mp-ui button{background:var(--SmartThemeBlurTintColor,#35323d);color:var(--SmartThemeBodyColor,#eee);border-color:var(--SmartThemeBorderColor,#887ba366)}
-.mp-ui button:hover{background:color-mix(in srgb,var(--SmartThemeBlurTintColor,#35323d) 75%,var(--SmartThemeBodyColor,#fff) 25%)}
-.mp-ui input:not([type=checkbox]):not([type=range]):not([type=file]),.mp-ui select{color:var(--SmartThemeBodyColor,#eee);background:var(--SmartThemeBlurTintColor,#25212c);border-color:var(--SmartThemeBorderColor,#887ba366)}
-.mp-ui input[type=range],.mp-ui input[type=checkbox]{accent-color:var(--SmartThemeQuoteColor,var(--SmartThemeBodyColor,#a9a9be))}
-#mp-fab{touch-action:none;user-select:none;cursor:grab;background:var(--SmartThemeBlurTintColor,#292339ee);color:var(--SmartThemeBodyColor,#e1d1ff);border-color:var(--SmartThemeBorderColor,#c0a8ed88)}#mp-fab:active{cursor:grabbing}
-@media(max-width:600px){#mp-panel{width:min(380px,calc(100vw - 16px));max-height:75dvh;min-width:260px;resize:none}#mp-panel-body{padding:10px 12px}}
-
-/* Distinct weather particles: no emoji snow, no slash-glyph rain. */
-#mp-effects [data-effect="snow"] .mp-particle,#mp-effects [data-effect="blizzard"] .mp-particle{font-size:0;width:var(--sz);height:var(--sz);border-radius:50%;background:#e5f5ff;box-shadow:0 0 6px #def3ff88;animation-name:mp-snowfall}
-#mp-effects [data-effect="snow"] .mp-particle{width:calc(var(--sz) * .34);height:calc(var(--sz) * .34);opacity:.85}
-#mp-effects [data-effect="blizzard"] .mp-particle{width:calc(var(--sz) * .34);height:calc(var(--sz) * .34);background:#f7fdff;box-shadow:0 0 3px #e6faff75;animation-name:mp-blizzard;filter:blur(.35px)}
-#mp-effects [data-effect="blizzard"] .mp-particle:nth-child(5n){width:2px;height:2px;filter:none}
-#mp-effects [data-effect="rain"] .mp-particle,#mp-effects [data-effect="downpour"] .mp-particle,#mp-effects [data-effect="thunder"] .mp-particle{font-size:0;width:1.3px;height:24px;border-radius:3px;background:linear-gradient(to bottom,transparent,#9ac5f1a8 50%,#d9efffc9);box-shadow:0 0 3px #7facd655;animation-name:mp-rainfall}
-#mp-effects [data-effect="rain"] .mp-particle{height:19px;opacity:.75}
-#mp-effects [data-effect="downpour"] .mp-particle{width:1.8px;height:43px;opacity:.85;animation-name:mp-rainfall-heavy;box-shadow:0 0 4px #a7d7ff88}
-#mp-effects [data-effect="thunder"] .mp-particle{height:24px;animation-name:mp-rainfall}
-#mp-effects [data-effect="wind"] .mp-particle{font-size:0;width:clamp(18px,4vw,65px);height:1px;border-radius:50%;background:linear-gradient(90deg,transparent,#bed4df87,transparent);animation-name:mp-windblow}
-#mp-effects [data-effect="sandstorm"] .mp-particle{font-size:0;width:calc(var(--sz)*.27);height:calc(var(--sz)*.27);border-radius:45%;background:#d9bd8c;box-shadow:0 0 5px #ad875477;animation-name:mp-sandblow}
-#mp-effects [data-effect="glassrain"] .mp-particle{font-size:0;width:2px;height:clamp(20px,6vh,85px);border-radius:0 0 12px 12px;background:linear-gradient(#c7e7ff05,#b8d7eb72,#d5f0ff);filter:blur(.5px);animation-name:mp-glassdrip}
-@keyframes mp-snowfall{0%{transform:translate(0,-105vh);opacity:0}10%{opacity:.95}90%{opacity:.95}100%{transform:translate(55px,105vh);opacity:0}}
-@keyframes mp-blizzard{0%{transform:translate(-75vw,-40vh);opacity:0}12%,85%{opacity:.9}100%{transform:translate(105vw,55vh);opacity:0}}
-@keyframes mp-rainfall{0%{transform:translate(0,-110vh) rotate(14deg);opacity:0}8%,90%{opacity:.85}100%{transform:translate(-24vw,115vh) rotate(14deg);opacity:0}}
-@keyframes mp-rainfall-heavy{0%{transform:translate(0,-110vh) rotate(10deg);opacity:0}7%,92%{opacity:1}100%{transform:translate(-14vw,115vh) rotate(10deg);opacity:0}}
-@keyframes mp-windblow{0%{transform:translate(-105vw,0) scaleX(.6);opacity:0}12%,80%{opacity:.7}100%{transform:translate(105vw,-24px) scaleX(1.2);opacity:0}}
-@keyframes mp-sandblow{0%{transform:translate(-110vw,55px);opacity:0}10%,90%{opacity:.85}100%{transform:translate(110vw,-65px);opacity:0}}
-@keyframes mp-glassdrip{0%,15%{transform:translateY(-12px);opacity:0}25%{opacity:.75}80%{opacity:.9}100%{transform:translateY(65vh);opacity:0}}
-
-/* Edge-weighted fog, visible frost, light and sky phenomena. */
-#mp-effects [data-effect="mist"] .mp-overlay-fog{background:radial-gradient(ellipse 48% 78% at -12% 55%,#b6c8d099 0,transparent 95%),radial-gradient(ellipse 48% 86% at 112% 45%,#a9b9c793 0,transparent 95%),linear-gradient(90deg,#9badb333,transparent 35% 65%,#9badb333);filter:blur(26px);animation:mp-edge-fog 20s ease-in-out infinite alternate}
-#mp-effects [data-effect="frost"] .mp-overlay-frost{background:radial-gradient(ellipse 37% 85% at 0% 50%,#c2e5f477,transparent 95%),radial-gradient(ellipse 37% 85% at 100% 50%,#bedff17a,transparent 95%);box-shadow:inset 0 0 120px 38px #b4dffd55;filter:blur(10px);animation:mp-edge-fog 15s infinite alternate}
-#mp-effects [data-effect="sunbeams"] .mp-overlay-sun{background:conic-gradient(from 187deg at 90% -20%,transparent 0deg,#fff1b357 11deg,transparent 19deg,#ffe8aa65 30deg,transparent 39deg,#ffeeb350 51deg,transparent 58deg);filter:blur(12px);animation:mp-light-drift 15s ease-in-out infinite alternate}
-#mp-effects [data-effect="twilight"] .mp-overlay-twilight{background:linear-gradient(110deg,#383f875c,transparent 56%),linear-gradient(0deg,#664c7950,transparent 50%);animation:mp-breathe 16s ease-in-out infinite alternate}
-#mp-effects [data-effect="moonlight"] .mp-overlay-moon{background:linear-gradient(115deg,transparent 40%,#93b8ed42 70%,#b3d8ff44 100%),radial-gradient(ellipse at 83% 4%,#bbd6ff55,transparent 58%);animation:mp-light-drift 19s ease-in-out infinite alternate}
-#mp-effects [data-effect="aurora"] .mp-overlay-aurora{inset:-15% -20%;background:repeating-linear-gradient(100deg,transparent 0%,#39dbbf40 11%,#4f8be74a 18%,#aa75e635 24%,transparent 38%);filter:blur(28px);transform-origin:50% 0;animation:mp-aurora-wave 12s ease-in-out infinite alternate}
-#mp-effects [data-effect="thunder"] .mp-overlay-storm{background:#dfedff;opacity:0;animation:mp-real-lightning 13s infinite}
-@keyframes mp-real-lightning{0%,72%,74%,75%,77%,100%{opacity:0}72.3%{opacity:.55}73%{opacity:.08}74.4%{opacity:.34}75.6%{opacity:.13}}
-@keyframes mp-edge-fog{from{transform:translateX(-4%) scale(1)}to{transform:translateX(4%) scale(1.12)}}
-@keyframes mp-light-drift{from{transform:translateX(-2%) rotate(-2deg);opacity:.65}to{transform:translateX(2%) rotate(2deg);opacity:1}}
-@keyframes mp-aurora-wave{from{transform:translate(-6%,-3%) skewX(-7deg) scaleX(.9)}to{transform:translate(7%,4%) skewX(8deg) scaleX(1.13)}}
-
-/* Non-emoji particle silhouettes. */
-#mp-effects [data-effect="autumn"] .mp-particle,#mp-effects [data-effect="rose"] .mp-particle,#mp-effects [data-effect="sakura"] .mp-particle{font-size:0;width:clamp(9px,var(--sz),21px);height:clamp(7px,var(--sz),18px);border-radius:80% 0 75% 0;background:#b96d3c;box-shadow:inset -2px -2px 4px #4b261b55;animation-name:mp-fall}
-#mp-effects [data-effect="autumn"] .mp-particle[data-tint="1"]{background:#db8b39}#mp-effects [data-effect="autumn"] .mp-particle[data-tint="2"]{background:#9b4b36}#mp-effects [data-effect="autumn"] .mp-particle[data-tint="3"]{background:#d1ab57}
-#mp-effects [data-effect="rose"] .mp-particle{background:#bd375d;border-radius:15% 80% 45% 80%;box-shadow:inset -3px -1px 3px #641b3588}
-#mp-effects [data-effect="sakura"] .mp-particle{background:#efb2ce;border-radius:70% 5% 70% 30%}
-#mp-effects [data-effect="dandelion"] .mp-particle{font-size:0;width:3px;height:3px;border-radius:50%;background:#f3f4ed;box-shadow:0 -5px 0 -1px #fff,4px -3px 0 -1px #fff,-4px -3px 0 -1px #fff,5px 1px 0 -1px #fff,-5px 1px 0 -1px #fff,0 5px 0 -1px #fff;animation-name:mp-float}
-#mp-effects [data-effect="whitefeathers"] .mp-particle,#mp-effects [data-effect="blackfeathers"] .mp-particle{font-size:0;width:clamp(8px,var(--sz),21px);height:calc(var(--sz)*.55);background:#f7f7f5;border-radius:90% 3% 85% 8%;box-shadow:inset -2px 1px 2px #a0adbb55;animation-name:mp-fall}
-#mp-effects [data-effect="blackfeathers"] .mp-particle{background:#454451;box-shadow:inset -2px 1px 2px #211b2d}
-#mp-effects [data-effect="bats"] .mp-particle{font-size:0;width:25px;height:12px;background:#242333;clip-path:polygon(0 10%,18% 33%,29% 9%,42% 38%,50% 11%,58% 38%,71% 9%,82% 33%,100% 10%,87% 100%,69% 65%,50% 96%,31% 65%,13% 100%);animation-name:mp-bat-flight}
-#mp-effects [data-effect="magiccircle"] .mp-particle{font-size:0;width:clamp(24px,calc(var(--sz)*3),65px);height:clamp(24px,calc(var(--sz)*3),65px);border:1.5px solid #ae91ffb8;border-radius:50%;box-shadow:0 0 9px #b18bff88,inset 0 0 8px #b18bff44;animation-name:mp-float}
-#mp-effects [data-effect="magiccircle"] .mp-particle::before{content:'';position:absolute;inset:18%;border:1px dashed #d7bbff;border-radius:50%}
-#mp-effects [data-effect="wisps"] .mp-particle,#mp-effects [data-effect="fireflies"] .mp-particle{font-size:0;width:calc(var(--sz)*.55);height:calc(var(--sz)*.55);border-radius:50%;background:#91e8ff;box-shadow:0 0 12px 5px #54bdfc99,0 0 35px 10px #376bf455;animation-name:mp-wisp}
-#mp-effects [data-effect="wisps"] .mp-particle[data-tint="1"]{background:#6dc9ff;box-shadow:0 0 16px #4b90ff,0 0 36px #4462e388}
-#mp-effects [data-effect="wisps"] .mp-particle[data-tint="2"]{background:#c0f6ff;box-shadow:0 0 15px #67dfff,0 0 33px #498fe855}
-#mp-effects [data-effect="fireflies"] .mp-particle{width:3px;height:3px;background:#e8f5a1;box-shadow:0 0 8px 3px #b8e86c99,0 0 19px #cce47677;animation-name:mp-firefly}
-#mp-effects [data-effect="stardust"] .mp-particle,#mp-effects [data-effect="portals"] .mp-particle{font-size:0;width:3px;height:3px;border-radius:50%;background:#e9e2ff;box-shadow:0 0 6px 2px #a58cfaab;animation-name:mp-wisp}
-#mp-effects [data-effect="portals"] .mp-particle{background:#d3baff;box-shadow:0 0 9px 2px #8450ff,0 0 17px #d967ff77;animation-name:mp-portal}
-#mp-effects [data-effect="embers"] .mp-particle{font-size:0;width:3px;height:5px;border-radius:50%;background:#ffcd83;box-shadow:0 0 8px 2px #ff8e39,0 0 20px #ff6c2277;animation-name:mp-rise}
-#mp-effects [data-effect="bubbles"] .mp-particle{font-size:0;width:var(--sz);height:var(--sz);border:1px solid #a0e8fa94;border-radius:50%;background:radial-gradient(circle at 29% 24%,#efffff88 0 12%,transparent 35%),linear-gradient(140deg,#b0f6ff22,transparent 60%,#76b6f944);box-shadow:inset -2px -3px 4px #9ee8fd66;animation-name:mp-rise}
-#mp-effects [data-effect="jellyfish"] .mp-particle{font-size:0;width:calc(var(--sz)*1.65);height:var(--sz);border-radius:80% 80% 25% 25%;background:radial-gradient(ellipse at 50% 20%,#d6eaff99,#9ac4f499 68%,#709be533);box-shadow:0 0 15px #84b5ff77;animation-name:mp-rise}
-#mp-effects [data-effect="jellyfish"] .mp-particle::after{content:'';position:absolute;top:95%;left:22%;width:60%;height:22px;background:repeating-linear-gradient(90deg,#a3ccff88 0 1px,transparent 1px 5px);mask-image:linear-gradient(#000,transparent)}
-#mp-effects [data-effect="confetti"] .mp-particle{font-size:0;width:calc(var(--sz)*.65);height:calc(var(--sz)*.42);background:#8bd8f1;box-shadow:none;animation-name:mp-confetti}
-#mp-effects [data-effect="confetti"] .mp-particle[data-tint="1"]{background:#ff9eab}#mp-effects [data-effect="confetti"] .mp-particle[data-tint="2"]{background:#a8d68c}#mp-effects [data-effect="confetti"] .mp-particle[data-tint="3"]{background:#baa5ee}#mp-effects [data-effect="confetti"] .mp-particle[data-tint="4"]{background:#f7ce8d}
-#mp-effects [data-effect="matrix"] .mp-particle{font-family:monospace;font-size:var(--sz);color:#66f99b;text-shadow:0 0 8px #18e64c,0 0 18px #01831f;animation-name:mp-matrixfall}
-#mp-effects [data-effect="smoke"] .mp-particle{font-size:0;width:clamp(35px,calc(var(--sz)*5),85px);height:clamp(35px,calc(var(--sz)*5),85px);border-radius:50%;background:radial-gradient(circle,#9da2a36b,transparent 70%);filter:blur(12px);animation-name:mp-rise}
-@keyframes mp-wisp{0%{transform:translate(0,0) scale(.7);opacity:0}25%{opacity:.85}60%{transform:translate(55px,-40px) scale(1.25);opacity:.95}100%{transform:translate(-20px,-90px) scale(.7);opacity:0}}
-@keyframes mp-firefly{0%,100%{transform:translate(0,0);opacity:.1}35%{transform:translate(25px,-15px);opacity:.9}65%{transform:translate(-20px,-45px);opacity:.25}}
-@keyframes mp-portal{0%{transform:translate(0,0) scale(.3);opacity:0}40%{opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(1.5);opacity:0}}
-@keyframes mp-bat-flight{0%{transform:translate(-110vw,15vh) scale(.6);opacity:0}15%,80%{opacity:.9}100%{transform:translate(110vw,-15vh) scale(1.2);opacity:0}}
-@keyframes mp-confetti{0%{transform:translate(0,-110vh) rotate(0) rotateY(0);opacity:0}12%,85%{opacity:1}100%{transform:translate(100px,110vh) rotate(720deg) rotateY(1080deg);opacity:0}}
-@keyframes mp-matrixfall{0%{transform:translateY(-105vh);opacity:0}10%,85%{opacity:.9}100%{transform:translateY(105vh);opacity:0}}
-
-/* Glitch, cinematic lights, and club neons. */
-#mp-effects [data-effect="police"] .mp-overlay-police{background:linear-gradient(90deg,#f2254577,transparent 53%,#207bff9a);animation:mp-police-flash 1.55s steps(1,end) infinite}
-#mp-effects [data-effect="alarm"] .mp-overlay-alarm{background:radial-gradient(ellipse,transparent 32%,#fa292c80);animation:mp-alarm-pulse 1.8s steps(1,end) infinite}
-#mp-effects [data-effect="flicker"] .mp-overlay-flicker{background:linear-gradient(#fff3c949,#fff3c908);animation:mp-lamp-erratic 7s steps(1,end) infinite}
-#mp-effects [data-effect="vhs"] .mp-overlay-vhs{background:repeating-linear-gradient(0deg,transparent 0 3px,#fefefe14 4px 5px);animation:mp-vhs-jitter 4s steps(1,end) infinite}
-#mp-effects [data-effect="glitch"] .mp-overlay-glitch{background:repeating-linear-gradient(180deg,transparent 0 12vh,#6ff1ef25 12.2vh 12.5vh,transparent 13vh 22vh,#e47afa25 22.3vh 22.6vh);animation:mp-vhs-jitter 3s steps(1,end) infinite}
-#mp-effects [data-effect="neon"] .mp-overlay-neon{background:radial-gradient(ellipse 60% 75% at 0% 50%,#6547ff59,transparent 95%),radial-gradient(ellipse 55% 70% at 100% 65%,#22c9ff61,transparent 95%);animation:mp-neon-pulse 5s ease-in-out infinite alternate}
-@keyframes mp-police-flash{0%,35%{opacity:.9}15%{opacity:.25}36%,65%{opacity:.12}66%,100%{opacity:.95}}
-@keyframes mp-alarm-pulse{0%,49%{opacity:.65}50%,100%{opacity:.07}}
-@keyframes mp-lamp-erratic{0%,14%,20%,49%,51%,80%,94%,100%{opacity:.27}15%,19%,50%,81%,93%{opacity:.01}}
-@keyframes mp-vhs-jitter{0%,69%,73%,92%,100%{opacity:.12;transform:translateY(0)}70%,72%{opacity:.7;transform:translateY(13px)}93%,95%{opacity:.55;transform:translateY(-17px)}}
-@keyframes mp-neon-pulse{0%{opacity:.35;filter:hue-rotate(0)}55%{opacity:.9}100%{opacity:.72;filter:hue-rotate(30deg)}}
-@media(prefers-reduced-motion:reduce){#mp-effects [data-effect="thunder"] .mp-overlay-storm,#mp-effects [data-effect="police"] .mp-overlay-police,#mp-effects [data-effect="alarm"] .mp-overlay-alarm,#mp-effects [data-effect="flicker"] .mp-overlay-flicker{animation:none!important;opacity:0!important}}
-
-
-/* v0.5.2: visibility and motion pass for the remaining nine effects. */
-#mp-effects [data-effect="summerdust"] .mp-particle{font-size:0;width:clamp(2px,calc(var(--sz)*.32),5px);height:clamp(2px,calc(var(--sz)*.32),5px);border-radius:50%;background:#f6e6a8;box-shadow:0 0 8px 2px #f5d58f88;animation:mp-pollen-drift var(--dur) ease-in-out var(--delay) infinite}
-#mp-effects [data-effect="summerdust"] .mp-particle[data-tint="1"]{background:#e5f7c1;box-shadow:0 0 9px #b6d997aa}
-#mp-effects [data-effect="summerdust"] .mp-particle[data-tint="2"]{background:#fff6d9;box-shadow:0 0 8px #fef8d8aa}
-#mp-effects [data-effect="bats"] .mp-particle{width:clamp(22px,calc(var(--sz)*2.1),37px);height:clamp(12px,calc(var(--sz)*1.05),19px);background:#71738f;filter:drop-shadow(0 0 3px #bac2f788);opacity:.85;animation:mp-bat-flight var(--dur) linear var(--delay) infinite}
-#mp-effects [data-effect="bats"] .mp-particle[data-tint="1"]{background:#9394b1}
-#mp-effects [data-effect="shootingstars"] .mp-particle{font-size:0;width:clamp(70px,calc(var(--sz)*7),145px);height:2px;border-radius:100%;background:linear-gradient(90deg,transparent,#a1caff55 30%,#d5e9ffb8 73%,#fff 100%);box-shadow:0 0 7px 1px #a6d5ff99;transform:rotate(-30deg);transform-origin:100% 50%;animation:mp-meteor var(--dur) linear var(--delay) infinite}
-#mp-effects [data-effect="shootingstars"] .mp-particle::after{content:'';position:absolute;right:-2px;top:-2px;width:6px;height:6px;border-radius:50%;background:white;box-shadow:0 0 10px 3px #c6e7ffdd}
-#mp-effects [data-effect="ash"] .mp-particle{font-size:0;width:clamp(3px,calc(var(--sz)*.36),7px);height:clamp(3px,calc(var(--sz)*.44),9px);border-radius:40% 60% 45% 50%;background:#b9b0ac;box-shadow:0 0 3px #d1c8c488;animation:mp-ashfall var(--dur) ease-in-out var(--delay) infinite}
-#mp-effects [data-effect="ash"] .mp-particle[data-tint="1"]{background:#777778}#mp-effects [data-effect="ash"] .mp-particle[data-tint="2"]{background:#d8c9bb}
-#mp-effects [data-effect="plankton"] .mp-particle{font-size:0;width:clamp(3px,calc(var(--sz)*.4),8px);height:clamp(3px,calc(var(--sz)*.4),8px);border-radius:50%;background:#8cf4e2;box-shadow:0 0 8px 2px #42cfc3aa,0 0 17px #1b999999;animation:mp-plankton-drift var(--dur) ease-in-out var(--delay) infinite}
-#mp-effects [data-effect="plankton"] .mp-particle[data-tint="1"]{background:#91c9ff;box-shadow:0 0 10px #7dbcf9cc}#mp-effects [data-effect="plankton"] .mp-particle[data-tint="2"]{background:#c5f7ff}
-#mp-effects [data-effect="dust"] .mp-particle{font-size:0;width:clamp(2px,calc(var(--sz)*.22),5px);height:clamp(2px,calc(var(--sz)*.22),5px);border-radius:50%;background:#fff0cf;box-shadow:0 0 9px 1px #fff1bc99;animation:mp-dust-drift var(--dur) ease-in-out var(--delay) infinite}
-#mp-effects [data-effect="dust"] .mp-particle[data-tint="1"]{opacity:.55}#mp-effects [data-effect="dust"] .mp-particle[data-tint="2"]{width:2px;height:2px}
-#mp-effects [data-effect="hearts"] .mp-particle{font-size:0;width:clamp(9px,var(--sz),21px);height:clamp(9px,var(--sz),21px);background:#fa91b2;border-radius:2px;transform:rotate(-45deg);box-shadow:0 0 7px #fa93b58a;animation:mp-heart-rise var(--dur) ease-in-out var(--delay) infinite}
-#mp-effects [data-effect="hearts"] .mp-particle::before,#mp-effects [data-effect="hearts"] .mp-particle::after{content:'';position:absolute;width:100%;height:100%;border-radius:50%;background:inherit}
-#mp-effects [data-effect="hearts"] .mp-particle::before{top:-50%;left:0}#mp-effects [data-effect="hearts"] .mp-particle::after{left:50%;top:0}
-#mp-effects [data-effect="hearts"] .mp-particle[data-tint="1"]{background:#ec6c98}#mp-effects [data-effect="hearts"] .mp-particle[data-tint="2"]{background:#ffc4d7}
-#mp-effects [data-effect="police"] .mp-overlay-police{background:linear-gradient(90deg,#ed36594a,transparent 42%,#2b83ff55);animation:mp-police-gentle 7s ease-in-out infinite;opacity:.55}
-#mp-effects [data-effect="vhs"] .mp-overlay-vhs{background:repeating-linear-gradient(0deg,transparent 0 3px,#e4f1ff2b 4px 5px,transparent 6px 9px),linear-gradient(0deg,transparent 0%,#d3e4ff24 46%,transparent 53%);background-size:100% 9px,100% 100%;animation:mp-vhs-visible 6s steps(1,end) infinite;opacity:.46}
-@keyframes mp-pollen-drift{0%{opacity:0;transform:translate(-12vw,10vh)}18%{opacity:.9}45%{transform:translate(20px,-16vh);opacity:1}78%{opacity:.75}100%{transform:translate(11vw,-28vh);opacity:0}}
-@keyframes mp-ashfall{0%{transform:translate(0,-110vh) rotate(0);opacity:0}12%,83%{opacity:.8}100%{transform:translate(90px,110vh) rotate(280deg);opacity:0}}
-@keyframes mp-plankton-drift{0%{transform:translate(-10px,50px) scale(.7);opacity:.08}25%{opacity:.95}55%{transform:translate(25px,-15px) scale(1.2);opacity:.5}80%{opacity:1}100%{transform:translate(-20px,-65px) scale(.6);opacity:.06}}
-@keyframes mp-dust-drift{0%{transform:translate(-15px,18px);opacity:0}20%{opacity:.8}60%{transform:translate(35px,-15px);opacity:.95}100%{transform:translate(65px,-30px);opacity:0}}
-@keyframes mp-meteor{0%,30%{opacity:0;transform:rotate(-30deg) translate(0,0)}34%{opacity:1}62%{opacity:0;transform:rotate(-30deg) translate(calc(-1 * var(--travel)),calc(var(--travel) * .44))}100%{opacity:0}}
-@keyframes mp-heart-rise{0%{opacity:0;transform:translate(0,110vh) rotate(-45deg) scale(.7)}12%,85%{opacity:.9}100%{opacity:0;transform:translate(var(--dx),-110vh) rotate(-45deg) scale(1.15)}}
-@keyframes mp-police-gentle{0%,12%,50%,100%{opacity:.08;filter:none}25%{opacity:.52;filter:drop-shadow(-25px 0 28px #f0445b55)}75%{opacity:.52;filter:drop-shadow(25px 0 28px #278cff55)}}
-@keyframes mp-vhs-visible{0%,39%,48%,83%,100%{opacity:.3;transform:translateY(0)}40%,42%{opacity:.7;transform:translateY(7px)}46%{opacity:.58;transform:translateY(-3px)}84%,87%{opacity:.75;transform:translateY(-13px)}}
-@media(prefers-reduced-motion:reduce){#mp-effects [data-effect="police"] .mp-overlay-police{animation:none!important;opacity:.16!important}#mp-effects [data-effect="vhs"] .mp-overlay-vhs{animation:none!important;opacity:.12!important}}
-
-/* v0.5.3: meteors move diagonally downward-left; tail trails upper-right. */
-#mp-effects [data-effect="shootingstars"] .mp-particle{
-  transform:rotate(150deg);
-  animation:mp-meteor-falling var(--dur) linear var(--delay) infinite;
-}
-@keyframes mp-meteor-falling{
-  0%,24%{opacity:0;transform:translate(0,0) rotate(150deg)}
-  27%{opacity:.95;transform:translate(-3vw,1.4vh) rotate(150deg)}
-  52%{opacity:0;transform:translate(calc(-1 * var(--travel)),calc(var(--travel) * .55)) rotate(150deg)}
-  100%{opacity:0;transform:translate(calc(-1 * var(--travel)),calc(var(--travel) * .55)) rotate(150deg)}
-}
-/* Slow alternating police lights: red, dark, blue, dark; no crossfade. */
-#mp-effects [data-effect="police"] .mp-overlay-police{
-  background:radial-gradient(ellipse 85% 80% at 0% 48%,rgba(240,52,72,.30),transparent 72%);
-  opacity:1;
-  animation:mp-police-alternate 5.6s steps(1,end) infinite;
-}
-@keyframes mp-police-alternate{
-  0%,19.9%{background:radial-gradient(ellipse 85% 80% at 0% 48%,rgba(240,52,72,.30),transparent 72%);opacity:1}
-  20%,26.9%{background:none;opacity:0}
-  27%,46.9%{background:radial-gradient(ellipse 85% 80% at 100% 48%,rgba(48,112,255,.34),transparent 72%);opacity:1}
-  47%,53.9%{background:none;opacity:0}
-  54%,73.9%{background:radial-gradient(ellipse 85% 80% at 0% 48%,rgba(240,52,72,.30),transparent 72%);opacity:1}
-  74%,80.9%{background:none;opacity:0}
-  81%,96.9%{background:radial-gradient(ellipse 85% 80% at 100% 48%,rgba(48,112,255,.34),transparent 72%);opacity:1}
-  97%,100%{background:none;opacity:0}
-}
-@media (prefers-reduced-motion:reduce){
-  #mp-effects [data-effect="police"] .mp-overlay-police{animation:none!important;opacity:.12!important;background:linear-gradient(90deg,#ed365955,transparent,#2b83ff55)!important}
-  #mp-effects [data-effect="shootingstars"] .mp-particle{animation:none!important;opacity:0!important}
-}
-
-
-/* v0.5.4: Mobile viewport-height fix (verified on iOS)..
-   Some mobile SillyTavern layouts calculate the fixed effects layer at 0px high
-   despite inset:0. Force viewport geometry; dvh overrides vh where supported. */
+/* === Base Layer & Viewport (with iOS/Android dvh fix) === */
 #mp-effects {
   position: fixed !important;
   top: 0 !important;
@@ -182,9 +13,13 @@
   min-height: 100vh !important;
   min-height: 100dvh !important;
   box-sizing: border-box !important;
+  z-index: 9990;
   pointer-events: none !important;
   overflow: hidden !important;
+  opacity: var(--mp-opacity, 0.55);
+  perspective: 700px;
 }
+
 #mp-effects > .mp-effect {
   position: absolute !important;
   top: 0 !important;
@@ -194,4 +29,1365 @@
   width: 100% !important;
   height: 100% !important;
   pointer-events: none !important;
+  transform-style: preserve-3d;
+}
+
+.mp-particle {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  font-size: var(--sz);
+  color: var(--hue);
+  text-shadow: 0 0 9px currentColor;
+  will-change: transform, opacity;
+  animation: mp-float var(--dur) ease-in-out var(--delay) infinite;
+}
+
+/* Fallback animations for custom declarative JSON effects */
+.mp-fall .mp-particle,
+.mp-snow .mp-particle,
+.mp-rain .mp-particle {
+  top: -8vh;
+  animation: mp-fall var(--dur) linear var(--delay) infinite;
+}
+.mp-rise .mp-particle {
+  top: 104vh;
+  animation: mp-rise var(--dur) ease-in-out var(--delay) infinite;
+}
+.mp-shoot .mp-particle {
+  animation: mp-shoot var(--dur) linear var(--delay) infinite;
+}
+.mp-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  animation: mp-breathe 14s ease-in-out infinite alternate;
+}
+.mp-overlay::before,
+.mp-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* === Depth of field / Parallax layers === */
+#mp-effects .mp-particle[data-depth="0"] {
+  filter: blur(0.8px);
+}
+#mp-effects .mp-particle[data-depth="2"] {
+  z-index: 2;
+}
+
+/* =========================================================
+   WEATHER: Snow, Blizzard, Rain, Downpour, Wind, Sandstorm
+   ========================================================= */
+
+/* Snow: soft radial flakes with sinusoidal sway and 3D depth */
+#mp-effects [data-effect="snow"] .mp-particle {
+  top: -6vh;
+  font-size: 0;
+  width: calc(var(--sz) * 0.42 * var(--scale, 1));
+  height: calc(var(--sz) * 0.42 * var(--scale, 1));
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #e4f4ff 55%, rgba(205, 235, 255, 0) 100%);
+  box-shadow: 0 0 8px rgba(220, 242, 255, 0.75);
+  animation: mp-snowfall var(--dur) linear var(--delay) infinite;
+}
+#mp-effects [data-effect="snow"] .mp-particle[data-depth="0"] {
+  opacity: 0.55;
+  filter: blur(1px);
+}
+#mp-effects [data-effect="snow"] .mp-particle[data-depth="2"] {
+  filter: blur(0.4px);
+  box-shadow: 0 0 12px rgba(235, 248, 255, 0.95);
+}
+
+/* Blizzard: fierce diagonal snow + icy ground gale haze */
+#mp-effects [data-effect="blizzard"]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(15deg, rgba(215, 236, 250, 0.18) 0%, transparent 48%),
+    radial-gradient(ellipse 90% 45% at 50% 105%, rgba(225, 242, 255, 0.22), transparent 75%);
+  filter: blur(18px);
+  animation: mp-edge-fog 7s ease-in-out infinite alternate;
+}
+#mp-effects [data-effect="blizzard"] .mp-particle {
+  left: -12vw;
+  top: var(--y);
+  font-size: 0;
+  width: calc(var(--sz) * 0.52 * var(--scale, 1));
+  height: calc(var(--sz) * 0.24 * var(--scale, 1));
+  border-radius: 50%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.15), #f5fcff 65%, #ffffff);
+  box-shadow: 0 0 6px rgba(230, 248, 255, 0.8);
+  animation: mp-blizzard var(--dur) linear var(--delay) infinite;
+}
+
+/* Rain & Thunder rain: sleek streaking drops with bright tips */
+#mp-effects [data-effect="rain"] .mp-particle,
+#mp-effects [data-effect="downpour"] .mp-particle,
+#mp-effects [data-effect="thunder"] .mp-particle {
+  top: -12vh;
+  font-size: 0;
+  width: 1.4px;
+  height: calc(24px * var(--scale, 1));
+  border-radius: 999px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(154, 198, 245, 0.45) 45%, rgba(225, 243, 255, 0.95) 92%, #ffffff 100%);
+  box-shadow: 0 0 4px rgba(145, 198, 248, 0.35);
+  animation: mp-rainfall var(--dur) linear var(--delay) infinite;
+}
+#mp-effects [data-effect="rain"] .mp-particle[data-depth="0"] {
+  width: 1px;
+  opacity: 0.45;
+  filter: blur(0.4px);
+}
+
+/* Downpour: longer, faster sheets of rain + bottom mist splash */
+#mp-effects [data-effect="downpour"]::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 26vh;
+  background: linear-gradient(to top, rgba(182, 210, 235, 0.22), rgba(182, 210, 235, 0.06) 55%, transparent);
+  filter: blur(12px);
+  animation: mp-breathe 5s ease-in-out infinite alternate;
+}
+#mp-effects [data-effect="downpour"] .mp-particle {
+  width: 1.8px;
+  height: calc(44px * var(--scale, 1));
+  background: linear-gradient(to bottom, transparent 0%, rgba(168, 212, 255, 0.6) 40%, rgba(238, 248, 255, 0.98) 100%);
+  box-shadow: 0 0 6px rgba(167, 215, 255, 0.55);
+  animation: mp-rainfall-heavy var(--dur) linear var(--delay) infinite;
+}
+
+/* Wind: graceful curved air ribbons */
+#mp-effects [data-effect="wind"] .mp-particle {
+  left: -18vw;
+  top: var(--y);
+  font-size: 0;
+  width: calc(clamp(45px, 7vw, 115px) * var(--scale, 1));
+  height: 2px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, transparent 0%, rgba(205, 228, 242, 0.15) 20%, rgba(232, 245, 255, 0.72) 55%, transparent 100%);
+  filter: blur(0.4px);
+  animation: mp-windblow var(--dur) ease-in-out var(--delay) infinite;
+}
+
+/* Sandstorm: ochre haze + swirling desert grit */
+#mp-effects [data-effect="sandstorm"]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(15deg, rgba(194, 148, 92, 0.26) 0%, rgba(180, 134, 82, 0.10) 55%, transparent 90%),
+    radial-gradient(ellipse at 20% 90%, rgba(212, 168, 108, 0.24), transparent 70%);
+  filter: blur(16px);
+  animation: mp-edge-fog 9s ease-in-out infinite alternate;
+}
+#mp-effects [data-effect="sandstorm"] .mp-particle {
+  left: -12vw;
+  top: var(--y);
+  font-size: 0;
+  width: calc(var(--sz) * 0.34 * var(--scale, 1));
+  height: calc(var(--sz) * 0.22 * var(--scale, 1));
+  border-radius: 50%;
+  background: #e0bf89;
+  box-shadow: 0 0 6px rgba(196, 152, 92, 0.75);
+  animation: mp-sandblow var(--dur) linear var(--delay) infinite;
+}
+#mp-effects [data-effect="sandstorm"] .mp-particle[data-tint="1"] { background: #c99e67; }
+#mp-effects [data-effect="sandstorm"] .mp-particle[data-tint="2"] {
+  width: calc(var(--sz) * 2.2);
+  height: calc(var(--sz) * 0.9);
+  background: radial-gradient(ellipse, rgba(214, 176, 122, 0.28), transparent 70%);
+  box-shadow: none;
+  filter: blur(4px);
+}
+
+/* Glassrain: realistic water droplets with refraction highlight & trail */
+#mp-effects [data-effect="glassrain"] .mp-particle {
+  top: -10vh;
+  font-size: 0;
+  width: calc(5px * var(--scale, 1));
+  height: calc(9px * var(--scale, 1));
+  border-radius: 50% 50% 50% 50% / 72% 72% 28% 28%;
+  background: radial-gradient(circle at 35% 65%, rgba(255, 255, 255, 0.95) 0%, rgba(195, 230, 255, 0.75) 38%, rgba(130, 185, 230, 0.25) 78%, transparent 100%);
+  box-shadow: inset 0 -1.5px 2px rgba(255, 255, 255, 0.85), 0 2px 5px rgba(20, 45, 75, 0.25);
+  animation: mp-glassdrip var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="glassrain"] .mp-particle::before {
+  content: '';
+  position: absolute;
+  bottom: 85%;
+  left: 32%;
+  width: 36%;
+  height: clamp(22px, 5.5vh, 64px);
+  border-radius: 999px;
+  background: linear-gradient(to top, rgba(205, 235, 255, 0.65), rgba(190, 225, 250, 0.18) 60%, transparent);
+}
+
+/* =========================================================
+   ATMOSPHERIC OVERLAYS: Mist, Frost, Sun, Gold, Twilight,
+   Moonlight, Aurora, Thunderstorm
+   ========================================================= */
+
+/* Multi-layered drifting fog */
+#mp-effects [data-effect="mist"] .mp-overlay-fog {
+  inset: -10%;
+  background:
+    radial-gradient(ellipse 58% 45% at 15% 88%, rgba(188, 206, 218, 0.52) 0%, transparent 80%),
+    radial-gradient(ellipse 52% 75% at -8% 50%, rgba(176, 196, 210, 0.48) 0%, transparent 85%),
+    radial-gradient(ellipse 52% 75% at 108% 45%, rgba(170, 190, 208, 0.46) 0%, transparent 85%);
+  filter: blur(26px);
+  animation: mp-edge-fog 22s ease-in-out infinite alternate;
+}
+#mp-effects [data-effect="mist"] .mp-overlay-fog::before {
+  background:
+    radial-gradient(ellipse 65% 40% at 75% 92%, rgba(198, 214, 226, 0.42) 0%, transparent 80%),
+    linear-gradient(to top, rgba(175, 194, 206, 0.28) 0%, transparent 45%);
+  filter: blur(32px);
+  animation: mp-edge-fog-rev 28s ease-in-out infinite alternate;
+}
+
+/* Frost: crystalline icy vignette + diamond dust motes */
+#mp-effects [data-effect="frost"] .mp-overlay-frost {
+  background:
+    radial-gradient(ellipse 42% 88% at 0% 50%, rgba(195, 232, 252, 0.48), transparent 85%),
+    radial-gradient(ellipse 42% 88% at 100% 50%, rgba(190, 228, 250, 0.48), transparent 85%),
+    radial-gradient(circle at 0% 0%, rgba(220, 245, 255, 0.55) 0%, transparent 38%),
+    radial-gradient(circle at 100% 0%, rgba(220, 245, 255, 0.55) 0%, transparent 38%),
+    radial-gradient(circle at 0% 100%, rgba(220, 245, 255, 0.55) 0%, transparent 38%),
+    radial-gradient(circle at 100% 100%, rgba(220, 245, 255, 0.55) 0%, transparent 38%);
+  box-shadow: inset 0 0 110px 32px rgba(175, 222, 255, 0.42);
+  filter: blur(8px);
+  animation: mp-breathe 12s ease-in-out infinite alternate;
+}
+#mp-effects [data-effect="frost"] .mp-particle {
+  font-size: 0;
+  width: calc(3px * var(--scale, 1));
+  height: calc(3px * var(--scale, 1));
+  background: #ffffff;
+  clip-path: polygon(50% 0%, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%, 0% 50%, 35% 35%);
+  box-shadow: 0 0 8px 2px rgba(185, 235, 255, 0.9);
+  animation: mp-twinkle-drift var(--dur) ease-in-out var(--delay) infinite;
+}
+
+/* Sunbeams: volumetric God rays with dual shifting shafts */
+#mp-effects [data-effect="sunbeams"] .mp-overlay-sun {
+  inset: -15%;
+  background:
+    radial-gradient(circle at 88% -8%, rgba(255, 246, 200, 0.52) 0%, rgba(255, 224, 145, 0.20) 32%, transparent 62%),
+    conic-gradient(from 192deg at 92% -12%, transparent 0deg, rgba(255, 243, 184, 0.34) 8deg, transparent 16deg, rgba(255, 234, 165, 0.42) 26deg, transparent 36deg, rgba(255, 240, 185, 0.30) 46deg, transparent 58deg);
+  filter: blur(14px);
+  transform-origin: 90% 0%;
+  animation: mp-light-drift 14s ease-in-out infinite alternate;
+}
+#mp-effects [data-effect="sunbeams"] .mp-overlay-sun::before {
+  background: conic-gradient(from 198deg at 88% -10%, transparent 0deg, rgba(255, 248, 210, 0.28) 11deg, transparent 22deg, rgba(255, 236, 172, 0.32) 34deg, transparent 48deg);
+  filter: blur(18px);
+  transform-origin: 88% 0%;
+  animation: mp-light-drift 19s ease-in-out infinite alternate-reverse;
+}
+
+/* Golden Hour: warm amber sunset wash + soft floating bokeh orbs */
+#mp-effects [data-effect="golden"] .mp-overlay-gold {
+  background:
+    radial-gradient(ellipse 85% 65% at 15% 10%, rgba(255, 202, 118, 0.38) 0%, transparent 72%),
+    linear-gradient(135deg, rgba(255, 168, 84, 0.30) 0%, rgba(238, 118, 94, 0.16) 48%, transparent 82%);
+  animation: mp-breathe 14s ease-in-out infinite alternate;
+}
+#mp-effects [data-effect="golden"] .mp-particle {
+  font-size: 0;
+  width: calc(clamp(18px, 3.5vw, 48px) * var(--scale, 1));
+  height: calc(clamp(18px, 3.5vw, 48px) * var(--scale, 1));
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 226, 156, 0.28) 0%, rgba(255, 184, 108, 0.12) 60%, transparent 100%);
+  filter: blur(3px);
+  animation: mp-dust-drift var(--dur) ease-in-out var(--delay) infinite;
+}
+
+/* Twilight: deep dusk indigo & violet-rose horizon */
+#mp-effects [data-effect="twilight"] .mp-overlay-twilight {
+  background:
+    linear-gradient(180deg, rgba(28, 36, 88, 0.46) 0%, rgba(68, 52, 114, 0.28) 55%, rgba(168, 88, 126, 0.24) 100%),
+    radial-gradient(ellipse at 80% 95%, rgba(212, 114, 132, 0.25), transparent 65%);
+  animation: mp-breathe 16s ease-in-out infinite alternate;
+}
+
+/* Moonlight: silvery-blue lunar glow & soft beams */
+#mp-effects [data-effect="moonlight"] .mp-overlay-moon {
+  background:
+    radial-gradient(ellipse 55% 48% at 86% 4%, rgba(196, 224, 255, 0.46) 0%, rgba(132, 178, 245, 0.18) 48%, transparent 78%),
+    conic-gradient(from 200deg at 88% -6%, transparent 0deg, rgba(175, 212, 255, 0.22) 15deg, transparent 32deg, rgba(162, 202, 255, 0.18) 46deg, transparent 64deg);
+  filter: blur(10px);
+  animation: mp-light-drift 18s ease-in-out infinite alternate;
+}
+
+/* Aurora: 3-ribbon dancing northern lights (emerald, cyan, violet) */
+#mp-effects [data-effect="aurora"] .mp-overlay-aurora {
+  inset: -20% -25%;
+  background: repeating-linear-gradient(102deg, transparent 0%, rgba(46, 232, 178, 0.32) 9%, rgba(56, 178, 242, 0.34) 16%, rgba(158, 104, 242, 0.28) 23%, transparent 35%);
+  filter: blur(26px);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 48%, transparent 88%);
+  transform-origin: 50% 0%;
+  animation: mp-aurora-wave 13s ease-in-out infinite alternate;
+}
+#mp-effects [data-effect="aurora"] .mp-overlay-aurora::before {
+  background: repeating-linear-gradient(94deg, transparent 0%, rgba(72, 245, 162, 0.26) 12%, rgba(186, 98, 245, 0.28) 22%, transparent 38%);
+  filter: blur(32px);
+  animation: mp-aurora-wave 18s ease-in-out infinite alternate-reverse;
+}
+
+/* Thunderstorm: multi-stage cloud sheet lightning */
+#mp-effects [data-effect="thunder"] .mp-overlay-storm {
+  background:
+    radial-gradient(ellipse 90% 55% at 65% 0%, rgba(220, 238, 255, 0.95) 0%, rgba(168, 205, 250, 0.45) 55%, rgba(135, 175, 230, 0.15) 100%);
+  opacity: 0;
+  animation: mp-real-lightning 11s infinite;
+}
+
+/* =========================================================
+   SEASONAL & ROMANCE FLORA: Autumn, Sakura, Rose, Lavender,
+   Dandelion, Summerdust, Feathers
+   ========================================================= */
+
+/* Autumn leaves: pointed leaf silhouette with central vein & 3D flutter */
+#mp-effects [data-effect="autumn"] .mp-particle {
+  top: -8vh;
+  font-size: 0;
+  width: calc(clamp(11px, var(--sz), 22px) * var(--scale, 1));
+  height: calc(clamp(9px, var(--sz), 18px) * var(--scale, 1));
+  border-radius: 85% 5% 85% 5%;
+  background: linear-gradient(135deg, #d86c2c, #8e3518);
+  box-shadow: inset -2px -2px 4px rgba(48, 16, 8, 0.45);
+  animation: mp-flutter-fall var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="autumn"] .mp-particle::before {
+  content: '';
+  position: absolute;
+  top: 48%;
+  left: -18%;
+  width: 115%;
+  height: 1px;
+  background: rgba(255, 215, 150, 0.35);
+  transform: rotate(-38deg);
+}
+#mp-effects [data-effect="autumn"] .mp-particle[data-tint="1"] { background: linear-gradient(135deg, #eba434, #b5651d); }
+#mp-effects [data-effect="autumn"] .mp-particle[data-tint="2"] { background: linear-gradient(135deg, #b83728, #6b1712); }
+#mp-effects [data-effect="autumn"] .mp-particle[data-tint="3"] { background: linear-gradient(135deg, #e5c148, #a67c22); }
+#mp-effects [data-effect="autumn"] .mp-particle[data-tint="4"] { background: linear-gradient(135deg, #c95932, #7a2c18); }
+
+/* Sakura: notched cherry blossom petals */
+#mp-effects [data-effect="sakura"] .mp-particle {
+  top: -8vh;
+  font-size: 0;
+  width: calc(clamp(10px, var(--sz), 19px) * var(--scale, 1));
+  height: calc(clamp(8px, var(--sz), 15px) * var(--scale, 1));
+  background: linear-gradient(135deg, #ffdde9 0%, #f5a8c8 65%, #e67fa9 100%);
+  clip-path: polygon(0% 50%, 22% 14%, 64% 4%, 100% 26%, 82% 50%, 100% 74%, 64% 96%, 22% 86%);
+  animation: mp-flutter-fall var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="sakura"] .mp-particle[data-tint="1"] { background: linear-gradient(135deg, #fff0f5, #f7bdd4); }
+#mp-effects [data-effect="sakura"] .mp-particle[data-tint="2"] { background: linear-gradient(135deg, #fbc2d9, #de77a1); }
+
+/* Rose petals: velvety crimson & blush petals */
+#mp-effects [data-effect="rose"] .mp-particle {
+  top: -8vh;
+  font-size: 0;
+  width: calc(clamp(11px, var(--sz), 20px) * var(--scale, 1));
+  height: calc(clamp(10px, var(--sz), 18px) * var(--scale, 1));
+  border-radius: 55% 85% 48% 82%;
+  background: radial-gradient(circle at 35% 35%, #ea4c72, #b31d42 70%, #6e0d26 100%);
+  box-shadow: inset -2px -2px 4px rgba(55, 5, 18, 0.55);
+  animation: mp-flutter-fall var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="rose"] .mp-particle[data-tint="1"] { background: radial-gradient(circle at 35% 35%, #ff85a6, #d43b68 75%, #8c193c); }
+#mp-effects [data-effect="rose"] .mp-particle[data-tint="2"] { background: radial-gradient(circle at 35% 35%, #c9244b, #7d0c29 80%, #4a0416); }
+#mp-effects [data-effect="rose"] .mp-particle[data-tint="3"] { background: radial-gradient(circle at 35% 35%, #ffb8cc, #e86b92 80%, #b0395e); }
+
+/* Lavender petals: previously missing CSS! Violet-lilac spindle blossoms */
+#mp-effects [data-effect="lavender"] .mp-particle {
+  top: -8vh;
+  font-size: 0;
+  width: calc(clamp(9px, var(--sz), 16px) * var(--scale, 1));
+  height: calc(clamp(6px, calc(var(--sz) * 0.65), 11px) * var(--scale, 1));
+  border-radius: 75% 25% 75% 25%;
+  background: linear-gradient(135deg, #dcd0ff 0%, #a98bf2 55%, #7552cc 100%);
+  box-shadow: 0 0 6px rgba(169, 139, 242, 0.35), inset -1px -1px 2px rgba(56, 30, 110, 0.45);
+  animation: mp-flutter-fall var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="lavender"] .mp-particle[data-tint="1"] { background: linear-gradient(135deg, #efe8ff, #bea6ff 60%, #8e6ee0); }
+#mp-effects [data-effect="lavender"] .mp-particle[data-tint="2"] { background: linear-gradient(135deg, #c6affc, #8c65e6 60%, #5c38b8); }
+#mp-effects [data-effect="lavender"] .mp-particle[data-tint="3"] { background: linear-gradient(135deg, #e5c6ff, #b57ae8 60%, #7d42b8); }
+
+/* White & Black Feathers: tapered plumes with central shaft */
+#mp-effects [data-effect="whitefeathers"] .mp-particle,
+#mp-effects [data-effect="blackfeathers"] .mp-particle {
+  top: -8vh;
+  font-size: 0;
+  width: calc(clamp(14px, calc(var(--sz) * 1.4), 28px) * var(--scale, 1));
+  height: calc(clamp(6px, calc(var(--sz) * 0.55), 12px) * var(--scale, 1));
+  border-radius: 90% 10% 85% 15%;
+  background: linear-gradient(to bottom, #ffffff 0%, #eef3f8 46%, #cbd6e2 50%, #f5f8fc 54%, #e2eaf2 100%);
+  box-shadow: 0 0 6px rgba(235, 245, 255, 0.45);
+  animation: mp-feather-glide var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="blackfeathers"] .mp-particle {
+  background: linear-gradient(to bottom, #3a3748 0%, #24212e 46%, #59536e 50%, #1d1a26 54%, #2d293b 100%);
+  box-shadow: 0 0 6px rgba(18, 14, 28, 0.65);
+}
+
+/* Dandelion fluff: delicate seed stem + airy pappus crown */
+#mp-effects [data-effect="dandelion"] .mp-particle {
+  font-size: 0;
+  width: calc(12px * var(--scale, 1));
+  height: calc(16px * var(--scale, 1));
+  background: radial-gradient(circle at 50% 32%, rgba(255, 255, 255, 0.95) 0%, rgba(245, 250, 255, 0.55) 32%, rgba(235, 245, 255, 0.12) 62%, transparent 72%);
+  animation: mp-dandelion-float var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="dandelion"] .mp-particle::before {
+  content: '';
+  position: absolute;
+  top: 28%;
+  left: 47%;
+  width: 1px;
+  height: 58%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.85), rgba(195, 182, 155, 0.8));
+  transform: rotate(12deg);
+}
+
+/* Summer pollen: warm golden-green glowing motes */
+#mp-effects [data-effect="summerdust"] .mp-particle {
+  font-size: 0;
+  width: calc(clamp(3px, calc(var(--sz) * 0.34), 6px) * var(--scale, 1));
+  height: calc(clamp(3px, calc(var(--sz) * 0.34), 6px) * var(--scale, 1));
+  border-radius: 50%;
+  background: #fff2be;
+  box-shadow: 0 0 9px 2px rgba(246, 216, 132, 0.72);
+  animation: mp-pollen-drift var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="summerdust"] .mp-particle[data-tint="1"] { background: #e6f9c2; box-shadow: 0 0 9px 2px rgba(184, 226, 142, 0.72); }
+#mp-effects [data-effect="summerdust"] .mp-particle[data-tint="2"] { background: #fff9e2; box-shadow: 0 0 11px 3px rgba(255, 244, 194, 0.8); }
+
+/* =========================================================
+   WINGED CREATURES: Butterflies & Bats (with 3D flapping!)
+   ========================================================= */
+
+/* Butterflies: previously raw emoji! Now 3D flapping wings */
+#mp-effects [data-effect="butterflies"] .mp-particle {
+  font-size: 0;
+  width: calc(clamp(16px, calc(var(--sz) * 1.45), 26px) * var(--scale, 1));
+  height: calc(clamp(14px, calc(var(--sz) * 1.25), 22px) * var(--scale, 1));
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 0 6px rgba(190, 220, 255, 0.55));
+  animation: mp-butterfly-path var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="butterflies"] .mp-particle::before,
+#mp-effects [data-effect="butterflies"] .mp-particle::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 52%;
+  height: 100%;
+  background: linear-gradient(135deg, #8ce7ff 0%, #4a9dff 60%, #2a48ba 100%);
+  clip-path: polygon(100% 18%, 35% 0%, 0% 24%, 12% 56%, 24% 88%, 68% 100%, 100% 72%);
+  transform-origin: 100% 50%;
+  animation: mp-wing-left var(--flap, 0.24s) ease-in-out infinite alternate;
+}
+#mp-effects [data-effect="butterflies"] .mp-particle::after {
+  left: 48%;
+  clip-path: polygon(0% 18%, 65% 0%, 100% 24%, 88% 56%, 76% 88%, 32% 100%, 0% 72%);
+  transform-origin: 0% 50%;
+  animation: mp-wing-right var(--flap, 0.24s) ease-in-out infinite alternate;
+}
+#mp-effects [data-effect="butterflies"] .mp-particle[data-tint="1"]::before,
+#mp-effects [data-effect="butterflies"] .mp-particle[data-tint="1"]::after {
+  background: linear-gradient(135deg, #ffc4e1 0%, #f473b0 60%, #a82868 100%);
+}
+#mp-effects [data-effect="butterflies"] .mp-particle[data-tint="2"]::before,
+#mp-effects [data-effect="butterflies"] .mp-particle[data-tint="2"]::after {
+  background: linear-gradient(135deg, #ffe699 0%, #ff9d3b 60%, #b84314 100%);
+}
+#mp-effects [data-effect="butterflies"] .mp-particle[data-tint="3"]::before,
+#mp-effects [data-effect="butterflies"] .mp-particle[data-tint="3"]::after {
+  background: linear-gradient(135deg, #e2c4ff 0%, #a66bff 60%, #5828a8 100%);
+}
+
+/* Bats: swooping silhouettes with animated wingbeats */
+#mp-effects [data-effect="bats"] .mp-particle {
+  left: -12vw;
+  top: var(--y);
+  font-size: 0;
+  width: calc(clamp(22px, calc(var(--sz) * 2), 36px) * var(--scale, 1));
+  height: calc(clamp(11px, var(--sz), 18px) * var(--scale, 1));
+  background: #5b5d7a;
+  clip-path: polygon(0 12%, 18% 34%, 30% 10%, 43% 38%, 50% 14%, 57% 38%, 70% 10%, 82% 34%, 100% 12%, 86% 98%, 68% 64%, 50% 94%, 32% 64%, 14% 98%);
+  filter: drop-shadow(0 0 4px rgba(175, 185, 245, 0.55));
+  animation:
+    mp-bat-flight var(--dur) linear var(--delay) infinite,
+    mp-bat-flap var(--flap, 0.22s) ease-in-out infinite alternate;
+}
+#mp-effects [data-effect="bats"] .mp-particle[data-tint="1"] { background: #7c7e9e; }
+
+/* =========================================================
+   MAGIC: Runes, Magic Circles, Wisps, Stardust, Portals,
+   Shooting Stars, Matrix, Glitch
+   ========================================================= */
+
+/* Runes: Elder Futhark glyphs with arcane glow */
+#mp-effects [data-effect="runes"] .mp-particle {
+  font-family: 'Segoe UI Symbol', 'Noto Sans Runic', serif;
+  font-size: calc(clamp(15px, calc(var(--sz) * 1.35), 26px) * var(--scale, 1));
+  font-weight: 600;
+  color: #cfbaff;
+  text-shadow: 0 0 8px #9b6dff, 0 0 18px rgba(132, 76, 255, 0.75);
+  animation: mp-rune-float var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="runes"] .mp-particle[data-tint="1"] {
+  color: #a8f0ff;
+  text-shadow: 0 0 8px #4cc9ff, 0 0 18px rgba(56, 178, 255, 0.75);
+}
+#mp-effects [data-effect="runes"] .mp-particle[data-tint="2"] {
+  color: #ffe4a8;
+  text-shadow: 0 0 8px #ffb84d, 0 0 18px rgba(255, 162, 42, 0.75);
+}
+#mp-effects [data-effect="runes"] .mp-particle[data-tint="3"] {
+  color: #a8ffd8;
+  text-shadow: 0 0 8px #3ee8a0, 0 0 18px rgba(42, 215, 145, 0.75);
+}
+
+/* Magic Circles: multi-ring counter-rotating arcane seals */
+#mp-effects [data-effect="magiccircle"] .mp-particle {
+  font-size: 0;
+  width: calc(clamp(34px, calc(var(--sz) * 3.4), 78px) * var(--scale, 1));
+  height: calc(clamp(34px, calc(var(--sz) * 3.4), 78px) * var(--scale, 1));
+  border: 1.5px solid rgba(188, 152, 255, 0.82);
+  border-radius: 50%;
+  box-shadow: 0 0 14px rgba(168, 118, 255, 0.65), inset 0 0 12px rgba(168, 118, 255, 0.35);
+  animation: mp-circle-spin var(--dur) linear var(--delay) infinite;
+}
+#mp-effects [data-effect="magiccircle"] .mp-particle::before {
+  content: '';
+  position: absolute;
+  inset: 14%;
+  border: 1px dashed rgba(226, 202, 255, 0.85);
+  border-radius: 50%;
+  animation: mp-spin-rev 9s linear infinite;
+}
+#mp-effects [data-effect="magiccircle"] .mp-particle::after {
+  content: '';
+  position: absolute;
+  inset: 26%;
+  border: 1px solid rgba(210, 175, 255, 0.7);
+  transform: rotate(45deg);
+  box-shadow: inset 0 0 8px rgba(190, 140, 255, 0.45);
+}
+#mp-effects [data-effect="magiccircle"] .mp-particle[data-tint="1"] {
+  border-color: rgba(122, 224, 255, 0.82);
+  box-shadow: 0 0 14px rgba(78, 198, 255, 0.65), inset 0 0 12px rgba(78, 198, 255, 0.35);
+}
+
+/* Will-o-wisps: bright core + ghostly outer aura */
+#mp-effects [data-effect="wisps"] .mp-particle {
+  font-size: 0;
+  width: calc(clamp(7px, calc(var(--sz) * 0.6), 13px) * var(--scale, 1));
+  height: calc(clamp(7px, calc(var(--sz) * 0.6), 13px) * var(--scale, 1));
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, #9ef0ff 50%, #3cb4ff 100%);
+  box-shadow: 0 0 12px 4px rgba(82, 198, 255, 0.75), 0 0 28px 10px rgba(52, 118, 245, 0.42);
+  animation: mp-wisp var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="wisps"] .mp-particle[data-tint="1"] {
+  background: radial-gradient(circle, #ffffff 0%, #d4b8ff 50%, #8b54ff 100%);
+  box-shadow: 0 0 12px 4px rgba(154, 102, 255, 0.75), 0 0 28px 10px rgba(108, 56, 235, 0.42);
+}
+#mp-effects [data-effect="wisps"] .mp-particle[data-tint="2"] {
+  background: radial-gradient(circle, #ffffff 0%, #a8ffd8 50%, #2ed896 100%);
+  box-shadow: 0 0 12px 4px rgba(64, 228, 164, 0.75), 0 0 28px 10px rgba(32, 178, 128, 0.42);
+}
+
+/* Stardust: 4-point twinkling star sparkles + fine cosmic dust */
+#mp-effects [data-effect="stardust"] .mp-particle {
+  font-size: 0;
+  width: calc(clamp(6px, calc(var(--sz) * 0.65), 13px) * var(--scale, 1));
+  height: calc(clamp(6px, calc(var(--sz) * 0.65), 13px) * var(--scale, 1));
+  background: #ffffff;
+  clip-path: polygon(50% 0%, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0% 50%, 39% 39%);
+  filter: drop-shadow(0 0 5px #c5b3ff) drop-shadow(0 0 10px #9478ff);
+  animation: mp-twinkle-drift var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="stardust"] .mp-particle[data-tint="1"] {
+  filter: drop-shadow(0 0 5px #a8e6ff) drop-shadow(0 0 10px #58b8ff);
+}
+#mp-effects [data-effect="stardust"] .mp-particle[data-tint="2"] {
+  width: calc(3.5px * var(--scale, 1));
+  height: calc(3.5px * var(--scale, 1));
+  clip-path: none;
+  border-radius: 50%;
+  background: #ffe9b8;
+  box-shadow: 0 0 8px 2px rgba(255, 218, 142, 0.85);
+}
+
+/* Portal sparks: swirling arcane & sling-ring golden sparks */
+#mp-effects [data-effect="portals"] .mp-particle {
+  font-size: 0;
+  width: calc(4px * var(--scale, 1));
+  height: calc(10px * var(--scale, 1));
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #ffffff, #e2b8ff 50%, transparent);
+  box-shadow: 0 0 10px 2px #9b5cff, 0 0 20px #e066ff;
+  animation: mp-portal var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="portals"] .mp-particle[data-tint="1"],
+#mp-effects [data-effect="portals"] .mp-particle[data-tint="3"] {
+  background: linear-gradient(to bottom, #ffffff, #ffd280 50%, transparent);
+  box-shadow: 0 0 10px 2px #ff8c24, 0 0 20px #ff5500;
+}
+
+/* Shooting stars: diagonal meteors with glowing head & plasma trail */
+#mp-effects [data-effect="shootingstars"] .mp-particle {
+  font-size: 0;
+  width: clamp(85px, calc(var(--sz) * 7.5), 165px);
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent 0%, rgba(152, 204, 255, 0.35) 35%, rgba(218, 238, 255, 0.88) 78%, #ffffff 100%);
+  box-shadow: 0 0 8px 1px rgba(166, 213, 255, 0.65);
+  transform: rotate(150deg);
+  transform-origin: 100% 50%;
+  animation: mp-meteor-falling var(--dur) linear var(--delay) infinite;
+}
+#mp-effects [data-effect="shootingstars"] .mp-particle::after {
+  content: '';
+  position: absolute;
+  right: -2px;
+  top: -2px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 12px 4px rgba(198, 232, 255, 0.95);
+}
+
+/* Matrix: cascading vertical code streams with bright lead glyph */
+#mp-effects [data-effect="matrix"] .mp-particle {
+  top: -18vh;
+  white-space: pre;
+  line-height: 1.12;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-weight: 700;
+  font-size: calc(clamp(11px, var(--sz), 17px) * var(--scale, 1));
+  color: #38f27f;
+  text-shadow: 0 0 8px #14d959, 0 0 16px #047a2b;
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.55) 28%, #000 85%);
+  animation: mp-matrixfall var(--dur) linear var(--delay) infinite;
+}
+#mp-effects [data-effect="matrix"] .mp-particle[data-tint="1"] {
+  color: #88ffba;
+}
+
+/* Glitch: cyberpunk RGB slices & scan displacement */
+#mp-effects [data-effect="glitch"] .mp-overlay-glitch {
+  background:
+    repeating-linear-gradient(180deg, transparent 0 11vh, rgba(0, 245, 235, 0.22) 11.2vh 11.6vh, transparent 12vh 23vh, rgba(255, 56, 188, 0.22) 23.2vh 23.7vh, transparent 24vh 37vh);
+  animation: mp-glitch-slice 2.8s steps(1, end) infinite;
+}
+#mp-effects [data-effect="glitch"] .mp-overlay-glitch::before {
+  background:
+    linear-gradient(90deg, transparent 15%, rgba(0, 255, 220, 0.18) 15.5% 42%, transparent 42.5%),
+    linear-gradient(90deg, transparent 58%, rgba(255, 45, 155, 0.18) 58.5% 84%, transparent 84.5%);
+  mask-image: repeating-linear-gradient(180deg, transparent 0 16vh, #000 16vh 17.4vh, transparent 17.4vh 34vh);
+  animation: mp-glitch-slice 1.9s steps(1, end) infinite reverse;
+}
+
+/* =========================================================
+   AMBIENT & ROMANCE: Fireflies, Embers, Smoke, Ash, Bubbles,
+   Plankton, Dust, Jellyfish, Hearts, Confetti
+   ========================================================= */
+
+/* Fireflies: warm bioluminescent pulsing & lazy hovering */
+#mp-effects [data-effect="fireflies"] .mp-particle {
+  font-size: 0;
+  width: calc(4.5px * var(--scale, 1));
+  height: calc(4.5px * var(--scale, 1));
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, #eefc9d 45%, #b8e64c 100%);
+  box-shadow: 0 0 10px 3px rgba(196, 238, 92, 0.85), 0 0 24px 7px rgba(176, 224, 68, 0.45);
+  animation: mp-firefly var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="fireflies"] .mp-particle[data-tint="1"] {
+  background: radial-gradient(circle, #ffffff 0%, #ffe699 45%, #ffae3b 100%);
+  box-shadow: 0 0 10px 3px rgba(255, 196, 84, 0.85), 0 0 24px 7px rgba(255, 156, 48, 0.45);
+}
+
+/* Campfire Embers: warm hearth glow at bottom + swirling rising sparks */
+#mp-effects [data-effect="embers"]::before {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 28vh;
+  background: radial-gradient(ellipse 85% 90% at 50% 105%, rgba(255, 108, 34, 0.28) 0%, rgba(215, 58, 16, 0.12) 48%, transparent 78%);
+  animation: mp-breathe 3.5s ease-in-out infinite alternate;
+}
+#mp-effects [data-effect="embers"] .mp-particle {
+  top: 102vh;
+  font-size: 0;
+  width: calc(3.5px * var(--scale, 1));
+  height: calc(5.5px * var(--scale, 1));
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, #ffd27d 45%, #ff6b1a 100%);
+  box-shadow: 0 0 9px 2px #ff7b24, 0 0 20px rgba(255, 82, 18, 0.75);
+  animation: mp-ember-rise var(--dur) ease-in-out var(--delay) infinite;
+}
+
+/* Smoke: soft billowing plumes */
+#mp-effects [data-effect="smoke"] .mp-overlay-fog {
+  background:
+    radial-gradient(ellipse 75% 45% at 30% 100%, rgba(145, 152, 162, 0.34), transparent 75%),
+    radial-gradient(ellipse 75% 45% at 75% 100%, rgba(132, 138, 148, 0.32), transparent 75%);
+  filter: blur(28px);
+}
+#mp-effects [data-effect="smoke"] .mp-particle {
+  top: 104vh;
+  font-size: 0;
+  width: calc(clamp(45px, calc(var(--sz) * 5.2), 95px) * var(--scale, 1));
+  height: calc(clamp(45px, calc(var(--sz) * 5.2), 95px) * var(--scale, 1));
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(164, 170, 178, 0.38) 0%, rgba(128, 134, 142, 0.16) 52%, transparent 74%);
+  filter: blur(14px);
+  animation: mp-smoke-rise var(--dur) ease-in-out var(--delay) infinite;
+}
+
+/* Ash: irregular flakes, some with smoldering ember edges */
+#mp-effects [data-effect="ash"] .mp-particle {
+  top: -6vh;
+  font-size: 0;
+  width: calc(clamp(4px, calc(var(--sz) * 0.42), 8px) * var(--scale, 1));
+  height: calc(clamp(3px, calc(var(--sz) * 0.34), 7px) * var(--scale, 1));
+  border-radius: 42% 58% 36% 64%;
+  background: #b8b0ac;
+  box-shadow: 0 0 3px rgba(190, 182, 178, 0.55);
+  animation: mp-flutter-fall var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="ash"] .mp-particle[data-tint="1"] { background: #787474; }
+#mp-effects [data-effect="ash"] .mp-particle[data-tint="2"] { background: #d4c8be; }
+#mp-effects [data-effect="ash"] .mp-particle[data-tint="3"] {
+  background: radial-gradient(circle at 75% 75%, #ff7b29 0%, #6e6664 55%);
+  box-shadow: 0 0 5px rgba(255, 110, 36, 0.65);
+}
+
+/* Bubbles: iridescent soap/water spheres with dual specular highlights */
+#mp-effects [data-effect="bubbles"] .mp-particle {
+  top: 104vh;
+  font-size: 0;
+  width: calc(clamp(10px, calc(var(--sz) * 1.3), 26px) * var(--scale, 1));
+  height: calc(clamp(10px, calc(var(--sz) * 1.3), 26px) * var(--scale, 1));
+  border: 1px solid rgba(182, 238, 255, 0.68);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 28% 26%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.25) 14%, transparent 32%),
+    radial-gradient(circle at 72% 76%, rgba(215, 248, 255, 0.45) 0%, transparent 26%),
+    linear-gradient(135deg, rgba(145, 232, 255, 0.22), transparent 55%, rgba(218, 165, 255, 0.24));
+  box-shadow: inset 0 0 6px rgba(162, 235, 255, 0.45);
+  animation: mp-bubble-rise var(--dur) ease-in-out var(--delay) infinite;
+}
+
+/* Plankton: deep-sea bioluminescent organisms */
+#mp-effects [data-effect="plankton"] .mp-particle {
+  font-size: 0;
+  width: calc(clamp(3px, calc(var(--sz) * 0.42), 7px) * var(--scale, 1));
+  height: calc(clamp(3px, calc(var(--sz) * 0.42), 7px) * var(--scale, 1));
+  border-radius: 50%;
+  background: #92ffea;
+  box-shadow: 0 0 9px 2px rgba(56, 224, 206, 0.8), 0 0 18px rgba(24, 162, 162, 0.6);
+  animation: mp-plankton-drift var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="plankton"] .mp-particle[data-tint="1"] {
+  background: #98ccff;
+  box-shadow: 0 0 10px 2px rgba(96, 178, 255, 0.85);
+}
+#mp-effects [data-effect="plankton"] .mp-particle[data-tint="2"] {
+  background: #d2b8ff;
+  box-shadow: 0 0 10px 2px rgba(168, 122, 255, 0.8);
+}
+
+/* Dust motes: sunlit floating particles with soft bokeh */
+#mp-effects [data-effect="dust"] .mp-particle {
+  font-size: 0;
+  width: calc(clamp(2px, calc(var(--sz) * 0.28), 5px) * var(--scale, 1));
+  height: calc(clamp(2px, calc(var(--sz) * 0.28), 5px) * var(--scale, 1));
+  border-radius: 50%;
+  background: #fff3d6;
+  box-shadow: 0 0 8px 1px rgba(255, 238, 188, 0.72);
+  animation: mp-dust-drift var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="dust"] .mp-particle[data-tint="1"] { opacity: 0.5; }
+#mp-effects [data-effect="dust"] .mp-particle[data-tint="2"] {
+  width: calc(9px * var(--scale, 1));
+  height: calc(9px * var(--scale, 1));
+  background: radial-gradient(circle, rgba(255, 242, 208, 0.32), transparent 70%);
+  box-shadow: none;
+  filter: blur(1.5px);
+}
+
+/* Jellyfish: pulsing dome propulsion & trailing tentacles */
+#mp-effects [data-effect="jellyfish"] .mp-particle {
+  top: 106vh;
+  font-size: 0;
+  width: calc(var(--sz) * 1.75 * var(--scale, 1));
+  height: calc(var(--sz) * 1.15 * var(--scale, 1));
+  border-radius: 85% 85% 28% 28%;
+  background: radial-gradient(ellipse at 50% 24%, rgba(235, 248, 255, 0.9) 0%, rgba(154, 204, 255, 0.68) 58%, rgba(118, 152, 245, 0.28) 100%);
+  box-shadow: 0 0 16px rgba(132, 188, 255, 0.65), inset 0 -3px 6px rgba(205, 232, 255, 0.55);
+  animation: mp-jelly-swim var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="jellyfish"] .mp-particle::after {
+  content: '';
+  position: absolute;
+  top: 92%;
+  left: 18%;
+  width: 64%;
+  height: calc(var(--sz) * 1.6 * var(--scale, 1));
+  background: repeating-linear-gradient(90deg, rgba(175, 218, 255, 0.75) 0 1.2px, transparent 1.2px 4.5px);
+  mask-image: linear-gradient(to bottom, #000 15%, transparent 100%);
+}
+#mp-effects [data-effect="jellyfish"] .mp-particle[data-tint="1"] {
+  background: radial-gradient(ellipse at 50% 24%, rgba(252, 232, 255, 0.9) 0%, rgba(218, 152, 255, 0.65) 58%, rgba(162, 98, 242, 0.28) 100%);
+  box-shadow: 0 0 16px rgba(202, 138, 255, 0.65);
+}
+
+/* Hearts: swaying rose, coral & blush hearts */
+#mp-effects [data-effect="hearts"] .mp-particle {
+  top: 104vh;
+  font-size: 0;
+  width: calc(clamp(9px, var(--sz), 19px) * var(--scale, 1));
+  height: calc(clamp(9px, var(--sz), 19px) * var(--scale, 1));
+  background: #fa88ad;
+  border-radius: 2px;
+  box-shadow: 0 0 9px rgba(250, 136, 173, 0.6);
+  animation: mp-heart-rise var(--dur) ease-in-out var(--delay) infinite;
+}
+#mp-effects [data-effect="hearts"] .mp-particle::before,
+#mp-effects [data-effect="hearts"] .mp-particle::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: inherit;
+}
+#mp-effects [data-effect="hearts"] .mp-particle::before { top: -50%; left: 0; }
+#mp-effects [data-effect="hearts"] .mp-particle::after { left: 50%; top: 0; }
+#mp-effects [data-effect="hearts"] .mp-particle[data-tint="1"] { background: #eb5e8d; }
+#mp-effects [data-effect="hearts"] .mp-particle[data-tint="2"] { background: #ffbfd4; }
+#mp-effects [data-effect="hearts"] .mp-particle[data-tint="3"] { background: #ff7b89; }
+
+/* Confetti: 3D tumbling metallic & pastel ribbons */
+#mp-effects [data-effect="confetti"] .mp-particle {
+  top: -8vh;
+  font-size: 0;
+  width: calc(var(--sz) * 0.72 * var(--scale, 1));
+  height: calc(var(--sz) * 0.42 * var(--scale, 1));
+  border-radius: 1.5px;
+  background: #7ad7f5;
+  box-shadow: none;
+  animation: mp-confetti var(--dur) linear var(--delay) infinite;
+}
+#mp-effects [data-effect="confetti"] .mp-particle[data-tint="1"] { background: #ff8da1; }
+#mp-effects [data-effect="confetti"] .mp-particle[data-tint="2"] { background: #9ae07a; }
+#mp-effects [data-effect="confetti"] .mp-particle[data-tint="3"] { background: #b898f7; }
+#mp-effects [data-effect="confetti"] .mp-particle[data-tint="4"] { background: #ffd175; }
+
+/* =========================================================
+   CINEMA: Police, Alarm, Flicker, VHS, Neon, Danger
+   ========================================================= */
+
+/* Police lights: double-strobe red (left) & double-strobe blue (right) */
+#mp-effects [data-effect="police"] .mp-overlay-police {
+  background: radial-gradient(ellipse 80% 85% at 0% 48%, rgba(245, 42, 68, 0.34), transparent 72%);
+  animation: mp-police-alternate 4.2s steps(1, end) infinite;
+}
+
+/* Alarm light: rotating emergency beacon pulse */
+#mp-effects [data-effect="alarm"] .mp-overlay-alarm {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 38, 48, 0.32), transparent 65%),
+    radial-gradient(ellipse, transparent 35%, rgba(245, 32, 42, 0.42));
+  animation: mp-alarm-pulse 2.2s ease-in-out infinite;
+}
+
+/* Danger vignette: double-beat heartbeat crimson pulse */
+#mp-effects [data-effect="danger"] .mp-overlay-danger {
+  background: radial-gradient(ellipse, transparent 42%, rgba(220, 18, 32, 0.44) 100%);
+  box-shadow: inset 0 0 90px 25px rgba(185, 12, 24, 0.35);
+  animation: mp-heartbeat 2.4s ease-in-out infinite;
+}
+
+/* Flickering lamp: erratic tungsten fluorescent hum */
+#mp-effects [data-effect="flicker"] .mp-overlay-flicker {
+  background:
+    radial-gradient(ellipse 75% 60% at 50% 0%, rgba(255, 242, 198, 0.32), transparent 75%),
+    linear-gradient(to bottom, rgba(255, 243, 201, 0.22), rgba(255, 243, 201, 0.03));
+  animation: mp-lamp-erratic 7s steps(1, end) infinite;
+}
+
+/* VHS noise: CRT scanlines + rolling tracking bar + RGB jitter */
+#mp-effects [data-effect="vhs"] .mp-overlay-vhs {
+  background:
+    repeating-linear-gradient(0deg, transparent 0 2px, rgba(228, 241, 255, 0.14) 3px 4px),
+    radial-gradient(ellipse, transparent 58%, rgba(10, 12, 18, 0.38) 100%);
+  animation: mp-vhs-visible 6s steps(1, end) infinite;
+}
+#mp-effects [data-effect="vhs"] .mp-overlay-vhs::before {
+  inset: -20% 0;
+  height: 14vh;
+  background: linear-gradient(to bottom, transparent, rgba(235, 245, 255, 0.22) 45%, rgba(255, 120, 180, 0.12) 55%, transparent);
+  animation: mp-vhs-track 7.5s linear infinite;
+}
+
+/* Neon glow: dual-edge cyberpunk magenta & cyan rim light */
+#mp-effects [data-effect="neon"] .mp-overlay-neon {
+  background:
+    radial-gradient(ellipse 55% 80% at 0% 50%, rgba(218, 48, 255, 0.38), transparent 85%),
+    radial-gradient(ellipse 55% 80% at 100% 55%, rgba(24, 212, 255, 0.38), transparent 85%);
+  animation: mp-neon-pulse 6s ease-in-out infinite alternate;
+}
+
+/* =========================================================
+   KEYFRAMES
+   ========================================================= */
+
+@keyframes mp-float {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  15%, 85% { opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)) rotate(var(--rotate)); opacity: 0; }
+}
+
+@keyframes mp-fall {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  8%, 92% { opacity: 1; }
+  100% { transform: translate(var(--dx), 114vh) rotate(var(--rotate)); opacity: 0; }
+}
+
+@keyframes mp-rise {
+  0% { transform: translate(0, 0); opacity: 0; }
+  12%, 88% { opacity: 1; }
+  100% { transform: translate(var(--dx), -114vh); opacity: 0; }
+}
+
+@keyframes mp-shoot {
+  0%, 82% { opacity: 0; }
+  86% { opacity: 1; }
+  100% { transform: translate(-65vw, 65vh); opacity: 0; }
+}
+
+@keyframes mp-snowfall {
+  0% { transform: translate3d(0, 0, 0); opacity: 0; }
+  8% { opacity: 0.92; }
+  25% { transform: translate3d(var(--sway, 28px), 28vh, 0); }
+  50% { transform: translate3d(calc(var(--sway, 28px) * -0.6), 56vh, 0); }
+  75% { transform: translate3d(calc(var(--sway, 28px) * 0.8), 84vh, 0); }
+  92% { opacity: 0.92; }
+  100% { transform: translate3d(var(--drift, 35px), 112vh, 0); opacity: 0; }
+}
+
+@keyframes mp-blizzard {
+  0% { transform: translate3d(0, -18vh, 0) rotate(18deg); opacity: 0; }
+  10%, 88% { opacity: 0.92; }
+  100% { transform: translate3d(124vw, 48vh, 0) rotate(18deg); opacity: 0; }
+}
+
+@keyframes mp-rainfall {
+  0% { transform: translate3d(0, 0, 0) rotate(13deg); opacity: 0; }
+  6%, 92% { opacity: 0.85; }
+  100% { transform: translate3d(-25vw, 118vh, 0) rotate(13deg); opacity: 0; }
+}
+
+@keyframes mp-rainfall-heavy {
+  0% { transform: translate3d(0, 0, 0) rotate(10deg); opacity: 0; }
+  5%, 94% { opacity: 0.96; }
+  100% { transform: translate3d(-18vw, 118vh, 0) rotate(10deg); opacity: 0; }
+}
+
+@keyframes mp-windblow {
+  0% { transform: translate3d(0, 0, 0) scaleX(0.6); opacity: 0; }
+  15% { opacity: 0.78; }
+  50% { transform: translate3d(62vw, var(--sway, -22px), 0) scaleX(1.25); opacity: 0.85; }
+  85% { opacity: 0.7; }
+  100% { transform: translate3d(132vw, calc(var(--sway, -22px) * -0.5), 0) scaleX(0.8); opacity: 0; }
+}
+
+@keyframes mp-sandblow {
+  0% { transform: translate3d(0, 12vh, 0); opacity: 0; }
+  10%, 90% { opacity: 0.88; }
+  50% { transform: translate3d(62vw, calc(-4vh + var(--sway, 18px)), 0); }
+  100% { transform: translate3d(124vw, -16vh, 0); opacity: 0; }
+}
+
+@keyframes mp-glassdrip {
+  0% { transform: translateY(0) scale(0.75); opacity: 0; }
+  12% { transform: translateY(4vh) scale(1); opacity: 0.92; }
+  28% { transform: translateY(6vh) scale(1); }
+  52% { transform: translateY(34vh) scale(0.96, 1.08); }
+  68% { transform: translateY(37vh) scale(1); }
+  90% { opacity: 0.9; }
+  100% { transform: translateY(88vh) scale(0.85); opacity: 0; }
+}
+
+@keyframes mp-flutter-fall {
+  0% { transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg) rotateZ(0deg); opacity: 0; }
+  8% { opacity: 0.95; }
+  25% { transform: translate3d(var(--sway, 36px), 28vh, 0) rotateX(110deg) rotateY(70deg) rotateZ(45deg); }
+  50% { transform: translate3d(calc(var(--sway, 36px) * -0.7), 56vh, 0) rotateX(220deg) rotateY(160deg) rotateZ(110deg); }
+  75% { transform: translate3d(calc(var(--sway, 36px) * 0.9), 84vh, 0) rotateX(310deg) rotateY(250deg) rotateZ(195deg); }
+  92% { opacity: 0.95; }
+  100% { transform: translate3d(var(--drift, 40px), 114vh, 0) rotateX(420deg) rotateY(360deg) rotateZ(280deg); opacity: 0; }
+}
+
+@keyframes mp-feather-glide {
+  0% { transform: translate3d(0, 0, 0) rotateZ(-22deg) rotateX(15deg); opacity: 0; }
+  10% { opacity: 0.94; }
+  30% { transform: translate3d(calc(var(--sway, 42px) * 1.3), 32vh, 0) rotateZ(26deg) rotateX(55deg); }
+  65% { transform: translate3d(calc(var(--sway, 42px) * -1.1), 72vh, 0) rotateZ(-24deg) rotateX(20deg); }
+  90% { opacity: 0.94; }
+  100% { transform: translate3d(var(--drift, 35px), 112vh, 0) rotateZ(22deg) rotateX(60deg); opacity: 0; }
+}
+
+@keyframes mp-dandelion-float {
+  0% { transform: translate3d(0, 18px, 0) rotate(-8deg); opacity: 0; }
+  18% { opacity: 0.92; }
+  50% { transform: translate3d(var(--sway, 34px), -28px, 0) rotate(12deg); opacity: 0.98; }
+  82% { opacity: 0.9; }
+  100% { transform: translate3d(calc(var(--sway, 34px) * 1.6), -68px, 0) rotate(-6deg); opacity: 0; }
+}
+
+@keyframes mp-butterfly-path {
+  0% { transform: translate3d(0, 0, 0) rotateZ(-12deg) rotateX(25deg); opacity: 0; }
+  15% { opacity: 0.96; }
+  35% { transform: translate3d(var(--sway, 45px), -34px, 20px) rotateZ(14deg) rotateX(35deg); }
+  68% { transform: translate3d(calc(var(--sway, 45px) * -0.8), -72px, -10px) rotateZ(-16deg) rotateX(20deg); }
+  88% { opacity: 0.95; }
+  100% { transform: translate3d(var(--dx, 65px), -115px, 0) rotateZ(10deg) rotateX(30deg); opacity: 0; }
+}
+
+@keyframes mp-wing-left {
+  from { transform: rotateY(12deg); }
+  to { transform: rotateY(76deg); }
+}
+
+@keyframes mp-wing-right {
+  from { transform: rotateY(-12deg); }
+  to { transform: rotateY(-76deg); }
+}
+
+@keyframes mp-bat-flight {
+  0% { transform: translate3d(0, 12vh, 0) scale(0.7); opacity: 0; }
+  12%, 88% { opacity: 0.92; }
+  50% { transform: translate3d(62vw, calc(-6vh + var(--sway, 25px)), 0) scale(1.05); }
+  100% { transform: translate3d(124vw, -18vh, 0) scale(1.25); opacity: 0; }
+}
+
+@keyframes mp-bat-flap {
+  from { clip-path: polygon(0 6%, 18% 32%, 30% 10%, 43% 38%, 50% 14%, 57% 38%, 70% 10%, 82% 32%, 100% 6%, 86% 96%, 68% 62%, 50% 94%, 32% 62%, 14% 96%); }
+  to { clip-path: polygon(0 68%, 18% 48%, 30% 22%, 43% 42%, 50% 18%, 57% 42%, 70% 22%, 82% 48%, 100% 68%, 84% 98%, 68% 72%, 50% 94%, 32% 72%, 16% 98%); }
+}
+
+@keyframes mp-rune-float {
+  0% { transform: translate3d(0, 16px, 0) scale(0.75); opacity: 0; }
+  25% { opacity: 0.95; }
+  55% { transform: translate3d(var(--sway, 18px), -22px, 0) scale(1.08); opacity: 1; }
+  80% { opacity: 0.85; }
+  100% { transform: translate3d(calc(var(--sway, 18px) * -0.5), -48px, 0) scale(0.85); opacity: 0; }
+}
+
+@keyframes mp-circle-spin {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg) scale(0.75); opacity: 0; }
+  20%, 80% { opacity: 0.92; }
+  50% { transform: translate3d(var(--sway, 24px), -20px, 0) rotate(180deg) scale(1.08); }
+  100% { transform: translate3d(var(--dx, -24px), -42px, 0) rotate(360deg) scale(0.8); opacity: 0; }
+}
+
+@keyframes mp-spin-rev {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes mp-wisp {
+  0% { transform: translate3d(0, 0, 0) scale(0.65); opacity: 0; }
+  22% { opacity: 0.92; }
+  55% { transform: translate3d(var(--sway, 42px), -38px, 0) scale(1.22); opacity: 1; }
+  82% { opacity: 0.85; }
+  100% { transform: translate3d(calc(var(--sway, 42px) * -0.6), -82px, 0) scale(0.65); opacity: 0; }
+}
+
+@keyframes mp-twinkle-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(0.45) rotate(0deg); opacity: 0.08; }
+  30% { transform: translate3d(calc(var(--sway, 18px) * 0.5), -12px, 0) scale(1.18) rotate(45deg); opacity: 0.98; }
+  55% { transform: translate3d(var(--sway, 18px), -24px, 0) scale(0.65) rotate(90deg); opacity: 0.32; }
+  80% { transform: translate3d(calc(var(--sway, 18px) * 0.7), -36px, 0) scale(1.1) rotate(135deg); opacity: 0.94; }
+}
+
+@keyframes mp-portal {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg) scale(0.35); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translate3d(var(--dx), var(--dy), 0) rotate(240deg) scale(1.35); opacity: 0; }
+}
+
+@keyframes mp-meteor-falling {
+  0%, 24% { opacity: 0; transform: translate(0, 0) rotate(150deg); }
+  27% { opacity: 0.98; transform: translate(-3vw, 1.4vh) rotate(150deg); }
+  54% { opacity: 0; transform: translate(calc(-1 * var(--travel)), calc(var(--travel) * 0.55)) rotate(150deg); }
+  100% { opacity: 0; transform: translate(calc(-1 * var(--travel)), calc(var(--travel) * 0.55)) rotate(150deg); }
+}
+
+@keyframes mp-matrixfall {
+  0% { transform: translateY(0); opacity: 0; }
+  8%, 88% { opacity: 0.92; }
+  100% { transform: translateY(122vh); opacity: 0; }
+}
+
+@keyframes mp-firefly {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(0.65); opacity: 0.06; }
+  28% { transform: translate3d(var(--sway, 26px), -18px, 0) scale(1.15); opacity: 0.96; }
+  52% { transform: translate3d(calc(var(--sway, 26px) * 0.4), -36px, 0) scale(0.8); opacity: 0.22; }
+  78% { transform: translate3d(calc(var(--sway, 26px) * -0.7), -52px, 0) scale(1.1); opacity: 0.92; }
+}
+
+@keyframes mp-ember-rise {
+  0% { transform: translate3d(0, 0, 0) scale(1.1); opacity: 0; }
+  10% { opacity: 0.98; }
+  35% { transform: translate3d(var(--sway, 32px), -34vh, 0) scale(0.95); }
+  70% { transform: translate3d(calc(var(--sway, 32px) * -0.8), -72vh, 0) scale(0.75); opacity: 0.82; }
+  100% { transform: translate3d(var(--drift, 25px), -108vh, 0) scale(0.35); opacity: 0; }
+}
+
+@keyframes mp-smoke-rise {
+  0% { transform: translate3d(0, 0, 0) scale(0.75); opacity: 0; }
+  20% { opacity: 0.75; }
+  65% { transform: translate3d(var(--sway, 42px), -55vh, 0) scale(1.45); opacity: 0.55; }
+  100% { transform: translate3d(calc(var(--sway, 42px) * 1.5), -105vh, 0) scale(2.1); opacity: 0; }
+}
+
+@keyframes mp-bubble-rise {
+  0% { transform: translate3d(0, 0, 0) scale(0.85, 0.95); opacity: 0; }
+  10% { opacity: 0.92; }
+  33% { transform: translate3d(var(--sway, 26px), -36vh, 0) scale(1.06, 0.94); }
+  66% { transform: translate3d(calc(var(--sway, 26px) * -0.7), -74vh, 0) scale(0.95, 1.05); }
+  92% { opacity: 0.9; }
+  100% { transform: translate3d(var(--drift, 20px), -114vh, 0) scale(1.12); opacity: 0; }
+}
+
+@keyframes mp-jelly-swim {
+  0% { transform: translate3d(0, 0, 0) scale(1, 1); opacity: 0; }
+  10% { opacity: 0.92; }
+  22% { transform: translate3d(calc(var(--sway, 24px) * 0.4), -18vh, 0) scale(1.14, 0.84); }
+  34% { transform: translate3d(calc(var(--sway, 24px) * 0.7), -38vh, 0) scale(0.88, 1.14); }
+  54% { transform: translate3d(calc(var(--sway, 24px) * 0.2), -56vh, 0) scale(1.14, 0.84); }
+  68% { transform: translate3d(calc(var(--sway, 24px) * -0.5), -78vh, 0) scale(0.88, 1.14); }
+  90% { opacity: 0.9; }
+  100% { transform: translate3d(var(--drift, 18px), -116vh, 0) scale(1, 1); opacity: 0; }
+}
+
+@keyframes mp-heart-rise {
+  0% { opacity: 0; transform: translate3d(0, 0, 0) rotate(-45deg) scale(0.65); }
+  12% { opacity: 0.92; }
+  45% { transform: translate3d(var(--sway, 28px), -48vh, 0) rotate(-35deg) scale(1.02); }
+  75% { transform: translate3d(calc(var(--sway, 28px) * -0.6), -82vh, 0) rotate(-55deg) scale(1.1); opacity: 0.88; }
+  100% { opacity: 0; transform: translate3d(var(--drift, 24px), -114vh, 0) rotate(-45deg) scale(1.18); }
+}
+
+@keyframes mp-confetti {
+  0% { transform: translate3d(0, 0, 0) rotateX(0) rotateY(0) rotateZ(0); opacity: 0; }
+  8%, 90% { opacity: 0.96; }
+  50% { transform: translate3d(var(--sway, 42px), 56vh, 0) rotateX(360deg) rotateY(540deg) rotateZ(180deg); }
+  100% { transform: translate3d(var(--drift, 65px), 114vh, 0) rotateX(720deg) rotateY(1080deg) rotateZ(360deg); opacity: 0; }
+}
+
+@keyframes mp-pollen-drift {
+  0% { opacity: 0; transform: translate3d(-15px, 16px, 0); }
+  20% { opacity: 0.92; }
+  55% { transform: translate3d(var(--sway, 28px), -22px, 0); opacity: 1; }
+  82% { opacity: 0.8; }
+  100% { transform: translate3d(calc(var(--sway, 28px) * 1.6), -46px, 0); opacity: 0; }
+}
+
+@keyframes mp-plankton-drift {
+  0% { transform: translate3d(-10px, 32px, 0) scale(0.65); opacity: 0.08; }
+  28% { opacity: 0.96; }
+  55% { transform: translate3d(var(--sway, 24px), -14px, 0) scale(1.22); opacity: 0.45; }
+  82% { opacity: 0.98; }
+  100% { transform: translate3d(calc(var(--sway, 24px) * -0.7), -54px, 0) scale(0.6); opacity: 0.06; }
+}
+
+@keyframes mp-dust-drift {
+  0% { transform: translate3d(-14px, 16px, 0); opacity: 0; }
+  22% { opacity: 0.85; }
+  62% { transform: translate3d(var(--sway, 32px), -16px, 0); opacity: 0.96; }
+  100% { transform: translate3d(calc(var(--sway, 32px) * 1.6), -34px, 0); opacity: 0; }
+}
+
+@keyframes mp-edge-fog {
+  from { transform: translate3d(-4%, -1%, 0) scale(1); }
+  to { transform: translate3d(4%, 1%, 0) scale(1.1); }
+}
+
+@keyframes mp-edge-fog-rev {
+  from { transform: translate3d(4%, 1%, 0) scale(1.08); }
+  to { transform: translate3d(-4%, -1%, 0) scale(1); }
+}
+
+@keyframes mp-light-drift {
+  from { transform: translateX(-2%) rotate(-2.5deg); opacity: 0.72; }
+  to { transform: translateX(2%) rotate(2.5deg); opacity: 1; }
+}
+
+@keyframes mp-aurora-wave {
+  from { transform: translate(-5%, -2%) skewX(-8deg) scaleX(0.92); }
+  to { transform: translate(6%, 3%) skewX(8deg) scaleX(1.12); }
+}
+
+@keyframes mp-real-lightning {
+  0%, 68%, 70.5%, 71.8%, 74%, 100% { opacity: 0; }
+  68.4% { opacity: 0.65; }
+  69.1% { opacity: 0.12; }
+  71.0% { opacity: 0.42; }
+  72.3% { opacity: 0.82; }
+  73.1% { opacity: 0.18; }
+}
+
+@keyframes mp-breathe {
+  from { opacity: 0.72; }
+  to { opacity: 1; }
+}
+
+@keyframes mp-police-alternate {
+  0%, 7%, 14%, 21% {
+    background: radial-gradient(ellipse 80% 85% at 0% 48%, rgba(245, 42, 68, 0.36), transparent 72%);
+    opacity: 1;
+  }
+  7.1%, 13.9%, 21.1%, 49.9% {
+    background: none;
+    opacity: 0;
+  }
+  50%, 57%, 64%, 71% {
+    background: radial-gradient(ellipse 80% 85% at 100% 48%, rgba(42, 118, 255, 0.38), transparent 72%);
+    opacity: 1;
+  }
+  57.1%, 63.9%, 71.1%, 100% {
+    background: none;
+    opacity: 0;
+  }
+}
+
+@keyframes mp-alarm-pulse {
+  0%, 100% { opacity: 0.12; }
+  45%, 55% { opacity: 0.78; }
+}
+
+@keyframes mp-heartbeat {
+  0%, 42%, 100% { opacity: 0.28; transform: scale(1); }
+  12% { opacity: 0.88; transform: scale(1.015); }
+  22% { opacity: 0.38; transform: scale(1); }
+  32% { opacity: 0.72; transform: scale(1.01); }
+}
+
+@keyframes mp-lamp-erratic {
+  0%, 14%, 20%, 49%, 51%, 80%, 94%, 100% { opacity: 0.34; }
+  15%, 19%, 50%, 81%, 93% { opacity: 0.03; }
+  17%, 86% { opacity: 0.52; }
+}
+
+@keyframes mp-vhs-visible {
+  0%, 39%, 48%, 83%, 100% { opacity: 0.38; transform: translateY(0); }
+  40%, 42% { opacity: 0.78; transform: translateY(5px); }
+  46% { opacity: 0.62; transform: translateY(-3px); }
+  84%, 87% { opacity: 0.82; transform: translateY(-9px); }
+}
+
+@keyframes mp-vhs-track {
+  from { transform: translateY(-20vh); }
+  to { transform: translateY(120vh); }
+}
+
+@keyframes mp-glitch-slice {
+  0%, 66%, 72%, 90%, 100% { opacity: 0.14; transform: translate(0, 0); }
+  67%, 69% { opacity: 0.85; transform: translate(-10px, 6px); }
+  70%, 71% { opacity: 0.75; transform: translate(12px, -4px); }
+  91%, 94% { opacity: 0.8; transform: translate(-7px, -11px); }
+}
+
+@keyframes mp-neon-pulse {
+  0% { opacity: 0.48; filter: hue-rotate(0deg); }
+  50% { opacity: 0.92; }
+  100% { opacity: 0.76; filter: hue-rotate(28deg); }
+}
+
+/* === Reduced Motion & Pause States === */
+.mp-paused *,
+.mp-reduced * {
+  animation-play-state: paused !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  #mp-effects * { animation-play-state: paused !important; }
+  #mp-effects [data-effect="thunder"] .mp-overlay-storm,
+  #mp-effects [data-effect="police"] .mp-overlay-police,
+  #mp-effects [data-effect="alarm"] .mp-overlay-alarm,
+  #mp-effects [data-effect="flicker"] .mp-overlay-flicker,
+  #mp-effects [data-effect="shootingstars"] .mp-particle {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+}
+
+/* =========================================================
+   EXTENSION UI (Untouched layout & SillyTavern Theme Styles)
+   ========================================================= */
+.mp-ui{box-sizing:border-box;color:var(--SmartThemeBodyColor,#ddd);font-size:14px}
+.mp-ui *{box-sizing:border-box}
+.mp-ui button{border:1px solid var(--SmartThemeBorderColor,#887ba366);border-radius:8px;background:var(--SmartThemeBlurTintColor,#35323d);color:var(--SmartThemeBodyColor,#eee);padding:6px 10px;cursor:pointer}
+.mp-ui button:hover{background:color-mix(in srgb,var(--SmartThemeBlurTintColor,#35323d) 75%,var(--SmartThemeBodyColor,#fff) 25%)}
+.mp-ui input:not([type=checkbox]):not([type=range]):not([type=file]),.mp-ui select{color:var(--SmartThemeBodyColor,#eee);background:var(--SmartThemeBlurTintColor,#25212c);border-color:var(--SmartThemeBorderColor,#887ba366)}
+.mp-ui input[type=range],.mp-ui input[type=checkbox]{accent-color:var(--SmartThemeQuoteColor,var(--SmartThemeBodyColor,#a9a9be))}
+.mp-head{display:flex;justify-content:space-between;align-items:center;font-size:17px;margin:8px 0}
+.mp-tools,.mp-presets,.mp-save{display:flex;gap:6px;flex-wrap:wrap;margin:9px 0}
+.mp-section{padding:10px 0}
+.mp-range{display:grid;grid-template-columns:1fr auto;gap:5px;margin:8px 0}
+.mp-range input{grid-column:1/-1;width:100%}
+.mp-check{display:flex;align-items:center;gap:9px;padding:6px 2px;cursor:pointer}
+.mp-category{border-top:1px solid #9385a444;padding:8px 0}
+.mp-category summary{cursor:pointer;font-weight:600;padding:5px}
+.mp-save input{min-width:0;flex:1;border:1px solid #887ba366;border-radius:6px;padding:7px;background:#25212c;color:white}
+#mp-settings{padding:12px;max-width:540px}
+#mp-fab{position:fixed;right:18px;bottom:100px;z-index:10000;width:46px;height:46px;border-radius:50%;border:1px solid var(--SmartThemeBorderColor,#c0a8ed88);background:var(--SmartThemeBlurTintColor,#292339ee);color:var(--SmartThemeBodyColor,#e1d1ff);box-shadow:0 4px 20px #0008;font-size:25px;cursor:grab;touch-action:none;user-select:none}
+#mp-fab:active{cursor:grabbing}
+#mp-panel{position:fixed;right:18px;bottom:156px;z-index:10001;display:flex;flex-direction:column;padding:0;overflow:hidden;resize:both;min-width:min(300px,calc(100vw - 16px));min-height:220px;width:min(400px,calc(100vw - 20px));max-height:min(82dvh,800px);background:var(--SmartThemeBlurTintColor,rgba(30,30,35,.96));color:var(--SmartThemeBodyColor,#ececec);border:1px solid var(--SmartThemeBorderColor,#8888);border-radius:14px;box-shadow:0 14px 38px #0008;backdrop-filter:blur(18px)}
+#mp-panel-grip{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;background:color-mix(in srgb,var(--SmartThemeBlurTintColor,#292b32) 78%,var(--SmartThemeBodyColor,#fff) 8%);border-bottom:1px solid var(--SmartThemeBorderColor,#8886);cursor:grab;user-select:none;flex-shrink:0}
+#mp-panel-grip:active{cursor:grabbing}
+#mp-panel-body{padding:12px 14px;overflow:auto;overscroll-behavior:contain;min-height:0;flex:1}
+#mp-panel-grip .mp-close{font-size:20px;line-height:1;padding:0 8px;background:transparent;color:inherit;border-color:transparent}
+#mp-panel[hidden],#mp-fab[hidden]{display:none!important}
+.mp-drawer{width:100%;margin:6px 0 12px}
+.mp-drawer>.inline-drawer-toggle{cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-radius:7px;background:var(--SmartThemeBlurTintColor,#253329);color:var(--SmartThemeBodyColor,#ddd)}
+.mp-drawer>.inline-drawer-content{padding:4px 8px}
+.mp-preset-item{display:inline-flex;align-items:center;gap:2px;border:1px solid #887ba355;border-radius:8px}
+.mp-preset-item button{border:0;border-radius:5px}
+.mp-preset-item button:not(:first-child){padding:5px 7px}
+.mp-search{display:block;width:100%;padding:8px;border-radius:7px;border:1px solid #887ba366;background:#25212c;color:white;margin:10px 0}
+.mp-effect-row{flex-wrap:wrap}
+.mp-effect-density{margin-left:auto;max-width:110px;width:25%}
+.mp-chat small,.mp-section small{display:block;opacity:.75;line-height:1.5}
+.mp-category[hidden],.mp-effect-row[hidden]{display:none!important}
+.mp-time-mode{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 2px}
+.mp-time-mode select{background:#25212c;color:inherit;border:1px solid #887ba366;border-radius:6px;padding:5px;max-width:50%}
+.mp-auto-badge{display:inline-flex;align-items:center;padding:2px 6px;border:1px solid #70bd9680;border-radius:6px;color:#a5dfbb;background:#28563b33;font:600 10px/1.3 system-ui,sans-serif;letter-spacing:.025em;white-space:nowrap}
+.mp-auto-badge[hidden]{display:none!important}
+@media(max-width:600px){
+  #mp-fab{right:12px;bottom:84px;width:42px;height:42px}
+  #mp-panel{left:8px;right:8px;bottom:calc(72px + env(safe-area-inset-bottom));width:min(380px,calc(100vw - 16px));max-height:75dvh;min-width:260px;resize:none;border-radius:14px}
+  #mp-panel-body{padding:10px 12px;padding-bottom:calc(12px + env(safe-area-inset-bottom))}
+  #mp-settings{max-width:100%;padding:8px}
+  .mp-check{min-height:36px}
+  .mp-effect-density{max-width:90px}
+  .mp-drawer>.inline-drawer-content{padding:4px 2px}
 }
